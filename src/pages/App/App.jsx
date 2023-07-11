@@ -8,10 +8,12 @@ export default function App() {
         <p>
           This is where the weather for the day is going to go.
         </p>
-      <main>
-        <p className='App-main'>This will be where you see your Astrological prediction for the day.</p>
-      </main>
       </header>
+      <main>
+        <div className='App-main'>
+        <p>This will be where you see your Astrological prediction for the day.</p>
+        </div>
+      </main>
     </div>
   );
 }

@@ -7,33 +7,43 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #78859e;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+main {
+  display: flex;
+  background-color: #78859e;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .App-main {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: black;
+  min-height: 50vh;
+  width: 50%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-main :hover {
+  background-color: #78859e;
+  color: black;
+  transition: ease-in-out 0.5s;
 }
