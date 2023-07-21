@@ -9,6 +9,7 @@
 
 .selector {
   font-size: 20px;
-  margin: 2vmin;
+  margin: 1vmin;
 	font-family: "Poppins", sans-serif;
+  border-radius: 2px;
 }

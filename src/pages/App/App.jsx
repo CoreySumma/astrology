@@ -7,8 +7,8 @@ export default function App() {
       <img src="../../images/zodiac.png" alt="" />
       <Header />
       <main>
-        <div className="App-main">
-          <p>
+        <div className="prediction-container">
+          <p className="prediction-text">
             This will be where you see your Astrological prediction for the day.
           </p>
         </div>

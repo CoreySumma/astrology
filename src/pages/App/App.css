@@ -38,10 +38,10 @@ main :hover {
 }
 
 
-.App-main {
+.prediction-container {
   background-color: black;
   min-height: 50vh;
-  width: 50%;
+  width: 60%;
   padding: 10px;
   border: 1px solid black;
   border-radius: 20px;
@@ -49,9 +49,13 @@ main :hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.prediction-text {
+  background-color: transparent;
+  font-size: calc(10px + 1vmin);
   color: white;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
