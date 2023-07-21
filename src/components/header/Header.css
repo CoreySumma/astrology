@@ -1,7 +1,5 @@
 .App {
   text-align: center;
-  background-color: #78859e;
-
 }
 
 .App-logo {
@@ -28,13 +26,6 @@ main {
   text-align: center;
 }
 
-main :hover {
-  background-color: #78859e;
-  color: black;
-  transition: ease-in-out 0.5s;
-}
-
-
 .App-main {
   background-color: black;
   min-height: 50vh;
@@ -49,6 +40,10 @@ main :hover {
   font-size: calc(10px + 2vmin);
   color: white;
   margin-bottom: 20px;
-  margin-top: 20px;
 }
 
+.App-main :hover {
+  background-color: #78859e;
+  color: black;
+  transition: ease-in-out 0.5s;
+}
