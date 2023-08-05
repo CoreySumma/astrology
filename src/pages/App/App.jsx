@@ -1,15 +1,16 @@
 import "./App.css";
 import Header from "../../components/Header/Header";
+import React from "react";
 
 export default function App() {
   return (
     <div className="App">
-      <img src="../../images/zodiac.png" alt="" />
+      <img src="../../images/zodiac.png" className="spin" alt="" />
       <Header />
       <main>
         <div className="prediction-container">
           <p className="prediction-text">
-            This will be where you see your Astrological prediction for the day.
+            Please select your sign to see your prediction for today.
           </p>
         </div>
       </main>

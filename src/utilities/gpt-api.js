@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 export default async function gptApi(signData, Result) {
   try {
@@ -20,7 +19,7 @@ export default async function gptApi(signData, Result) {
         },
       }
     );
-    setResult(response.data.choices[0].text.trim());
+    return response.data.choices[0].text.trim();
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
   }
