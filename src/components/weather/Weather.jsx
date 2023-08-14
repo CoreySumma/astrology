@@ -1,15 +1,15 @@
-export default function Weather() {
-  let dateObj = new Date();
-  let month = dateObj.getUTCMonth() + 1; //months from 1-12
-  let day = dateObj.getUTCDate();
-  let year = dateObj.getUTCFullYear();
 
-  const newdate =  + month + "/" + day + "/" + year ;
+export default function Weather({ data }) {
+
   return (
+    console.log(data),
     <>
       <div className="Forecast">
-        <h2>Weather</h2>
-        <p>{newdate}</p>
+        <p>City Name: {data.name}</p>
+        <p>Temprature: {data.main.temp} &deg;</p>
+        <p>Sunrise: {new Date(data.sys.sunrise * 1000).toLocaleTimeString('en-IN')}</p>
+        <p>Sunset: {new Date(data.sys.sunset * 1000).toLocaleTimeString('en-IN')}</p>
+        <p>Description: {data.weather[0].main}</p>
         <p>This is where the weather for the day is going to go.</p>
       </div>
     </>
