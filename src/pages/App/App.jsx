@@ -27,7 +27,7 @@ export default function App() {
     // This will fetch the weather data from the API using the latitude and longitude states
     if (lat.length !== 0 && long.length !== 0) {
       fetch(
-        `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${lat}&lon=${long}&dt=${time}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       )
         .then((res) => res.json())
         .then((res) => {
@@ -38,6 +38,7 @@ export default function App() {
   }, [lat, long]);
 
   return (
+    console.log("this is right before passing to component", data),
     <div className="App">
       <img src="../../images/zodiac.png" className="spin" alt="" />
       <Header data={data} />
