@@ -8,7 +8,7 @@ export default function App() {
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
   const date = new Date(); // This will give you the current date and time
-  const time = Math.floor(date.getTime() / 1000); // This will give you the current time in seconds for our weather API call in the format it accepts
+  const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
 
   useEffect(() => {
     // This will get the user's current location and set the latitude and longitude states
@@ -27,7 +27,7 @@ export default function App() {
     // This will fetch the weather data from the API using the latitude and longitude states
     if (lat.length !== 0 && long.length !== 0) {
       fetch(
-        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       )
         .then((res) => res.json())
         .then((res) => {
@@ -41,7 +41,7 @@ export default function App() {
     console.log("this is right before passing to component", data),
     <div className="App">
       <img src="../../images/zodiac.png" className="spin" alt="" />
-      <Header data={data} />
+      <Header data={data} time={time} />
       <main>
         <div className="prediction-container">
           <p className="prediction-text">
