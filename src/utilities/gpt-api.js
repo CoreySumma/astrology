@@ -1,4 +1,5 @@
 import axios from "axios";
+import {gptPrompt} from "./gpt-prompt";
 
 export default async function gptApi(signData, result, temp, location, time) {
   try {
@@ -6,7 +7,7 @@ export default async function gptApi(signData, result, temp, location, time) {
       "https://api.openai.com/v1/completions",
       {
         model: "text-davinci-003",
-        prompt: `You are playing the part of a Fortune Teller for the user.  Please give a day at a glance using all information you have for today for this Astrological sign ${signData}.  This is the current temp of where the user is ${temp}.  This is their location ${location}. This is the users current time ${time}. Use all of this information to seem knowledgable as a fortune teller for the day. Please make it as accurate as you can with what you know about this sign and the day the user is requesting the prediction for.  Be concise, inspirational, blunt, and do not beat around the bush.  After you give the prediction, tell the user steps they need to take for the day that relates to the prediction in terms of what they should be doing or a mindxset they should have.  Do not mention your objective in the response as this is an interactive app and the user should just be impressed by your wisdom.`,
+        prompt: {gptPrompt},
         temperature: 0.7,
         max_tokens: 100,
         frequency_penalty: 0.0,
