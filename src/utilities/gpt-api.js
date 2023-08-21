@@ -1,7 +1,7 @@
 import axios from "axios";
 import {gptPrompt} from "./gpt-prompt";
 
-export default async function gptApi(signData, result, temp, location, time) {
+export default async function gptApi() {
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",

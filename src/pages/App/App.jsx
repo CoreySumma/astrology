@@ -7,6 +7,8 @@ export default function App() {
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
+  const [sign, setSign] = useState([]);
+  const [location, setLocation] = useState([]);
   const date = new Date(); // This will give you the current date and time
   const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
 
@@ -19,6 +21,8 @@ export default function App() {
         console.log(currentLat, currentLong);
         setLat(currentLat);
         setLong(currentLong);
+        // get the users actual location using the latitude and longitude states
+        
       });
     };
     fetchData();
@@ -38,10 +42,10 @@ export default function App() {
   }, [lat, long]);
 
   return (
-    console.log("this is right before passing to component", data),
+    console.log("this is right before passing to header component", data),
     <div className="App">
       <img src="../../images/zodiac.png" className="spin" alt="" />
-      <Header data={data} time={time} />
+      <Header data={data} time={time} sign={sign} setSign={setSign}/>
       <main>
         <div className="prediction-container">
           <p className="prediction-text">

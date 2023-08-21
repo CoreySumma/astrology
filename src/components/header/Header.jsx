@@ -2,7 +2,7 @@ import React from "react";
 import Weather from "../Weather/Weather";
 import SignForm from "../SignForm/SignForm";
 
-export default function Header({ data, time }) {
+export default function Header({ data, time, sign, setSign }) {
   console.log("this is within the header component", data);
   // set current date
   let dateObj = new Date();
@@ -14,7 +14,7 @@ export default function Header({ data, time }) {
   return (
     data && (
       <header className="App-header">
-        <SignForm />
+        <SignForm sign={sign} setSign={setSign} data={data} time={time}/>
         <p> {newdate} </p>
         <div className="Forecast">
           {data.current ? <Weather data={data} time={time}/> : <div></div>}

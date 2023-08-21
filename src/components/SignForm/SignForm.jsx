@@ -1,21 +1,28 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./SignForm.css";
 import gptApi from "../../utilities/gpt-api";
+import { gptPrompt } from "../../utilities/gpt-prompt";
 
 
-export default function SignForm() {
+export default function SignForm({sign, setSign}) {
   const [selectedSign, setSelectedSign] = useState("");
   const [result, setResult] = useState("");
 
+
   const handleChange = (e) => {
     setSelectedSign(e.target.value);
-    if (e.target.value) {
-      gptApi(e.target.value).then((result) => {
+    setSign(e.target.value);
+  };
+
+  useEffect(() => {
+    if (sign !== "") {
+      gptApi(sign).then((result) => {
         setResult(result);
       });
     }
-  };
-  
+  }, [sign]);
+
   return (
     <>
       <form className="form-container">
