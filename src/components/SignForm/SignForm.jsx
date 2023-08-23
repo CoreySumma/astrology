@@ -1,19 +1,29 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import store  from "../../store";
 import "./SignForm.css";
 import gptApi from "../../utilities/gpt-api";
 import { gptPrompt } from "../../utilities/gpt-prompt";
 import { updateSign } from "../../actions";
+import userData from "../../reducers/userData";
 
 
 export default function SignForm({sign, setSign}) {
   const [selectedSign, setSelectedSign] = useState("");
   const [result, setResult] = useState("");
+  const dispatch = useDispatch();
+  // Redux line for retrieving data from the store for user's sign
+  const signState = useSelector(state => state.userData.signData);
 
 
   const handleChange = (e) => {
-    setSelectedSign(e.target.value);
-    setSign(e.target.value);
+    const sign = e.target.value;
+    setSelectedSign(sign);
+    setSign(sign);
+    dispatch(updateSign(sign));
+    console.log("this is current state saved in store using the store import", store.getState());
+    console.log("this is current state saved in store using the selector value", signState);
   };
 
   useEffect(() => {

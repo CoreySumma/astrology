@@ -3,7 +3,7 @@ import Weather from "../Weather/Weather";
 import SignForm from "../SignForm/SignForm";
 
 export default function Header({ data, time, sign, setSign }) {
-  console.log("this is within the header component", data);
+  // console.log("this is within the header component", data);
   // set current date
   let dateObj = new Date();
   let month = dateObj.getUTCMonth() + 1; //months from 1-12

@@ -19,7 +19,7 @@ export default function App() {
       navigator.geolocation.getCurrentPosition(function (position) {
         const currentLat = position.coords.latitude;
         const currentLong = position.coords.longitude;
-        console.log(currentLat, currentLong);
+        // console.log(currentLat, currentLong);
         setLat(currentLat);
         setLong(currentLong);
         // get the users actual location using the latitude and longitude states
@@ -43,7 +43,7 @@ export default function App() {
   }, [lat, long]);
 
   return (
-    console.log("this is right before passing to header component", data),
+    // console.log("this is right before passing to header component", data),
     <div className="App">
       <img src="../../images/zodiac.png" className="spin" alt="" />
       <Header data={data} time={time} sign={sign} setSign={setSign}/>

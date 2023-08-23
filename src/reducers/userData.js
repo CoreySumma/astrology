@@ -1,3 +1,11 @@
+import {
+  UPDATE_SIGN,
+  UPDATE_DATE,
+  UPDATE_TIME,
+  UPDATE_TEMP,
+  UPDATE_PREDICTION,
+} from "../actions/index";
+
 const intializeState = {
   signData: "",
   date: "",
@@ -9,19 +17,35 @@ const intializeState = {
 
 const userData = (state = intializeState, action) => {
   switch (action.type) {
-    case 'ADD_USER_DATA':
+    case UPDATE_SIGN:
+      console.log("Handling UPDATE_SIGN action", action);
       return {
         ...state,
-        signData: action.signData,
-        date: action.date,
-        time: action.time,
-        temp: action.temp,
-        location: action.location,
-        prediction: action.prediction,
+        signData: action.payload,
+      };
+    case UPDATE_DATE:
+      return {
+        ...state,
+        date: action.payload,
+      };
+    case UPDATE_TIME:
+      return {
+        ...state,
+        time: action.payload,
+      };
+    case UPDATE_TEMP:
+      return {
+        ...state,
+        temp: action.payload,
+      };
+    case UPDATE_PREDICTION:
+      return {
+        ...state,
+        prediction: action.payload,
       };
     default:
       return state;
   }
-}
+};
 
 export default userData;

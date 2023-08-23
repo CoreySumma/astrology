@@ -1,5 +1,5 @@
 export default function Weather({ data, time }) {
-  console.log("this is the log of data in weather", data)
+  // console.log("this is the log of data in weather", data)
   return (
     data && 
     <>
