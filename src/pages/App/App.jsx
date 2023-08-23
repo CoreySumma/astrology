@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "../../components/Header/Header";
 import React from "react";
 import { useEffect, useState } from "react";
+import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 
 export default function App() {
   const [lat, setLat] = useState([]);
@@ -47,11 +48,12 @@ export default function App() {
       <img src="../../images/zodiac.png" className="spin" alt="" />
       <Header data={data} time={time} sign={sign} setSign={setSign}/>
       <main>
-        <div className="prediction-container">
+        <DayAtAGlance />
+        {/* <div className="prediction-container">
           <p className="prediction-text">
             Please select your sign to see your prediction for today.
           </p>
-        </div>
+        </div> */}
       </main>
     </div>
   );

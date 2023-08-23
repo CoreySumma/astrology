@@ -1,5 +1,12 @@
 export default function DayAtAGlance() {
-  <div className="App-main">
-    <p>This will be where you see your Astrological prediction for the day.</p>
-  </div>;
+  return (
+    <>
+      <buttone>Reading for the day</buttone>
+      <div className="prediction-container">
+        <p className="prediction-text">
+          Please select your sign to see your prediction for today.
+        </p>
+      </div>
+    </>
+  );
 }

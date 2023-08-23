@@ -1,3 +1,6 @@
+// This file is not being used yet but will be used to fetch the weather data from the API if needed
+
+
 export function weatherApi() {
   useEffect(() => {
     // This will get the user's current location and set the latitude and longitude states

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "./SignForm.css";
 import gptApi from "../../utilities/gpt-api";
 import { gptPrompt } from "../../utilities/gpt-prompt";
+import { updateSign } from "../../actions";
 
 
 export default function SignForm({sign, setSign}) {
