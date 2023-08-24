@@ -27,6 +27,7 @@ export default function SignForm({ sign, setSign }) {
       "this is current state saved in store using the store import",
       store.getState()
     );
+    console.log("Sign state from useSelector:", signState);
   }, [signState]);
 
   useEffect(() => {
