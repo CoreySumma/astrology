@@ -9,7 +9,12 @@ export default function App() {
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
   const [sign, setSign] = useState([]);
-  const [location, setLocation] = useState([]);
+  const [currentTemp, setCurrentTemp] = useState(null);
+  const [description, setDescription] = useState("");
+  const [alert, setAlert] = useState("");
+  const [location, setLocation] = useState("");
+  const [currentTime, setCurrentTime] = useState("");
+  const [currentDate, setCurrentDate] = useState("");
   const date = new Date(); // This will give you the current date and time
   const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
 
@@ -39,6 +44,11 @@ export default function App() {
           setData(res);
           console.log(res);
         });
+        setCurrentTemp(data.current.temp);
+        setDescription(data.current.weather[0].description);
+        setLocation(data.alerts  ? data.alerts[0].sender_name : null);
+        setAlert(data.alerts ? data.alerts[0].event : null);
+        setCurrentTime(time);
     }
   }, [lat, long]);
 

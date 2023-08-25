@@ -7,7 +7,8 @@ export default function Weather({ data, time }) {
       <p>{data.current.temp}</p>
       <p>{time}</p>
       <p>{data.current.weather[0].description}</p>
-      <p>{data.alerts && data.alerts.length > 0 ? data.alerts[0].sender_name : null}</p>
+      <p>{data.alerts  ? data.alerts[0].sender_name : null}</p>
+      <p>{data.alerts ? data.alerts[0].event : null}</p>
       </div>
     </>
   );
