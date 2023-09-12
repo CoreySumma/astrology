@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import store from "../../store";
 import "./SignForm.css";
 import gptApi from "../../utilities/gpt-api";
-import { gptPrompt } from "../../utilities/gpt-prompt";
 import { updateSign } from "../../actions";
 import userData from "../../reducers/userData";
 

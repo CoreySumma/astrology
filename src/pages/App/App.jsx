@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import React from "react";
 import { useEffect, useState } from "react";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
+import weatherApi  from "../../utilities/weather-api";
 
 export default function App() {
   const [lat, setLat] = useState([]);
@@ -23,31 +24,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    // This will get the user's current location and set the latitude and longitude states
-    const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const currentLat = position.coords.latitude;
-        const currentLong = position.coords.longitude;
-        // console.log(currentLat, currentLong);
-        setLat(currentLat);
-        setLong(currentLong);
-        // get the users actual location using the latitude and longitude states
-      });
-    };
-    fetchData();
-  }, []);
-  useEffect(() => {
-    // This will fetch the weather data from the API using the latitude and longitude states
-    if (lat.length !== 0 && long.length !== 0) {
-      fetch(
-        `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          setData(res);
-          console.log(res);
-        });
-    }
+    weatherApi(lat, long, setLat, setLong, setData)
   }, [lat, long]);
 
   return (
