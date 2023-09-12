@@ -36,7 +36,7 @@ export default function SignForm({ sign, setSign }) {
   }, [signState]);
 
   useEffect(() => {
-    if (sign !== "") {
+    if (sign && sign.length > 0) {
       gptApi(sign, date, time, temp, location)
       .then((result) => {
         setResult(result);
