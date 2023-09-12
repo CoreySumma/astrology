@@ -17,9 +17,7 @@ export default async function weatherApi(lat, long, setLat, setLong, setData, di
             `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
           );
           setData(res.data);
-          if (dispatch) {
-            dispatch(updateTemp(res.data.current.temp));
-          }
+          dispatch(updateTemp(res.data.current.temp));
           return res.data;
         } catch (error) {
           console.error("Error calling weather API:", error);

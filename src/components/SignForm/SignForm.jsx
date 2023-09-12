@@ -3,13 +3,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import store from "../../store";
 import "./SignForm.css";
-import gptApi from "../../utilities/gpt-api";
 import { updateSign } from "../../actions";
-import userData from "../../reducers/userData";
 
 export default function SignForm({ sign, setSign }) {
   const [selectedSign, setSelectedSign] = useState("");
-  const [result, setResult] = useState("");
   const dispatch = useDispatch();
   // Redux line for retrieving data from the store for user's sign
   const signState = useSelector((state) => state.userData.signData);
@@ -33,16 +30,6 @@ export default function SignForm({ sign, setSign }) {
     );
     console.log("Sign state from useSelector:", signState);
   }, [signState]);
-
-  useEffect(() => {
-    if (sign && sign.length > 0) {
-      gptApi(sign, date, time, temp, location)
-      .then((result) => {
-        setResult(result);
-        console.log("this is the result from gptApi", result);
-      });
-    }
-  }, [sign]);
 
   return (
     <>

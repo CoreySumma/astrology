@@ -36,7 +36,7 @@ export default function App() {
       <img src="../../images/zodiac.png" className="spin" alt="" />
       <Header data={data} time={time} sign={sign} setSign={setSign}/>
       <main>
-        <DayAtAGlance />
+        <DayAtAGlance data={data} time={time} sign={sign} setSign={setSign}/>
       </main>
     </div>
   );

@@ -1,7 +1,8 @@
 import axios from "axios";
+import { updatePrediction } from "../actions";
 import {gptPrompt} from "./gpt-prompt";
 
-export default async function gptApi(signData, date, time, temp, location) {
+export default async function gptApi(signData, date, time, temp, location, dispatch) {
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
@@ -18,6 +19,7 @@ export default async function gptApi(signData, date, time, temp, location) {
         },
       }
     );
+    dispatch(updatePrediction(response.data.choices[0].text.trim()));
     return response.data.choices[0].text.trim();
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
