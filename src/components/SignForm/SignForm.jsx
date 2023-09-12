@@ -15,6 +15,11 @@ export default function SignForm({ sign, setSign }) {
   // Redux line for retrieving data from the store for user's sign
   const signState = useSelector((state) => state.userData.signData);
 
+    const date = "2023-08-14"; // replace with actual value
+    const time = "1:00pm"; // replace with actual value
+    const temp = "100"; // replace with actual value
+    const location = "New York"; // replace with actual value
+
   const handleChange = (e) => {
     const sign = e.target.value;
     setSelectedSign(sign);
@@ -32,8 +37,10 @@ export default function SignForm({ sign, setSign }) {
 
   useEffect(() => {
     if (sign !== "") {
-      gptApi(sign).then((result) => {
+      gptApi(sign, date, time, temp, location)
+      .then((result) => {
         setResult(result);
+        console.log("this is the result from gptApi", result);
       });
     }
   }, [sign]);

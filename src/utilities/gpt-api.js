@@ -1,17 +1,15 @@
 import axios from "axios";
 import {gptPrompt} from "./gpt-prompt";
 
-export default async function gptApi() {
+export default async function gptApi(signData, date, time, temp, location) {
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
       {
         model: "text-davinci-003",
-        prompt: {gptPrompt},
+        prompt: gptPrompt(signData, date, time, temp, location),
         temperature: 0.7,
-        max_tokens: 100,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.0,
+        max_tokens: 200,
       },
       {
         headers: {

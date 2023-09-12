@@ -33,6 +33,13 @@ export const updateTemp = (temp) => {
   };
 }
 
+// export const updateDescription = (temp) => {
+//   return {
+//     type: UPDATE_DESCRIPTION,
+//     payload: temp,
+//   };
+// }
+
 export const updatePrediction = (prediction) => {
   return {
     type: UPDATE_PREDICTION,

@@ -16,7 +16,11 @@ export default function App() {
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
   const date = new Date(); // This will give you the current date and time
-  const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+  const time = new Date().toLocaleTimeString('en-US',
+   { hour: '2-digit', 
+   minute: '2-digit', 
+   hour12: true 
+  });
 
   useEffect(() => {
     // This will get the user's current location and set the latitude and longitude states
@@ -28,7 +32,6 @@ export default function App() {
         setLat(currentLat);
         setLong(currentLong);
         // get the users actual location using the latitude and longitude states
-        
       });
     };
     fetchData();
@@ -44,11 +47,6 @@ export default function App() {
           setData(res);
           console.log(res);
         });
-        setCurrentTemp(data.current.temp);
-        setDescription(data.current.weather[0].description);
-        setLocation(data.alerts  ? data.alerts[0].sender_name : null);
-        setAlert(data.alerts ? data.alerts[0].event : null);
-        setCurrentTime(time);
     }
   }, [lat, long]);
 
@@ -59,11 +57,6 @@ export default function App() {
       <Header data={data} time={time} sign={sign} setSign={setSign}/>
       <main>
         <DayAtAGlance />
-        {/* <div className="prediction-container">
-          <p className="prediction-text">
-            Please select your sign to see your prediction for today.
-          </p>
-        </div> */}
       </main>
     </div>
   );
