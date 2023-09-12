@@ -1,7 +1,8 @@
 import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import React from "react";
-import { useEffect, useState } from "react";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 import weatherApi  from "../../utilities/weather-api";
 
@@ -23,8 +24,10 @@ export default function App() {
    hour12: true 
   });
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    weatherApi(lat, long, setLat, setLong, setData)
+    weatherApi(lat, long, setLat, setLong, setData, dispatch)
   }, [lat, long]);
 
   return (

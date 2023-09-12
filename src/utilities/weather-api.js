@@ -1,8 +1,7 @@
-// This file is not being used yet but will be used to fetch the weather data from the API if needed
-import { current } from "@reduxjs/toolkit";
 import axios from "axios";
+import { updateTemp } from "../actions";
 
-export default async function weatherApi(lat, long, setLat, setLong, setData) {
+export default async function weatherApi(lat, long, setLat, setLong, setData, dispatch) {
   // This will get the user's current location and set the latitude and longitude states
   const fetchData = async () => {
     navigator.geolocation.getCurrentPosition(async function (position) {
@@ -18,7 +17,9 @@ export default async function weatherApi(lat, long, setLat, setLong, setData) {
             `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
           );
           setData(res.data);
-          console.log(res.data);
+          if (dispatch) {
+            dispatch(updateTemp(res.data.current.temp));
+          }
           return res.data;
         } catch (error) {
           console.error("Error calling weather API:", error);
