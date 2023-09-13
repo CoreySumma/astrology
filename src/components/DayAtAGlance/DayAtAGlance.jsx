@@ -37,7 +37,7 @@ export default function DayAtAGlance({
       <button onClick={handleClick}>Ask The Stars...</button>
       <div className="prediction-container">
         {prediction ? (
-          <p className="prediction-text">{prediction}</p>
+          <p className={`prediction-text ${prediction ? "prediction-text-fade-in" : ""}`}>{prediction}</p>
         ) : (
           <p className="prediction-text">
             Please select your sign to see your prediction for today.
@@ -45,5 +45,5 @@ export default function DayAtAGlance({
         )}
       </div>
     </>
-  );
+  );  
 }
