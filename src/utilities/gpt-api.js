@@ -20,7 +20,7 @@ export default async function gptApi(
       {
         model: "text-davinci-003",
         prompt: gptPrompt(signData, date, time, temp, description, location),
-        temperature: 1,
+        temperature: 0.9,
         max_tokens: 200,
       },
       {
