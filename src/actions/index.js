@@ -1,11 +1,14 @@
+// Action Types
 export const UPDATE_SIGN = 'UPDATE_SIGN';
 export const UPDATE_DATE = 'UPDATE_DATE';
 export const UPDATE_TIME = 'UPDATE_TIME';
 export const UPDATE_TEMP = 'UPDATE_TEMP';
 export const UPDATE_PREDICTION = 'UPDATE_PREDICTION';
 export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
+export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 
 
+// Action Creators
 export const updateSign = (sign) => {
   return {
     type: UPDATE_SIGN,
@@ -45,6 +48,13 @@ export const updatePrediction = (prediction) => {
   return {
     type: UPDATE_PREDICTION,
     payload: prediction,
+  };
+}
+
+export const updateLocation = (location) => {
+  return {
+    type: UPDATE_LOCATION,
+    payload: location,
   };
 }
 

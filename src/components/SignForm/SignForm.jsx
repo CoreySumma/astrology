@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../../store";
 import "./SignForm.css";
 import { updateSign } from "../../actions";
 
@@ -17,14 +15,6 @@ export default function SignForm({ sign, setSign }) {
     setSign(sign);
     dispatch(updateSign(sign));
   };
-
-  useEffect(() => {
-    console.log(
-      "this is current state saved in store using the store import",
-      store.getState()
-    );
-    console.log("Sign state from useSelector:", signState);
-  }, [signState]);
 
   return (
     <>

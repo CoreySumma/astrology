@@ -6,35 +6,55 @@ import React from "react";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 import weatherApi from "../../utilities/weather-api";
 import { updateTime } from "../../actions";
+import axios from "axios";
 
 export default function App() {
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
+  const [lat, setLat] = useState(null);
+  const [long, setLong] = useState(null);
   const [data, setData] = useState([]);
   const [sign, setSign] = useState([]);
 
-  // const date = new Date(); // This will give you the current date and time
-
   const dispatch = useDispatch();
-
+  // Call the openWeather API to get forecast and pass long and lat for reverse geo
   useEffect(() => {
     weatherApi(lat, long, setLat, setLong, setData, dispatch);
-  }, [lat, long]);
+    // Call the google maps API to get the city name
+    if (long && lat) {
+      const fetchData = async () => {
+        try {
+          const res = await axios.get(
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
+          );
+          console.log(
+            "response from google api--->",
+            res.data.results[0].address_components[2].long_name,
+            res.data.results[0].address_components[3].long_name,
+            res.data.results[0].address_components[5].long_name
+          );
+          return `
+          ${res.data.results[0].address_components[2].long_name},
+          ${res.data.results[0].address_components[3].long_name}, 
+          ${res.data.results[0].address_components[5].long_name}`;
+        } catch (error) {
+          console.log("Error making geo call", error);
+        }
+      };
+      fetchData();
+    }
+  }, [lat, long, dispatch]);
 
   // Redux for retrieving data from the store for state
   let description = useSelector((state) => state.userData.description);
   let temp = useSelector((state) => state.userData.temp);
   let date = useSelector((state) => state.userData.date);
-  let time = new Date().toLocaleTimeString("en-US", { //wrap this in a useSelector
+  let time = new Date().toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
   });
   dispatch(updateTime(time));
 
-
   return (
-    // console.log("this is right before passing to header component", data),
     <div className="App">
       <img src="../../images/zodiac.png" className="" alt="" />
       <Header data={data} time={time} sign={sign} setSign={setSign} />
