@@ -11,15 +11,16 @@ export default async function gptApi(
   temp,
   location,
   dispatch,
-  description, 
-  ) {
+  description,
+  day
+) {
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
       {
         model: "text-davinci-003",
         prompt: gptPrompt(signData, date, time, temp, description, location),
-        temperature: 0.7,
+        temperature: 1,
         max_tokens: 200,
       },
       {

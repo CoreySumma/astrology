@@ -7,6 +7,8 @@ import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 import weatherApi from "../../utilities/weather-api";
 import { updateTime } from "../../actions";
 import { updateLocation } from "../../actions";
+import { updateDate } from "../../actions";
+import { updateDay } from "../../actions";
 import axios from "axios";
 
 export default function App() {
@@ -43,6 +45,12 @@ export default function App() {
             minute: "2-digit",
             hour12: true,
           });
+          const dateObj = new Date();
+          const newDate = dateObj.toLocaleDateString();
+          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          const dayOfWeek = daysOfWeek[dateObj.getDay()];
+          dispatch(updateDay(dayOfWeek));
+          dispatch(updateDate(newDate));
           dispatch(updateTime(time));
           dispatch(updateLocation(locationData));
           setLocationFetched(true);
@@ -64,6 +72,7 @@ export default function App() {
   let date = useSelector((state) => state.userData.date);
   let time = useSelector((state) => state.userData.time);
   let location = useSelector((state) => state.userData.location);
+  let day = useSelector((state) => state.userData.day);
 
   return (
     <div className="App">
@@ -78,6 +87,7 @@ export default function App() {
           description={description}
           sign={sign}
           location={location}
+          day={day}
         />
       </main>
     </div>

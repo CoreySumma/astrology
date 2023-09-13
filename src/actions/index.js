@@ -6,6 +6,7 @@ export const UPDATE_TEMP = 'UPDATE_TEMP';
 export const UPDATE_PREDICTION = 'UPDATE_PREDICTION';
 export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
+export const UPDATE_DAY = 'UPDATE_DAY';
 
 
 // Action Creators
@@ -55,6 +56,13 @@ export const updateLocation = (location) => {
   return {
     type: UPDATE_LOCATION,
     payload: location,
+  };
+}
+
+export const updateDay = (day) => {
+  return {
+    type: UPDATE_DAY,
+    payload: day,
   };
 }
 

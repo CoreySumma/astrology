@@ -10,11 +10,11 @@ export default function Header({ data, time, sign, setSign }) {
   // set current date
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    const dateObj = new Date();
-    const newDate = dateObj.toLocaleDateString();
-    dispatch(updateDate(newDate));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const dateObj = new Date();
+  //   const newDate = dateObj.toLocaleDateString();
+  //   dispatch(updateDate(newDate));
+  // }, [dispatch]);
 
 
   return (

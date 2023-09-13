@@ -6,6 +6,7 @@ import {
   UPDATE_DESCRIPTION,
   UPDATE_PREDICTION,
   UPDATE_LOCATION,
+  UPDATE_DAY
 } from "../actions/index";
 
 const intializeState = {
@@ -16,6 +17,7 @@ const intializeState = {
   location: "",
   prediction: "",
   description: "",
+  day: "",
 };
 
 const userData = (state = intializeState, action) => {
@@ -61,6 +63,12 @@ const userData = (state = intializeState, action) => {
       return {
         ...state,
         location: action.payload,
+      };
+    case UPDATE_DAY:
+      console.log("Handling UPDATE_DAY action", action);
+      return {
+        ...state,
+        day: action.payload,
       };
     default:
       return state;

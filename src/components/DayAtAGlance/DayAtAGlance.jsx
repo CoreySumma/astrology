@@ -11,6 +11,7 @@ export default function DayAtAGlance({
   sign,
   temp,
   location,
+  day
 }) {
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
@@ -25,7 +26,8 @@ export default function DayAtAGlance({
         location,
         dispatch,
         description,
-        location
+        location,
+        day
       );
       console.log("this is the result from gptApi", result);
       setPrediction(result);
