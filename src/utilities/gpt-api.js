@@ -11,14 +11,14 @@ export default async function gptApi(
   temp,
   location,
   dispatch,
-  description, // Lets try this next using redux selectors
+  description, 
   ) {
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
       {
         model: "text-davinci-003",
-        prompt: gptPrompt(signData, date, time, temp, location, description),
+        prompt: gptPrompt(signData, date, time, temp, description),
         temperature: 0.7,
         max_tokens: 200,
       },

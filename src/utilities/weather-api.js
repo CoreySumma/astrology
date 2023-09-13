@@ -25,7 +25,7 @@ export default async function weatherApi(
           );
           setData(res.data);
           dispatch(updateTemp(res.data.current.temp));
-          dispatch(updateDescription(res.current.weather[0].description));
+          dispatch(updateDescription(res.data.current.weather[0].description));
           return res.data;
         } catch (error) {
           console.error("Error calling weather API:", error);

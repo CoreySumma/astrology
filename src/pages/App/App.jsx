@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import React from "react";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 import weatherApi from "../../utilities/weather-api";
+import { updateTime } from "../../actions";
 
 export default function App() {
   const [lat, setLat] = useState([]);
@@ -24,16 +25,18 @@ export default function App() {
   let description = useSelector((state) => state.userData.description);
   let temp = useSelector((state) => state.userData.temp);
   let date = useSelector((state) => state.userData.date);
-  let time = new Date().toLocaleTimeString("en-US", {
+  let time = new Date().toLocaleTimeString("en-US", { //wrap this in a useSelector
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
   });
+  dispatch(updateTime(time));
+
 
   return (
     // console.log("this is right before passing to header component", data),
     <div className="App">
-      <img src="../../images/zodiac.png" className="spin" alt="" />
+      <img src="../../images/zodiac.png" className="" alt="" />
       <Header data={data} time={time} sign={sign} setSign={setSign} />
       <main>
         <DayAtAGlance

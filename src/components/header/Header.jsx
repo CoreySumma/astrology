@@ -10,9 +10,9 @@ export default function Header({ data, time, sign, setSign }) {
   // set current date
   const dispatch = useDispatch();
   let dateObj = new Date();
-  let month = dateObj.getUTCMonth() + 1; //months from 1-12
-  let day = dateObj.getUTCDate();
-  let year = dateObj.getUTCFullYear();
+  let month = dateObj.getMonth() + 1; // Months from 1-12
+  let day = dateObj.getDate();  // Gets the day of the month according to local time
+  let year = dateObj.getFullYear();
 
   const newDate = month + "/" + day + "/" + year;
 
@@ -22,10 +22,10 @@ export default function Header({ data, time, sign, setSign }) {
     data && (
       <header className="App-header">
         <SignForm sign={sign} setSign={setSign} data={data} time={time}/>
-        <p> {newDate} </p>
-        <div className="Forecast">
+        <p className="date-display"> {newDate} </p>
+        {/* <div className="Forecast">
           {data.current ? <Weather data={data} time={time}/> : <div></div>}
-        </div>
+        </div> */}
       </header>
     )
   );
