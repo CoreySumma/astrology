@@ -3,6 +3,7 @@ import {
   UPDATE_DATE,
   UPDATE_TIME,
   UPDATE_TEMP,
+  UPDATE_DESCRIPTION,
   UPDATE_PREDICTION,
 } from "../actions/index";
 
@@ -13,6 +14,7 @@ const intializeState = {
   temp: null,
   location: "",
   prediction: "",
+  description: "",
 };
 
 const userData = (state = intializeState, action) => {
@@ -46,6 +48,12 @@ const userData = (state = intializeState, action) => {
       return {
         ...state,
         prediction: action.payload,
+      };
+    case UPDATE_DESCRIPTION:
+      console.log("Handling UPDATE_DESCRIPTION action", action);
+      return {
+        ...state,
+        description: action.payload,
       };
     default:
       return state;

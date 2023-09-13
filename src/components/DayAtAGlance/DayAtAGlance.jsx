@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import gptApi from "../../utilities/gpt-api";
 
-export default function DayAtAGlance({ sign, date, time, temp, location }) {
+export default function DayAtAGlance({ data, date, time, description, sign, temp, location }) {
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
+  
   async function handleClick() {
     try {
       let result = await gptApi(sign, date, time, temp, location, dispatch);

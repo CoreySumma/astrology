@@ -1,14 +1,24 @@
 import axios from "axios";
 import { updatePrediction } from "../actions";
-import {gptPrompt} from "./gpt-prompt";
+import { gptPrompt } from "./gpt-prompt";
 
-export default async function gptApi(signData, date, time, temp, location, dispatch) {
+// const description = useSelector((state) => state.userData.description);
+
+export default async function gptApi(
+  signData,
+  date,
+  time,
+  temp,
+  location,
+  dispatch,
+  description, // Lets try this next using redux selectors
+  ) {
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
       {
         model: "text-davinci-003",
-        prompt: gptPrompt(signData, date, time, temp, location),
+        prompt: gptPrompt(signData, date, time, temp, location, description),
         temperature: 0.7,
         max_tokens: 200,
       },

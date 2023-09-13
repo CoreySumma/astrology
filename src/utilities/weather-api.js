@@ -1,7 +1,14 @@
 import axios from "axios";
-import { updateTemp } from "../actions";
+import { updateTemp, updateDescription} from "../actions";
 
-export default async function weatherApi(lat, long, setLat, setLong, setData, dispatch) {
+export default async function weatherApi(
+  lat,
+  long,
+  setLat,
+  setLong,
+  setData,
+  dispatch,
+) {
   // This will get the user's current location and set the latitude and longitude states
   const fetchData = async () => {
     navigator.geolocation.getCurrentPosition(async function (position) {
@@ -18,6 +25,7 @@ export default async function weatherApi(lat, long, setLat, setLong, setData, di
           );
           setData(res.data);
           dispatch(updateTemp(res.data.current.temp));
+          dispatch(updateDescription(res.current.weather[0].description));
           return res.data;
         } catch (error) {
           console.error("Error calling weather API:", error);

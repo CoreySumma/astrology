@@ -3,6 +3,7 @@ export const UPDATE_DATE = 'UPDATE_DATE';
 export const UPDATE_TIME = 'UPDATE_TIME';
 export const UPDATE_TEMP = 'UPDATE_TEMP';
 export const UPDATE_PREDICTION = 'UPDATE_PREDICTION';
+export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 
 
 export const updateSign = (sign) => {
@@ -33,12 +34,12 @@ export const updateTemp = (temp) => {
   };
 }
 
-// export const updateDescription = (temp) => {
-//   return {
-//     type: UPDATE_DESCRIPTION,
-//     payload: temp,
-//   };
-// }
+export const updateDescription = (description) => {
+  return {
+    type: UPDATE_DESCRIPTION,
+    payload: description,
+  };
+}
 
 export const updatePrediction = (prediction) => {
   return {
