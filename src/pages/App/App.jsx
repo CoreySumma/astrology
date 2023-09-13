@@ -6,6 +6,7 @@ import React from "react";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 import weatherApi from "../../utilities/weather-api";
 import { updateTime } from "../../actions";
+import { updateLocation } from "../../actions";
 import axios from "axios";
 
 export default function App() {
@@ -13,6 +14,8 @@ export default function App() {
   const [long, setLong] = useState(null);
   const [data, setData] = useState([]);
   const [sign, setSign] = useState([]);
+  // Flag to check if location has been fetched to avoid constant calling of API
+  let [locationFetched, setLocationFetched] = useState(false);
 
   const dispatch = useDispatch();
   // Call the openWeather API to get forecast and pass long and lat for reverse geo
@@ -31,6 +34,18 @@ export default function App() {
             res.data.results[0].address_components[3].long_name,
             res.data.results[0].address_components[5].long_name
           );
+          const locationData = `
+          ${res.data.results[0].address_components[2].long_name},
+          ${res.data.results[0].address_components[3].long_name}, 
+          ${res.data.results[0].address_components[5].long_name}`.trim();
+          let time = new Date().toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          });
+          dispatch(updateTime(time));
+          dispatch(updateLocation(locationData));
+          setLocationFetched(true);
           return `
           ${res.data.results[0].address_components[2].long_name},
           ${res.data.results[0].address_components[3].long_name}, 
@@ -41,18 +56,14 @@ export default function App() {
       };
       fetchData();
     }
-  }, [lat, long, dispatch]);
+  }, [lat, long, dispatch, locationFetched]);
 
   // Redux for retrieving data from the store for state
   let description = useSelector((state) => state.userData.description);
   let temp = useSelector((state) => state.userData.temp);
   let date = useSelector((state) => state.userData.date);
-  let time = new Date().toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  });
-  dispatch(updateTime(time));
+  let time = useSelector((state) => state.userData.time);
+  let location = useSelector((state) => state.userData.location);
 
   return (
     <div className="App">
@@ -66,6 +77,7 @@ export default function App() {
           time={time}
           description={description}
           sign={sign}
+          location={location}
         />
       </main>
     </div>

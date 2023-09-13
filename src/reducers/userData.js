@@ -60,7 +60,7 @@ const userData = (state = intializeState, action) => {
       console.log("Handling UPDATE_LOCATION action", action);
       return {
         ...state,
-        description: action.payload,
+        location: action.payload,
       };
     default:
       return state;
