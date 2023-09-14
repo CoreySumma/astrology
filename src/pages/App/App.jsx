@@ -25,9 +25,31 @@ export default function App() {
   const dispatch = useDispatch();
   // Call the openWeather API to get forecast and pass long and lat for reverse geo
   useEffect(() => {
+    // Get the date for GPT
+    const dateObj = new Date();
+    const newDate = dateObj.toLocaleDateString();
+    let time = new Date().toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+    // Get the day of the week for GPT
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayOfWeek = daysOfWeek[dateObj.getDay()];
+    // Convert Date for what moon API accepts
+    let month = dateObj.getMonth() + 1; // getMonth() returns months from 0-11, so add 1 to get the correct month
+    month = month < 10 ? '0' + month : month; // add leading zero if month is single digit
+    let day = dateObj.getDate();
+    day = day < 10 ? '0' + day : day; // add leading zero if day is single digit
+    const moonDate = `${dateObj.getFullYear()}-${month}-${day}`;
+    // Save to redux store
+    dispatch(updateDay(dayOfWeek));
+    dispatch(updateDate(newDate));
+    dispatch(updateTime(time));
+    // Call the weather API with arguments
     weatherApi(lat, long, setLat, setLong, setData, dispatch);
-    // Call the moon API to get moon phase image and display it with local state 
-    moonApi(setMoonData);
+    // Call the moon API with arguments to get moon phase image and display it with local state
+    moonApi(setMoonData, lat, long, moonDate);
     // Call the google maps API to get the city name
     if (long && lat) {
       const fetchData = async () => {
@@ -46,18 +68,6 @@ export default function App() {
           ${res.data.results[0].address_components[2].long_name},
           ${res.data.results[0].address_components[3].long_name}, 
           ${res.data.results[0].address_components[5].long_name}`.trim();
-          let time = new Date().toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: true,
-          });
-          const dateObj = new Date();
-          const newDate = dateObj.toLocaleDateString();
-          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          const dayOfWeek = daysOfWeek[dateObj.getDay()];
-          dispatch(updateDay(dayOfWeek));
-          dispatch(updateDate(newDate));
-          dispatch(updateTime(time));
           dispatch(updateLocation(locationData));
           setLocationFetched(true);
           return `
