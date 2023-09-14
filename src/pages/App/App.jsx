@@ -23,7 +23,7 @@ export default function App() {
   let [locationFetched, setLocationFetched] = useState(false);
 
   const dispatch = useDispatch();
-  // Call the openWeather API to get forecast and pass long and lat for reverse geo
+
   useEffect(() => {
     // Get the date for GPT
     const dateObj = new Date();
@@ -50,7 +50,7 @@ export default function App() {
     weatherApi(lat, long, setLat, setLong, setData, dispatch);
     // Call the moon API with arguments to get moon phase image and display it with local state
     moonApi(setMoonData, lat, long, moonDate);
-    // Call the google maps API to get the city name
+    // Call the google maps API to get the city name, state etc
     if (long && lat) {
       const fetchData = async () => {
         try {
@@ -68,7 +68,9 @@ export default function App() {
           ${res.data.results[0].address_components[2].long_name},
           ${res.data.results[0].address_components[3].long_name}, 
           ${res.data.results[0].address_components[5].long_name}`.trim();
+          // Save location to redux store
           dispatch(updateLocation(locationData));
+          // Set flag to true to avoid constant calling of API
           setLocationFetched(true);
           return `
           ${res.data.results[0].address_components[2].long_name},
@@ -82,7 +84,7 @@ export default function App() {
     }
   }, [lat, long, dispatch, locationFetched]);
 
-  // Redux for retrieving data from the store for state
+  // Redux for retrieving data from the store for state to pass to components/GPT
   let description = useSelector((state) => state.userData.description);
   let temp = useSelector((state) => state.userData.temp);
   let date = useSelector((state) => state.userData.date);
@@ -92,11 +94,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <img src="../../images/zodiac.png" className="" alt="" />
+      <img className="astroLogo" src="../../images/zodiac.png" alt="" />
       <Header data={data} time={time} sign={sign} setSign={setSign} />
       <main>
         <DayAtAGlance
-          data={data}
           temp={temp}
           date={date}
           time={time}

@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import gptApi from "../../utilities/gpt-api";
 
 export default function DayAtAGlance({
-  data,
   date,
   time,
   description,

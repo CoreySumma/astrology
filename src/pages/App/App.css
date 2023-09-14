@@ -76,3 +76,10 @@ main {
   color: white;
   transition: none;
 }
+
+@media screen and (max-width: 600px) {
+  .astroLogo{
+    width: 215px;
+    height: auto;
+  }
+}
