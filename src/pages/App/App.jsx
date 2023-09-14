@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import React from "react";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 import weatherApi from "../../utilities/weather-api";
+import moonApi from "../../utilities/moon-api";
 import { updateTime } from "../../actions";
 import { updateLocation } from "../../actions";
 import { updateDate } from "../../actions";
@@ -14,7 +15,9 @@ import axios from "axios";
 export default function App() {
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
+  // "Data" is actually openWeather api data
   const [data, setData] = useState([]);
+  const [moonData, setMoonData] = useState(null);
   const [sign, setSign] = useState([]);
   // Flag to check if location has been fetched to avoid constant calling of API
   let [locationFetched, setLocationFetched] = useState(false);
@@ -23,6 +26,8 @@ export default function App() {
   // Call the openWeather API to get forecast and pass long and lat for reverse geo
   useEffect(() => {
     weatherApi(lat, long, setLat, setLong, setData, dispatch);
+    // Call the moon API to get moon phase image and display it with local state 
+    moonApi(setMoonData);
     // Call the google maps API to get the city name
     if (long && lat) {
       const fetchData = async () => {
@@ -30,6 +35,7 @@ export default function App() {
           const res = await axios.get(
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
           );
+          // Delete me
           console.log(
             "response from google api--->",
             res.data.results[0].address_components[2].long_name,
@@ -88,7 +94,8 @@ export default function App() {
           sign={sign}
           location={location}
           day={day}
-        />
+          moonData= {moonData}
+          />
       </main>
     </div>
   );

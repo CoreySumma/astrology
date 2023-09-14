@@ -2,8 +2,6 @@ import axios from "axios";
 import { updatePrediction } from "../actions";
 import { gptPrompt } from "./gpt-prompt";
 
-// const description = useSelector((state) => state.userData.description);
-
 export default async function gptApi(
   signData,
   date,

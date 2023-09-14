@@ -11,7 +11,8 @@ export default function DayAtAGlance({
   sign,
   temp,
   location,
-  day
+  day,
+  moonData
 }) {
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
@@ -37,16 +38,20 @@ export default function DayAtAGlance({
   }
   return (
     <>
-      <button onClick={handleClick}>Ask The Stars...</button>
-      <div className="prediction-container">
-        {prediction ? (
-          <p className={`prediction-text ${prediction ? "prediction-text-fade-in" : ""}`}>{prediction}</p>
-        ) : (
-          <p className="prediction-text">
-            Please select your sign to see your prediction for today.
-          </p>
-        )}
-      </div>
-    </>
+  <button onClick={handleClick}>Ask The Stars...</button>
+  <div className="prediction-container">
+    {prediction ? (
+      <>
+        <p className="prediction-text prediction-text-fade-in">{prediction}</p>
+        {moonData && <div><img src={moonData} alt="Moon Phase" /></div>}
+      </>
+    ) : (
+      <p className="prediction-text">
+        Please select your sign to see your prediction for today.
+      </p>
+    )}
+  </div>
+</>
+
   );  
 }
