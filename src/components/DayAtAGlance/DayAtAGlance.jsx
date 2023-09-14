@@ -1,6 +1,6 @@
 import "./DayAtAGlance.css";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import gptApi from "../../utilities/gpt-api";
 
 export default function DayAtAGlance({
@@ -12,7 +12,7 @@ export default function DayAtAGlance({
   temp,
   location,
   day,
-  moonData
+  moonData,
 }) {
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
@@ -37,20 +37,30 @@ export default function DayAtAGlance({
   }
   return (
     <>
-  <button onClick={handleClick}>Ask The Stars...</button>
-  <div className="prediction-container">
-    {prediction ? (
-      <>
-        <p className="prediction-text prediction-text-fade-in">{prediction}</p>
-        {moonData && <div><img src={moonData} alt="Moon Phase" /></div>}
-      </>
-    ) : (
-      <p className="prediction-text">
-        Please select your sign to see your prediction for today.
-      </p>
-    )}
-  </div>
-</>
-
-  );  
+      <button onClick={handleClick}>Ask The Stars...</button>
+      <div className="prediction-container">
+        <div className="video-background">
+          <video playsInline autoPlay muted loop>
+            <source src="/movies/starz.mp4" type="video/mp4" />
+          </video>
+        </div>
+        {prediction ? (
+          <>
+            <p className="prediction-text prediction-text-fade-in">
+              {prediction}
+            </p>
+            {moonData && (
+              <div>
+                <img className="moon" src={moonData} alt="Moon Phase" />
+              </div>
+            )}
+          </>
+        ) : (
+          <p className="prediction-text">
+            Please select your sign to see your prediction for today.
+          </p>
+        )}
+      </div>
+    </>
+  );
 }

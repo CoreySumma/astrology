@@ -26,7 +26,7 @@ export default async function gptApi(
           location,
           day
         ),
-        temperature: 0.7,
+        temperature: 0.9,
         max_tokens: 200,
       },
       {

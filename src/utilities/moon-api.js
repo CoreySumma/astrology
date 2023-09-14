@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default async function moonApi(setMoonData, lat, long, moonDate) {
+  console.log("moon date",moonDate);
   const authString = btoa(
     `${process.env.REACT_APP_MOON_APP_ID}:${process.env.REACT_APP_MOON_API_KEY}`
   );
@@ -10,7 +11,7 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
       {
         format: "png",
         style: {
-          moonStyle: "shaded",
+          moonStyle: "default",
           backgroundStyle: "solid",
           backgroundColor: "transparent",
           headingColor: "transparent",
@@ -19,7 +20,8 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
         observer: {
           latitude: parseFloat(`${lat}`),
           longitude: parseFloat(`${long}`),
-          date: "2023-11-01",
+          // date: "2023-09-18",
+          date: `${moonDate}`
         },
         view: {
           type: "portrait-simple",
