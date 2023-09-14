@@ -27,7 +27,6 @@ export default function DayAtAGlance({
         location,
         dispatch,
         description,
-        location,
         day
       );
       console.log("this is the result from gptApi", result);

@@ -17,8 +17,16 @@ export default async function gptApi(
       "https://api.openai.com/v1/completions",
       {
         model: "text-davinci-003",
-        prompt: gptPrompt(signData, date, time, temp, description, location, day),
-        temperature: 0.8,
+        prompt: gptPrompt(
+          signData,
+          date,
+          time,
+          temp,
+          description,
+          location,
+          day
+        ),
+        temperature: 0.7,
         max_tokens: 200,
       },
       {
