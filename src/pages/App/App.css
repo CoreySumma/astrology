@@ -19,8 +19,8 @@
   animation: spin 20s linear infinite;
 }
 
-.App-logo {
-  height: 40vmin;
+.astroLogo {
+  height: 67vmin;
   pointer-events: none;
 }
 
@@ -78,7 +78,7 @@ main {
 }
 
 @media screen and (max-width: 600px) {
-  .astroLogo{
+  .astroLogo {
     width: 215px;
     height: auto;
     margin-top: 10px;
