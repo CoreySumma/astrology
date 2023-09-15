@@ -1,9 +1,9 @@
 import "./App.css";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header.jsx";
-import React from "react";
-import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
+import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance.jsx";
 import weatherApi from "../../utilities/weather-api";
 import moonApi from "../../utilities/moon-api";
 import { updateTime } from "../../actions";
