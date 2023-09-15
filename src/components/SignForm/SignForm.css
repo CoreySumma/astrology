@@ -13,3 +13,12 @@
 	font-family: "Poppins", sans-serif;
   border-radius: 2px;
 }
+
+@media screen and (max-width: 600px) {
+.selector {
+  font-size: 15px;
+  margin: 1vmin;
+  font-family: "Poppins", sans-serif;
+  border-radius: 2px;
+}
+}
