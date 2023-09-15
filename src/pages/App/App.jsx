@@ -34,13 +34,21 @@ export default function App() {
       hour12: true,
     });
     // Get the day of the week for GPT
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
     const dayOfWeek = daysOfWeek[dateObj.getDay()];
     // Convert Date for what moon API accepts
     let month = dateObj.getMonth() + 1; // getMonth() returns months from 0-11, so add 1 to get the correct month
-    month = month < 10 ? '0' + month : month; // add leading zero if month is single digit
+    month = month < 10 ? "0" + month : month; // add leading zero if month is single digit
     let day = dateObj.getDate();
-    day = day < 10 ? '0' + day : day; // add leading zero if day is single digit
+    day = day < 10 ? "0" + day : day; // add leading zero if day is single digit
     const moonDate = `${dateObj.getFullYear()}-${month}-${day}`;
     // Save to redux store
     dispatch(updateDay(dayOfWeek));
@@ -58,7 +66,7 @@ export default function App() {
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
           );
           // Delete me
-          console.log(res.data)
+          console.log(res.data);
           console.log(
             "response from google api--->",
             res.data.results[0].address_components[2].long_name,
@@ -111,8 +119,8 @@ export default function App() {
           sign={sign}
           location={location}
           day={day}
-          moonData= {moonData}
-          />
+          moonData={moonData}
+        />
       </main>
     </div>
   );
