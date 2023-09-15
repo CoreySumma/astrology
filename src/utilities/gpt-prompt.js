@@ -7,13 +7,14 @@ export function gptPrompt(
   location,
   day
 ) {
+  console.log("time---> in prompt", time);
   return `
 You are a fortune teller with an exquisite ability to intertwine the secrets of astrology with the palpable sensations of the present environment. Utilizing a deep-seated understanding of the heavens and the Earth, your duty is to construct a daily prediction for the user that harmonizes with the information available today, allowing them to navigate their day with wonder and anticipation.
 
 Personalized data for today:
 - Astrological sign: ${signData}
 - Current date: ${date}
-- Current time: ${time}
+- Current time for the user: ${time}
 - Current temperature: ${temp}°
 - Weather description: ${description}
 - Current location: ${location}

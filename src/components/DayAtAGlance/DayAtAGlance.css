@@ -63,7 +63,7 @@ button {
   overflow: hidden;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  transition: all 400ms ease-in-out !important ; 
+  transition: all 400ms ease-in-out !important ;
 }
 
 .moon {
@@ -75,14 +75,13 @@ button:hover {
   background: white;
   border: black;
   color: black;
-	transition: background-color, border-color, color;
-	transform: scale(1.1);
+  transition: background-color, border-color, color;
+  transform: scale(1.1);
 }
 
 button:not(:hover) {
-transform: scale(1.0);
+  transform: scale(1);
 }
-
 
 button:focus {
   transform: scale(1.1);
@@ -111,11 +110,11 @@ button:focus:not(:active) {
 
 @media screen and (max-width: 1024px) {
   button {
-		width: 222px;
+    width: 222px;
     height: 40px;
-		font-size: 20px;
-		margin-top: 4px;
-		margin-bottom: 0;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 0;
   }
 }
 
@@ -123,12 +122,11 @@ button:focus:not(:active) {
   button {
     width: 150px;
     height: 40px;
-		font-size: 15px;
-		margin-top: 4px;
-		margin-bottom: 0;
+    font-size: 15px;
+    margin-top: 4px;
+    margin-bottom: 0;
   }
   .prediction-container {
     width: 90%;
   }
 }
-
