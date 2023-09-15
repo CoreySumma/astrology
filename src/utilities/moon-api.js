@@ -11,7 +11,7 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
       {
         format: "png",
         style: {
-          moonStyle: "default",
+          moonStyle: "shaded",
           backgroundStyle: "solid",
           backgroundColor: "transparent",
           headingColor: "transparent",

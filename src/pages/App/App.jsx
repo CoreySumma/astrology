@@ -1,7 +1,7 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header/Header.jsx";
 import React from "react";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance";
 import weatherApi from "../../utilities/weather-api";
@@ -58,16 +58,22 @@ export default function App() {
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
           );
           // Delete me
+          console.log(res.data)
           console.log(
             "response from google api--->",
             res.data.results[0].address_components[2].long_name,
             res.data.results[0].address_components[3].long_name,
             res.data.results[0].address_components[5].long_name
           );
+          // General location from google
           const locationData = `
           ${res.data.results[0].address_components[2].long_name},
           ${res.data.results[0].address_components[3].long_name}, 
           ${res.data.results[0].address_components[5].long_name}`.trim();
+
+          // Exact location from google (gpt seems to work better with the general location)
+          // const locationData = `${res.data.results[0].formatted_address}`.trim();
+
           // Save location to redux store
           dispatch(updateLocation(locationData));
           // Set flag to true to avoid constant calling of API
