@@ -2,6 +2,7 @@ import "./DayAtAGlance.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import gptApi from "../../utilities/gpt-api";
+import { useEffect } from "react";
 
 export default function DayAtAGlance({
   date,
@@ -37,13 +38,19 @@ export default function DayAtAGlance({
 
   async function handleClick() {
     // In case the user clicks the button before the data is loaded
-    if (temp !== null && sign !== "" && location !== "" 
-    && day !== "" && description !== "" 
-    && date !== "" && time !== "" 
-    && moonData !== null) {
+    if (
+      temp !== null &&
+      sign !== "" &&
+      location !== "" &&
+      day !== "" &&
+      description !== "" &&
+      date !== "" &&
+      time !== "" &&
+      moonData !== null
+    ) {
       callGpt();
     } else {
-      console.log("Waiting for data to load...Trying again in 1.5 second");
+      console.log("Waiting for data to load...Trying again in 1.5 seconds");
       setTimeout(callGpt, 1500);
     }
   }
@@ -52,7 +59,15 @@ export default function DayAtAGlance({
       <button onClick={handleClick}>Ask The Stars...</button>
       <div className="prediction-container">
         <div className="video-background">
-          <video playsInline autoPlay muted loop>
+          <video
+            autoPlay={true}
+            controls=""
+            playsInline
+            muted
+            defaultMuted
+            loop
+            preload="auto"
+          >
             <source src="/movies/starz.mp4" type="video/mp4" />
           </video>
         </div>
@@ -60,10 +75,14 @@ export default function DayAtAGlance({
           <>
             <p className="prediction-text prediction-text-fade-in">
               {prediction}
-              </p>
+            </p>
             {moonData && (
               <div>
-                <img className="moon prediction-text-fade-in" src={moonData} alt="Moon Phase" />
+                <img
+                  className="moon prediction-text-fade-in"
+                  src={moonData}
+                  alt="Moon Phase"
+                />
               </div>
             )}
           </>

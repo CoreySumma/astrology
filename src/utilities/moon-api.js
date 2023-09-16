@@ -20,6 +20,7 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
         observer: {
           latitude: parseFloat(`${lat}`),
           longitude: parseFloat(`${long}`),
+          // check out different images of moon phases by changing the date manually
           // date: "2023-09-18",
           date: `${moonDate}`
         },

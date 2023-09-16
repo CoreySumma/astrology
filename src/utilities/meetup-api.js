@@ -8,5 +8,5 @@ async function getMeetUp() {
   } catch (error) {
     console.error(error);
   }
-  return response; 
+  return response.data; 
 }
