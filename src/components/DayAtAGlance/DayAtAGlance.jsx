@@ -17,21 +17,24 @@ export default function DayAtAGlance({
   const [prediction, setPrediction] = useState("");
 
   async function handleClick() {
-    try {
-      let result = await gptApi(
-        sign,
-        date,
-        time,
-        temp,
-        location,
-        dispatch,
-        description,
-        day
-      );
-      console.log("this is the result from gptApi", result);
-      setPrediction(result);
-    } catch (error) {
-      console.log("Error making call to gpt", error);
+    // In case the user clicks the button before the data is loaded
+    if ((time, temp, location, description, day, sign, date)) {
+      try {
+        let result = await gptApi(
+          sign,
+          date,
+          time,
+          temp,
+          location,
+          dispatch,
+          description,
+          day
+        );
+        console.log("this is the result from gptApi", result);
+        setPrediction(result);
+      } catch (error) {
+        console.log("Error making call to gpt", error);
+      }
     }
   }
   return (
