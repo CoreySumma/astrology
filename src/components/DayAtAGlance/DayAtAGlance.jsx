@@ -16,25 +16,35 @@ export default function DayAtAGlance({
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
 
+  async function callGpt() {
+    try {
+      let result = await gptApi(
+        sign,
+        date,
+        time,
+        temp,
+        location,
+        dispatch,
+        description,
+        day
+      );
+      console.log("this is the result from gptApi", result);
+      setPrediction(result);
+    } catch (error) {
+      console.log("Error making call to gpt", error);
+    }
+  }
+
   async function handleClick() {
     // In case the user clicks the button before the data is loaded
-    if ((time, temp, location, description, day, sign, date)) {
-      try {
-        let result = await gptApi(
-          sign,
-          date,
-          time,
-          temp,
-          location,
-          dispatch,
-          description,
-          day
-        );
-        console.log("this is the result from gptApi", result);
-        setPrediction(result);
-      } catch (error) {
-        console.log("Error making call to gpt", error);
-      }
+    if (temp !== null && sign !== "" && location !== "" 
+    && day !== "" && description !== "" 
+    && date !== "" && time !== "" 
+    && moonData !== null) {
+      callGpt();
+    } else {
+      console.log("Waiting for data to load...Trying again in 1.5 second");
+      setTimeout(callGpt, 1500);
     }
   }
   return (
@@ -50,10 +60,10 @@ export default function DayAtAGlance({
           <>
             <p className="prediction-text prediction-text-fade-in">
               {prediction}
-            </p>
+              </p>
             {moonData && (
               <div>
-                <img className="moon" src={moonData} alt="Moon Phase" />
+                <img className="moon prediction-text-fade-in" src={moonData} alt="Moon Phase" />
               </div>
             )}
           </>
