@@ -14,9 +14,28 @@ export default function DayAtAGlance({
   day,
   moonData,
 }) {
+  // Flag to check if all data has been fetched to avoid GPT not having all data
+  const [allGptDataFetched, setAllGptDataFetched] = useState(false);
+
+  useEffect(() => {
+    if (
+      temp !== null &&
+      temp !== "" &&
+      sign !== "" &&
+      location !== "" &&
+      day !== "" &&
+      description !== "" &&
+      date !== "" &&
+      time !== "" &&
+      moonData !== null &&
+      moonData !== ""
+    ) {
+      setAllGptDataFetched(true);
+    }
+  }, [sign, temp, location, day, description, date, time, moonData]);
+
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
-
   async function callGpt() {
     try {
       let result = await gptApi(
@@ -29,7 +48,18 @@ export default function DayAtAGlance({
         description,
         day
       );
-      console.log("this is the result from gptApi", result);
+      console.log(
+        "this is the result from gptApi",
+        result,
+        "this is the values that were passed --->",
+        sign,
+        date,
+        time,
+        temp,
+        location,
+        description,
+        day
+      );
       setPrediction(result);
     } catch (error) {
       console.log("Error making call to gpt", error);
@@ -37,21 +67,12 @@ export default function DayAtAGlance({
   }
 
   async function handleClick() {
-    // In case the user clicks the button before the data is loaded
-    if (
-      temp !== null &&
-      sign !== "" &&
-      location !== "" &&
-      day !== "" &&
-      description !== "" &&
-      date !== "" &&
-      time !== "" &&
-      moonData !== null
-    ) {
+    // In case the user clicks the button before the data is loaded - this doesnt work as intended quite yet...
+    if (allGptDataFetched === true) {
       callGpt();
     } else {
       console.log("Waiting for data to load...Trying again in 1.5 seconds");
-      setTimeout(callGpt, 1500);
+      setTimeout(callGpt, 2000);
     }
   }
   return (
@@ -64,14 +85,15 @@ export default function DayAtAGlance({
             controls=""
             playsInline
             muted
-            defaultMuted
             loop
             preload="auto"
           >
             <source src="/movies/starz.mp4" type="video/mp4" />
           </video>
         </div>
-        {prediction ? (
+        {!allGptDataFetched ? (
+          <div className="spinner"></div>
+        ) : prediction ? (
           <>
             <p className="prediction-text prediction-text-fade-in">
               {prediction}
@@ -87,11 +109,11 @@ export default function DayAtAGlance({
             )}
           </>
         ) : (
-          <p className="prediction-text">
-            Please select your sign to see your prediction for today.
+          <p className="prediction-text prediction-text-fade-in">
+            Please select a sign to see your prediction for today.
           </p>
         )}
       </div>
     </>
-  );
+  );  
 }

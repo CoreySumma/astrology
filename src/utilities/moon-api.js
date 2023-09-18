@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function moonApi(setMoonData, lat, long, moonDate) {
-  console.log("moon date",moonDate);
+  // console.log("moon date",moonDate);
   const authString = btoa(
     `${process.env.REACT_APP_MOON_APP_ID}:${process.env.REACT_APP_MOON_API_KEY}`
   );
@@ -20,7 +20,7 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
         observer: {
           latitude: parseFloat(`${lat}`),
           longitude: parseFloat(`${long}`),
-          // check out different images of moon phases by changing the date manually
+          // Check out different images of moon phases by changing the date manually below
           // date: "2023-09-18",
           date: `${moonDate}`
         },
@@ -36,7 +36,7 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
       }
     );
     setMoonData(response.data.data.imageUrl);
-    console.log(response.data.data.imageUrl);
+    // console.log(response.data.data.imageUrl);
     return response.data;
   } catch (error) {
     console.error("Error calling moon API:", error);

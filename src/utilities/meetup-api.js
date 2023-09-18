@@ -1,5 +1,6 @@
+// We aren't using this file yet, but we might in the future.
+
 import axios from 'axios';
-import { response } from 'express';
 
 async function getMeetUp() {
   try {

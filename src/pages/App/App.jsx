@@ -66,7 +66,7 @@ export default function App() {
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
           );
           // Delete me
-          console.log("this is the res from google", res.data);
+          // console.log("this is the res from google", res.data);
           // General location from google
           const locationData = `
           ${res.data.results[0].address_components[2].long_name},

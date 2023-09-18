@@ -20,7 +20,7 @@ export default function SignForm({ sign, setSign }) {
     <>
       <form className="form-container">
         <label>
-          Select your astrological sign:
+          Select your zodiac sign:
           <br />
           <div className="selector">
             <select

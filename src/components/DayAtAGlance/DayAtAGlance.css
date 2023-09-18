@@ -95,6 +95,26 @@ button:focus:not(:active) {
   transform: scale(1);
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  margin: 100px auto;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #375061;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  animation: spin 1s linear infinite;
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
