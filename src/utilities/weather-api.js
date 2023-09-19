@@ -9,7 +9,7 @@ export default async function weatherApi(
   setData,
   dispatch,
 ) {
-  // This will get the user's current location and set the latitude and longitude states
+  // This will get the user's current location and set the latitude and longitude react states
   const fetchData = async () => {
     navigator.geolocation.getCurrentPosition(async function (position) {
       const currentLat = position.coords.latitude;

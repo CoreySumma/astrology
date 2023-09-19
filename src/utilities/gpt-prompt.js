@@ -7,23 +7,6 @@ export function gptPrompt(
   location,
   day
 ) {
-  console.log(
-    "THIS IS IN THE PROMPT",
-    "signData",
-    signData,
-    "date",
-    date,
-    "time",
-    time,
-    "temp",
-    temp,
-    "location",
-    location,
-    "description",
-    description,
-    "day",
-    day
-  );
   return `
 You are a fortune teller with an exquisite ability to intertwine the secrets of astrology with the palpable sensations of the present environment.
  Utilizing a deep-seated understanding of the heavens and the Earth, 
@@ -60,6 +43,6 @@ Craft a tailored prediction that is both poetic and deeply resonating,
  inviting the user to step into a day filled with possibility and aligned with their astrological essence. 
  Draw upon every piece of information, weaving them into a narrative that is at once exciting and comforting, 
  showing the user the magic this day holds specially for them. 
- Try not to go over 320 characters.
+ Try not to go over 225 characters.
 `;
 }

@@ -22,7 +22,7 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
           longitude: parseFloat(`${long}`),
           // Check out different images of moon phases by changing the date manually below
           // date: "2023-09-18",
-          date: `${moonDate}`
+          date: `${moonDate}`,
         },
         view: {
           type: "portrait-simple",

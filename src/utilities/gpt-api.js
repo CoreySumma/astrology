@@ -12,7 +12,6 @@ export default async function gptApi(
   description,
   day
 ) {
-  console.log("signData", signData, "date", date, "time", time, "temp", temp, "location", location, "description", description, "day", day);
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
