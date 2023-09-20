@@ -38,7 +38,7 @@
 }
 
 .prediction-text {
-  margin-top: 50px;
+  margin-top: 0px;
   background-color: transparent;
   font-size: calc(12px + 1vmin);
   color: white;
