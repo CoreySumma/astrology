@@ -19,14 +19,15 @@
 } */
 
 .prediction-container {
-  position: relative;
+  position: absolute;
+  top: 0;
   background-color: transparent;
   /* background-color: transparent; */
-  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4); */
   min-height: 50vh;
   width: 60%;
   padding: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 23px;
   display: flex;
   flex-direction: column;
@@ -37,28 +38,29 @@
 }
 
 .prediction-text {
+  margin-top: 50px;
   background-color: transparent;
-  font-size: calc(10px + 1vmin);
+  font-size: calc(12px + 1vmin);
   color: white;
   transition: none;
   z-index: 1;
 }
 
 button {
-  margin-top: 35px;
+  margin-top: 60px;
   margin-bottom: 10px;
   width: 280px;
   height: 60px;
-  border: 1px, white, solid;
-  outline: none;
-  background: rgb(0, 0, 0);
-  color: white;
+  border: 1px, transparent, solid;
+  /* background: rgb(0, 0, 0); */
+  background: white;
+  color: black;
   font-size: 22px;
   line-height: 2px;
   /* border-radius: 40px; */
-  /* border-radius: 15px; */
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4); */
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -72,9 +74,9 @@ button {
 }
 
 button:hover {
-  background: white;
+  background: transparent;
   border: black;
-  color: black;
+  color: white;
   transition: background-color, border-color, color;
   transform: scale(1.1);
 }
@@ -105,13 +107,14 @@ button:focus:not(:active) {
 }
 
 .spinner {
-  margin: 100px auto;
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #375061;
+  margin: 200px auto;
+  border: 8px solid black;
+  border-top: 8px solid rgb(189, 189, 189);
   border-radius: 50%;
   width: 37px;
   height: 37px;
   animation: spin 1s linear infinite;
+  z-index: 1;
 }
 
 
@@ -128,13 +131,18 @@ button:focus:not(:active) {
   animation: fadeIn 2s;
 }
 
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+
 @media screen and (max-width: 1024px) {
   button {
     width: 300px;
     height: 40px;
     font-size: 15px;
-    margin-top: 4px;
-    margin-bottom: 0;
+    bottom: -100px;
   }
 }
 
@@ -143,10 +151,12 @@ button:focus:not(:active) {
     width: 195px;
     height: 40px;
     font-size: 15px;
-    margin-top: 4px;
-    margin-bottom: 0;
+    bottom: -42px;
   }
   .prediction-container {
     width: 90%;
+  }
+  .spinner {
+    margin: 155px auto;
   }
 }

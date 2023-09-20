@@ -21,6 +21,8 @@ export default function App() {
   const [sign, setSign] = useState([]);
   // Flag to check if location has been fetched to avoid constant calling of API
   let [locationFetched, setLocationFetched] = useState(false);
+  // Flag to fade everything out after button is clicked
+  const [fade, setFade] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -108,7 +110,7 @@ export default function App() {
     </video>
   </div>
   {/* <img className="astroLogo" src="../../images/zodiac.png" alt="" /> */}
-  <Header data={data} time={time} sign={sign} setSign={setSign} />
+  <Header data={data} time={time} sign={sign} setSign={setSign} fade={fade} setFade={setFade}/>
   <main>
     <DayAtAGlance
       temp={temp}
@@ -119,6 +121,8 @@ export default function App() {
       location={location}
       day={day}
       moonData={moonData}
+      fade={fade} 
+      setFade={setFade}
     />
   </main>
 </div>
