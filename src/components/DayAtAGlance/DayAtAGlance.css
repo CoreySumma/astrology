@@ -93,10 +93,6 @@ button:focus {
   box-shadow: none;
 }
 
-button:focus:not(:active) {
-  transform: scale(1);
-}
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);

@@ -5,7 +5,14 @@ import "./Header.css";
 import { updateDate } from "../../actions";
 import { useDispatch } from "react-redux";
 
-export default function Header({ data, time, sign, setSign, fade, setFade }) {
+export default function Header({
+  data,
+  time,
+  sign,
+  setSign,
+  fade,
+  setFade,
+}) {
   // console.log("this is within the header component", data);
   // set current date
   const dispatch = useDispatch();
@@ -19,7 +26,14 @@ export default function Header({ data, time, sign, setSign, fade, setFade }) {
   return (
     data && (
       <header className="App-header">
-        <SignForm sign={sign} setSign={setSign} data={data} time={time} fade={fade} setFade={setFade}/>
+        <SignForm
+          sign={sign}
+          setSign={setSign}
+          data={data}
+          time={time}
+          fade={fade}
+          setFade={setFade}
+        />
         {/* <p className="date-display"> {newDate} </p> */}
         {/* <div className="Forecast">
           {data.current ? <Weather data={data} time={time}/> : <div></div>}

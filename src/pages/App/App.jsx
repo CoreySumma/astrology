@@ -23,6 +23,8 @@ export default function App() {
   let [locationFetched, setLocationFetched] = useState(false);
   // Flag to fade everything out after button is clicked
   const [fade, setFade] = useState(false);
+  // Flag to hide the button indefinitely after the click
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -103,29 +105,37 @@ export default function App() {
   let day = useSelector((state) => state.userData.day);
 
   return (
-<div className="App">
-  <div className="video-background">
-    <video autoPlay={true} playsInline muted loop preload="auto">
-      <source src="/movies/starz.mp4" type="video/mp4" />
-    </video>
-  </div>
-  {/* <img className="astroLogo" src="../../images/zodiac.png" alt="" /> */}
-  <Header data={data} time={time} sign={sign} setSign={setSign} fade={fade} setFade={setFade}/>
-  <main>
-    <DayAtAGlance
-      temp={temp}
-      date={date}
-      time={time}
-      description={description}
-      sign={sign}
-      location={location}
-      day={day}
-      moonData={moonData}
-      fade={fade} 
-      setFade={setFade}
-    />
-  </main>
-</div>
-
+    <div className="App">
+      <div className="video-background">
+        <video autoPlay={true} playsInline muted loop preload="auto">
+          <source src="/movies/starz.mp4" type="video/mp4" />
+        </video>
+      </div>
+      {/* <img className="astroLogo" src="../../images/zodiac.png" alt="" /> */}
+      <Header
+        data={data}
+        time={time}
+        sign={sign}
+        setSign={setSign}
+        fade={fade}
+        setFade={setFade}
+      />
+      <main>
+        <DayAtAGlance
+          temp={temp}
+          date={date}
+          time={time}
+          description={description}
+          sign={sign}
+          location={location}
+          day={day}
+          moonData={moonData}
+          fade={fade}
+          setFade={setFade}
+          isButtonVisible={isButtonVisible}
+          setIsButtonVisible={setIsButtonVisible}
+        />
+      </main>
+    </div>
   );
 }

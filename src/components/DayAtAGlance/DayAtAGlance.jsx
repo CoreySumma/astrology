@@ -14,7 +14,9 @@ export default function DayAtAGlance({
   day,
   moonData,
   fade,
-  setFade
+  setFade,
+  isButtonVisible,
+  setIsButtonVisible,
 }) {
   // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
@@ -72,6 +74,9 @@ export default function DayAtAGlance({
     // In case the user clicks the button before the data is loaded - this doesnt work as intended quite yet...
     if (allGptDataFetched === true) {
       callGpt();
+      setTimeout(() => {
+        setIsButtonVisible(false);
+      }, 1000);
       setFade(true);
     } else {
       console.log("Waiting for data to load...Trying again in 1.5 seconds");
@@ -80,7 +85,11 @@ export default function DayAtAGlance({
   }
   return (
     <>
-      <button onClick={handleClick}>Consult The Heavens...</button>
+      <button 
+      onClick={handleClick}
+      className={!isButtonVisible ? "fade-out" : ""}
+      >
+        Ask The Universe</button>
       <div className="prediction-container">
         {!allGptDataFetched ? (
           <div className="spinner"></div>
@@ -101,7 +110,6 @@ export default function DayAtAGlance({
           </>
         ) : (
           <p className="prediction-text prediction-text-fade-in">
-            {/* Please select a sign to see your prediction for today. */}
           </p>
         )}
       </div>
