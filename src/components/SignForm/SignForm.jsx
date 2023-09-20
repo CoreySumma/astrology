@@ -15,6 +15,8 @@ export default function SignForm({ sign, setSign }) {
   // Redux line for retrieving data from the store for user's sign
   const signState = useSelector((state) => state.userData.signData);
 
+
+// This is the original handleChange function for a selector
   // const handleChange = (e) => {
   //   const sign = e.target.value;
   //   setSelectedSign(sign);
@@ -22,13 +24,13 @@ export default function SignForm({ sign, setSign }) {
   //   dispatch(updateSign(sign));
   // };
 
+  // This is the handleChange function for the swiper (new and improved UI) - Pick your poision
   const handleChange = (sign) => {
     setSelectedSign(sign);
     setSign(sign);
     dispatch(updateSign(sign));
   };
   
-
   return (
     <>
       <form className="form-container">
@@ -42,16 +44,19 @@ export default function SignForm({ sign, setSign }) {
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
               // navigation
-            //   onSlideChange={(swiper) => {
-            //     const activeSlideIndex = swiper.activeIndex;
-            //     const signs = [
-            //       "aries", "taurus", "gemini", "cancer", 
-            //       "leo", "virgo", "libra", "scorpio", 
-            //       "sagittarius", "capricorn", "aquarius", "pisces"
-            //     ];
-            //     handleChange(signs[activeSlideIndex]);
-            //   }
-            // }
+              onSlideChange={(swiper) => {
+                // Save the index of the active slide through swiper
+                const activeSlideIndex = swiper.activeIndex;
+                // Create an array of the signs correlating to the index of the slide
+                const signs = [
+                  "aries", "taurus", "gemini", "cancer", 
+                  "leo", "virgo", "libra", "scorpio", 
+                  "sagittarius", "capricorn", "aquarius", "pisces"
+                ];
+                // Call the handleChange function with the sign correlating to the active slide index
+                handleChange(signs[activeSlideIndex]);
+              }
+            }
               onSwiper={(swiper) => console.log(swiper)}
             >
               <SwiperSlide>
