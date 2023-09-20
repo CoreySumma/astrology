@@ -35,8 +35,7 @@ export default function SignForm({ sign, setSign }) {
     <>
       <form className="form-container">
         <label>
-          {/* Select your zodiac sign: */}
-          <br />
+          <p className="form-title">My zodiac sign is</p>
             <Swiper className="mySwiper"
               effect="flip"
               spaceBetween={50}

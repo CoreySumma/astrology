@@ -77,7 +77,7 @@ export default function DayAtAGlance({
   }
   return (
     <>
-      <button onClick={handleClick}>Ask The Stars...</button>
+      <button onClick={handleClick}>Consult The Heavens...</button>
       <div className="prediction-container">
         <div className="video-background">
           <video

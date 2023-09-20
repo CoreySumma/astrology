@@ -6,6 +6,11 @@
   justify-content: center;
 }
 
+.form-title {
+  margin: 20px;
+  font-size: 45px;
+}
+
 .selector {
   font-size: 20px;
   margin: 1vmin;
@@ -46,5 +51,13 @@
   }
   .image-description {
     margin-bottom: 28px;
+  }
+  .form-title {
+    font-size: 35px;
+    margin: 30px;
+  }
+  .mySwiper {
+    width: 250px;
+    height: auto;
   }
 }
