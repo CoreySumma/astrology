@@ -14,7 +14,7 @@ export default function DayAtAGlance({
   day,
   moonData,
 }) {
-  // Flag to check if all data has been fetched to avoid GPT not having all data
+  // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
 
   useEffect(() => {
