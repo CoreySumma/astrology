@@ -43,6 +43,6 @@ Craft a tailored prediction that is both poetic and deeply resonating,
  inviting the user to step into a day filled with possibility and aligned with their astrological essence. 
  Draw upon every piece of information, weaving them into a narrative that is at once exciting and comforting, 
  showing the user the magic this day holds specially for them. 
- Try not to go over 200 characters and round the temperature off if you mention it.
+ Try not to go over 200 characters and round the temperature off if you mention it. Please mention something about the moon at the end.
 `;
 }
