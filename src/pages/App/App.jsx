@@ -102,7 +102,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <img className="astroLogo" src="../../images/zodiac.png" alt="" />
+      {/* <img className="astroLogo" src="../../images/zodiac.png" alt="" /> */}
       <Header data={data} time={time} sign={sign} setSign={setSign} />
       <main>
         <DayAtAGlance
