@@ -61,59 +61,60 @@ export default function SignForm({ sign, setSign }) {
             >
               <SwiperSlide>
                 <img src="../../images/aries.png" alt="Aries" />
-                <p>Aries</p>
+                <p className="image-description">Aries</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/taurus.png" alt="Taurus" />
-                <p>Taurus</p>
+                <p className="image-description">Taurus</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/gemini.png" alt="Gemini" />
-                <p>Gemini</p>
+                <p className="image-description">Gemini</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/cancer.png" alt="Cancer" />
-                <p>Cancer</p>
+                <p className="image-description">Cancer</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/leo.png" alt="Leo" />
-                <p>Leo</p>
+                <p className="image-description">Leo</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/virgo1.png" alt="Virgo" />
-                <p>Virgo</p>
+                <p className="image-description">Virgo</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/libra.png" alt="Libra" />
-                <p>Libra</p>
+                <p className="image-description">Libra</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/scorpio.png" alt="Scorpio" />
-                <p>Scorpio</p>
+                <p className="image-description">Scorpio</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/sagittarius.png" alt="Sagittarius" />
-                <p>Sagittarius</p>
+                <p className="image-description">Sagittarius</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/capricorn.png" alt="Capricorn" />
-                <p>Capricorn</p>
+                <p className="image-description">Capricorn</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/aquarius.png" alt="Aquarius" />
-                <p>Aquarius</p>
+                <p className="image-description">Aquarius</p>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="../../images/pisces.png" alt="Pisces" />
-                <p>Pisces</p>
+                <p className="image-description">Pisces</p>
               </SwiperSlide>
             </Swiper>
             < br/>
-            {/* <hr /> */}
         </label>
       </form>
     </>
 
+
+// This is the original selector
     // <>
     //   <form className="form-container">
     //     <label>

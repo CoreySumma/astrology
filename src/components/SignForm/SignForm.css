@@ -33,7 +33,9 @@
   background-color: black !important;
 }
 
-
+.swiper-button-next, .swiper-button-prev {
+  color: black !important;
+}
 
 @media screen and (max-width: 600px) {
   .selector {
@@ -41,5 +43,8 @@
     margin: 1vmin;
     font-family: "Poppins", sans-serif;
     border-radius: 2px;
+  }
+  .image-description {
+    margin-bottom: 28px;
   }
 }
