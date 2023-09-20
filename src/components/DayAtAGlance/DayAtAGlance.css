@@ -151,8 +151,14 @@ button:focus {
   }
   .prediction-container {
     width: 90%;
+    height: auto;
   }
   .spinner {
     margin: 155px auto;
+  }
+  .prediction-text {
+    text-align: left;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 }
