@@ -59,51 +59,51 @@ export default function SignForm({ sign, setSign }) {
               onSwiper={(swiper) => console.log(swiper)}
             >
               <SwiperSlide>
-                <img src="../../images/aries.png" alt="Aries" />
+                <img src="../../images/ariesw.png" alt="Aries" />
                 <p className="image-description">Aries</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/taurus.png" alt="Taurus" />
+                <img src="../../images/taurusw.png" alt="Taurus" />
                 <p className="image-description">Taurus</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/gemini.png" alt="Gemini" />
+                <img src="../../images/geminiw.png" alt="Gemini" />
                 <p className="image-description">Gemini</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/cancer.png" alt="Cancer" />
+                <img src="../../images/cancerw.png" alt="Cancer" />
                 <p className="image-description">Cancer</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/leo.png" alt="Leo" />
+                <img src="../../images/leow.png" alt="Leo" />
                 <p className="image-description">Leo</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/virgo1.png" alt="Virgo" />
+                <img src="../../images/virgo1w.png" alt="Virgo" />
                 <p className="image-description">Virgo</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/libra.png" alt="Libra" />
+                <img src="../../images/libraw.png" alt="Libra" />
                 <p className="image-description">Libra</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/scorpio.png" alt="Scorpio" />
+                <img src="../../images/scorpiow.png" alt="Scorpio" />
                 <p className="image-description">Scorpio</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/sagittarius.png" alt="Sagittarius" />
+                <img src="../../images/sagittariusw.png" alt="Sagittarius" />
                 <p className="image-description">Sagittarius</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/capricorn.png" alt="Capricorn" />
+                <img src="../../images/capricornw.png" alt="Capricorn" />
                 <p className="image-description">Capricorn</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/aquarius.png" alt="Aquarius" />
+                <img src="../../images/aquariusw.png" alt="Aquarius" />
                 <p className="image-description">Aquarius</p>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="../../images/pisces.png" alt="Pisces" />
+                <img src="../../images/piscesw.png" alt="Pisces" />
                 <p className="image-description">Pisces</p>
               </SwiperSlide>
             </Swiper>

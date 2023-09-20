@@ -101,21 +101,27 @@ export default function App() {
   let day = useSelector((state) => state.userData.day);
 
   return (
-    <div className="App">
-      {/* <img className="astroLogo" src="../../images/zodiac.png" alt="" /> */}
-      <Header data={data} time={time} sign={sign} setSign={setSign} />
-      <main>
-        <DayAtAGlance
-          temp={temp}
-          date={date}
-          time={time}
-          description={description}
-          sign={sign}
-          location={location}
-          day={day}
-          moonData={moonData}
-        />
-      </main>
-    </div>
+<div className="App">
+  <div className="video-background">
+    <video autoPlay={true} playsInline muted loop preload="auto">
+      <source src="/movies/starz.mp4" type="video/mp4" />
+    </video>
+  </div>
+  {/* <img className="astroLogo" src="../../images/zodiac.png" alt="" /> */}
+  <Header data={data} time={time} sign={sign} setSign={setSign} />
+  <main>
+    <DayAtAGlance
+      temp={temp}
+      date={date}
+      time={time}
+      description={description}
+      sign={sign}
+      location={location}
+      day={day}
+      moonData={moonData}
+    />
+  </main>
+</div>
+
   );
 }

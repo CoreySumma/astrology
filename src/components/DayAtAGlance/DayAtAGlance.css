@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
-.video-background {
+/* .video-background {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,11 +16,11 @@
   height: 100%;
   object-fit: cover;
   background-size: cover;
-}
+} */
 
 .prediction-container {
   position: relative;
-  background-color: black;
+  background-color: transparent;
   /* background-color: transparent; */
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
   min-height: 50vh;
@@ -45,18 +45,18 @@
 }
 
 button {
-  margin-top: 5px;
+  margin-top: 35px;
   margin-bottom: 10px;
   width: 280px;
   height: 60px;
-  border: none;
+  border: 1px, white, solid;
   outline: none;
   background: rgb(0, 0, 0);
   color: white;
   font-size: 22px;
   line-height: 2px;
   /* border-radius: 40px; */
-  border-radius: 15px;
+  /* border-radius: 15px; */
   text-align: center;
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
   position: relative;

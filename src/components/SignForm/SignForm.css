@@ -9,6 +9,8 @@
 .form-title {
   margin: 20px;
   font-size: 45px;
+  color: white;
+  z-index: 1;
 }
 
 .selector {
@@ -34,12 +36,21 @@
   height: auto;
 }
 
+.swiper-pagination-bullet {
+  border: 2px solid white !important; 
+  background-color: transparent !important; 
+}
+
 .swiper-pagination-bullet-active {
-  background-color: black !important;
+  background-color: white !important;
 }
 
 .swiper-button-next, .swiper-button-prev {
-  color: black !important;
+  color: white!important;
+}
+
+.swiper-slide-shadow-left, .swiper-slide-shadow-right {
+  background: rgb(119, 119, 119) !important;
 }
 
 @media screen and (max-width: 600px) {

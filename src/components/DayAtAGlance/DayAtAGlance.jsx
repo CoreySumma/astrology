@@ -79,7 +79,7 @@ export default function DayAtAGlance({
     <>
       <button onClick={handleClick}>Consult The Heavens...</button>
       <div className="prediction-container">
-        <div className="video-background">
+        {/* <div className="video-background">
           <video
             autoPlay={true}
             controls=""
@@ -90,7 +90,7 @@ export default function DayAtAGlance({
           >
             <source src="/movies/starz.mp4" type="video/mp4" />
           </video>
-        </div>
+        </div> */}
         {!allGptDataFetched ? (
           <div className="spinner"></div>
         ) : prediction ? (

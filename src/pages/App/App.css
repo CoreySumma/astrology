@@ -2,8 +2,25 @@
 
 .App {
   text-align: center;
-  background-color: #78859e;
   font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+.video-background {
+  position: absolute; /* Changed from fixed to absolute */
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  z-index: -1; /* Set to -1 to ensure it stays behind other content */
+  overflow: hidden;
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-size: cover;
 }
 
 @keyframes spin {
@@ -24,19 +41,9 @@
   pointer-events: none;
 }
 
-.App-header {
-  background-color: #78859e;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 main {
   display: flex;
-  background-color: #78859e;
+  background-color: transparent;
   flex-direction: column;
   align-items: center;
   justify-content: center;
