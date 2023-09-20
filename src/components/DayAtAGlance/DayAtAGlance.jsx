@@ -85,34 +85,32 @@ export default function DayAtAGlance({
   }
   return (
     <>
-      <button 
-      onClick={handleClick}
-      className={!isButtonVisible ? "fade-out" : ""}
+      <button
+        onClick={handleClick}
+        className={!isButtonVisible ? "fade-out" : ""}
       >
-        Ask The Universe</button>
-      <div className="prediction-container">
+        Ask The Universe
+      </button>
+      <div className="prediction-container prediction-text-fade-in">
         {!allGptDataFetched ? (
           <div className="spinner"></div>
-        ) : prediction ? (
+        ) : prediction && moonData ? (
           <>
             <p className="prediction-text prediction-text-fade-in">
               {prediction}
             </p>
-            {moonData && (
-              <div>
-                <img
-                  className="moon prediction-text-fade-in"
-                  src={moonData}
-                  alt="Moon Phase"
-                />
-              </div>
-            )}
+            <div>
+              <img
+                className="moon prediction-text-fade-in"
+                src={moonData}
+                alt="Moon Phase"
+              />
+            </div>
           </>
         ) : (
-          <p className="prediction-text prediction-text-fade-in">
-          </p>
+          <p className="prediction-text"></p>
         )}
       </div>
     </>
-  );  
+  );
 }
