@@ -19,9 +19,9 @@ This is a React application that utilizes Open AI's API, Open Weathers API, Astr
 
 - Read the output and take on the day!
 
-[Click here to get a reading!](https://mydailyprediction.netlify.app/)
-
 <div align='center'>
+
+ ## [Click here to get a reading!](https://mydailyprediction.netlify.app/)
   
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
