@@ -31,18 +31,22 @@ Instructions:
 
 Example for guidance:
 Data For Example: Taurus, September 13th 2023, 5:43PM, 82.69F, broken clouds, East Cesar Chavez, Austin, Texas, Wednesday
-Response: On this warm Wednesday evening, the sky adorned with broken clouds offers you a picturesque and romantic backdrop, 
-beautifully aligning with your Venus-ruled tendencies towards love and aesthetics. As the sun transitions through the Virgo 
-constellation, a symphony of earthly energies encourages you to immerse yourself in the finer things life offers. 
- Let the Moon's tranquil energy guide you through the Art for the People gallery on South 1st Street,
- where a collection of captivating local art awaits to please your senses and resonate with your artistic soul, 
- making your evening a masterpiece of experiences.
+Response: On this warm Wednesday of September 13th, under a sky of broken clouds, your Taurus heart is called to romance, echoing Venus influence. 
+The moon guides you to South 1st Streets Art for the People gallery, 
+a space ripe for mesmerizing talks and new acquaintances.
+
+
 
 Now its your turn:
-Craft a tailored prediction that is both poetic and deeply resonating,
+Craft a tailored prediction that adheres to a 350-character limit, and is both poetic and deeply resonating,
  inviting the user to step into a day filled with possibility and aligned with their astrological essence. 
  Draw upon every piece of information, weaving them into a narrative that is at once exciting and comforting, 
  showing the user the magic this day holds specially for them. 
- Remember: Max 150 characters. Mention the nearby locations and tie in something about the moon like in the example. Report rounded temperature. Be creative!
+ Remember: Max 350 characters. Mention the nearby locations and tie in something about the moon like in the example. Report rounded temperature. Be creative!
 `;
 }
+
+// On this warm Wednesday evening of September 13th, the sky adorned with broken clouds offers you a picturesque and romantic backdrop,
+// beautifully aligning with your Venus-ruled tendencies towards love and aesthetics.
+// Allow the moon's serene energy to guide you to the Art for the People gallery on South 1st Street,
+//  a ripe setting for fascinating conversations and perhaps a new acquaintance.
