@@ -15,7 +15,7 @@ This is a React application that utilizes Open AI's API, Open Weathers API, Astr
 
 - Select your Star Sign.
 
-- Click the "Ask the stars..." Button.
+- Click the "Ask The Universe" Button.
 
 - Read the output and take on the day!
 
