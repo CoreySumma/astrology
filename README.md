@@ -2,15 +2,16 @@
 
 # AI Horoscope
 
-![Screenshot 2023-09-15 at 3 55 50 PM](https://github.com/CoreySumma/astrology/assets/66542022/9663f106-8392-4d23-ad59-22f44dbcba0d)
+
+![astronomy](https://github.com/CoreySumma/astrology/assets/66542022/99aa273a-3a59-4bdf-938a-0158a0883764)
+
+
 
 ## Description:
 This is a React application that utilizes Open AI's API, Open Weathers API, Astronomy API(show current moon phase based on location and time), and Google's geolocation API to generate a horoscope for the day for the user based on Date, Time, Astrological Sign, Weather, Temperature, Day of the Week, and the User's Location.
 
 ## Using the App
 </div>
-
-- Enable location.
 
 - Select your Star Sign.
 
