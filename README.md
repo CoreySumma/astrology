@@ -19,7 +19,7 @@ This is a React application that utilizes Open AI's API, Open Weathers API, Astr
 
 - Read the output and take on the day!
 
-  [Click here to get a reading!](https://mydailyprediction.netlify.app/)
+[Click here to get a reading!](https://mydailyprediction.netlify.app/)
 
 <div align='center'>
   
