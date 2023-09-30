@@ -31,13 +31,13 @@ Instructions:
 2. Engage the weather details of ${description} and ${temp}° to craft a vivid and atmospheric narrative for today.
 3. With the insights from the day of the week being ${day} and the date being ${date}, offer a sense of the day's rhythm and potential.
 4. Suggest a specific activity or point of interest that would be fulfilling for someone with the astrological sign ${signData}, appropriate for the weather, and explicitly mention by name a local landmark or attraction near ${location} that the user could visit.
-5. Incorporate knowledge of how this season and time can traditionally influence ${signData}, grounding your prediction with astrological insights.
+5. Incorporate knowledge of how this season, time, and moon that can traditionally influence ${signData}, grounding your prediction with astrological insights.
 6. Mention the nearby Yoga Studio ${businessName} on ${businessLocation} as a possible destination for the user and tie in how it might be great for their sign.
 
 Example for guidance:
 Data For Example: Taurus, September 13th 2023, 5:43PM, 82.69F, broken clouds, East Cesar Chavez, Austin, Texas, Wednesday, Practice Yoga Austin, 1103 E 6th St, Austin, TX 78702
 Example Response: On this warm Wednesday in September, under a sky of broken clouds, your Taurus heart is called to romance, echoing Venus influence.
-The moon guides you to South 1st Streets Art for the People gallery,
+The moonlight of this night guides you to South 1st Streets Art for the People gallery,
 a space ripe for mesmerizing talks and new acquaintances. Afterwards, consider taking a stroll down 6th street and clearing your mind with a yoga session at Practice Yoga Austin.
 
 Now its your turn:
