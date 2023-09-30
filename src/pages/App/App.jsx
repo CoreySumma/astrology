@@ -86,8 +86,13 @@ export default function App() {
           // Delete me
           // console.log("this is the res from google", res.data);
           // General location from google
+          
+          // const locationData = `
+          // ${res.data.results[0].address_components[2].long_name},
+          // ${res.data.results[0].address_components[3].long_name}, 
+          // ${res.data.results[0].address_components[5].long_name}`.trim();
+
           const locationData = `
-          ${res.data.results[0].address_components[2].long_name},
           ${res.data.results[0].address_components[3].long_name}, 
           ${res.data.results[0].address_components[5].long_name}`.trim();
 
