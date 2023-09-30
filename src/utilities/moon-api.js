@@ -35,8 +35,6 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
       }
     );
     setMoonData(response.data.data.imageUrl);
-    // console.log(response.data.data.imageUrl);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error calling moon API:", error);

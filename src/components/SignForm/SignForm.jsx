@@ -56,7 +56,6 @@ export default function SignForm({ sign, setSign, fade, setFade }) {
                 handleChange(signs[activeSlideIndex]);
               }
             }
-              onSwiper={(swiper) => console.log(swiper)}
             >
               <SwiperSlide>
                 <img src="../../images/ariesw.png" alt="Aries" />

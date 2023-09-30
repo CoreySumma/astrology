@@ -123,8 +123,6 @@ export default function App() {
   let day = useSelector((state) => state.userData.day);
   let businessName = useSelector((state) => state.userData.businessName);
   let businessLocation = useSelector((state) => state.userData.businessLocation);
-  console.log("this is the business name", businessName);
-  console.log("this is the business location", businessLocation);
 
   return (
     <div className="App">
