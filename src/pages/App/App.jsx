@@ -31,7 +31,7 @@ export default function App() {
   // Redux
   const dispatch = useDispatch();
 
-  // This is polite message to the user to allow location access 
+  // This is polite message to the user to allow location access
   // useEffect(() => {
   //   if (isMounted.current === true) {
   //   alert(
@@ -76,6 +76,10 @@ export default function App() {
     weatherApi(lat, long, setLat, setLong, setData, dispatch);
     // Call the moon API with arguments to get moon phase image and display it with local state
     moonApi(setMoonData, lat, long, moonDate);
+    // set your search terms for business's in your area
+    let search = "yoga";
+    // Call the yelp API with arguments (right now it searches business name not events i.e. 'meetups')
+    getMeetUp(search, lat, long, dispatch);
     // Call the google maps API to get the city name, state etc
     if (long && lat) {
       const fetchData = async () => {
@@ -86,10 +90,10 @@ export default function App() {
           // Delete me
           // console.log("this is the res from google", res.data);
           // General location from google
-          
+
           // const locationData = `
           // ${res.data.results[0].address_components[2].long_name},
-          // ${res.data.results[0].address_components[3].long_name}, 
+          // ${res.data.results[0].address_components[3].long_name},
           // ${res.data.results[0].address_components[5].long_name}`.trim();
 
           const locationData = `
@@ -103,10 +107,6 @@ export default function App() {
           dispatch(updateLocation(locationData));
           // Set flag to true to avoid constant calling of API
           setLocationFetched(true);
-          // set your search terms for business's in your area
-          let search = "yoga";
-          // Call the yelp API with arguments (right now it searches business name not events i.e. 'meetups')
-          getMeetUp(search, lat, long, dispatch);
           return `
           ${res.data.results[0].address_components[2].long_name},
           ${res.data.results[0].address_components[3].long_name}, 
@@ -127,7 +127,9 @@ export default function App() {
   let location = useSelector((state) => state.userData.location);
   let day = useSelector((state) => state.userData.day);
   let businessName = useSelector((state) => state.userData.businessName);
-  let businessLocation = useSelector((state) => state.userData.businessLocation);
+  let businessLocation = useSelector(
+    (state) => state.userData.businessLocation
+  );
 
   return (
     <div className="App">
