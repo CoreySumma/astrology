@@ -10,7 +10,9 @@ export default async function gptApi(
   location,
   dispatch,
   description,
-  day
+  day,
+  businessLocation,
+  businessName
 ) {
   try {
     const response = await axios.post(
@@ -24,7 +26,9 @@ export default async function gptApi(
           temp,
           description,
           location,
-          day
+          day,
+          businessLocation,
+          businessName
         ),
         temperature: 0.6,
         max_tokens: 200,

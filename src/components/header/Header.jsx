@@ -13,15 +13,7 @@ export default function Header({
   fade,
   setFade,
 }) {
-  // console.log("this is within the header component", data);
-  // set current date
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   const dateObj = new Date();
-  //   const newDate = dateObj.toLocaleDateString();
-  //   dispatch(updateDate(newDate));
-  // }, [dispatch]);
 
   return (
     data && (

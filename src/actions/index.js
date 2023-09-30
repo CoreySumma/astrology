@@ -7,6 +7,8 @@ export const UPDATE_PREDICTION = 'UPDATE_PREDICTION';
 export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 export const UPDATE_DAY = 'UPDATE_DAY';
+export const UPDATE_BUSINESS_NAME = 'UPDATE_BUSINESS_NAME';
+export const UPDATE_BUSINESS_LOCATION = 'UPDATE_BUSINESS_LOCATION';
 
 
 // Action Creators
@@ -63,6 +65,20 @@ export const updateDay = (day) => {
   return {
     type: UPDATE_DAY,
     payload: day,
+  };
+}
+
+export const updateBusinessName = (businessName) => {
+  return {
+    type: UPDATE_BUSINESS_NAME,
+    payload: businessName,
+  };
+}
+
+export const updateBusinessLocation = (businessLocation) => {
+  return {
+    type: UPDATE_BUSINESS_LOCATION,
+    payload: businessLocation,
   };
 }
 

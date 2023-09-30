@@ -6,7 +6,9 @@ import {
   UPDATE_DESCRIPTION,
   UPDATE_PREDICTION,
   UPDATE_LOCATION,
-  UPDATE_DAY
+  UPDATE_DAY,
+  UPDATE_BUSINESS_NAME,
+  UPDATE_BUSINESS_LOCATION,
 } from "../actions/index";
 
 const intializeState = {
@@ -18,6 +20,8 @@ const intializeState = {
   prediction: "",
   description: "",
   day: "",
+  businessName: "",
+  businessLocation: "",
 };
 
 const userData = (state = intializeState, action) => {
@@ -69,6 +73,18 @@ const userData = (state = intializeState, action) => {
       return {
         ...state,
         day: action.payload,
+      };
+    case UPDATE_BUSINESS_NAME:
+      // console.log("Handling UPDATE_BUSINESS_NAME action", action);
+      return {
+        ...state,
+        businessName: action.payload,
+      };
+    case UPDATE_BUSINESS_LOCATION:
+      // console.log("Handling UPDATE_BUSINESS_LOCATION action", action);
+      return {
+        ...state,
+        businessLocation: action.payload,
       };
     default:
       return state;

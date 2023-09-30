@@ -1,11 +1,12 @@
 import "./App.css";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance.jsx";
 import weatherApi from "../../utilities/weather-api";
 import moonApi from "../../utilities/moon-api";
+import getMeetUp from "../../utilities/meetup-api";
 import { updateTime } from "../../actions";
 import { updateLocation } from "../../actions";
 import { updateDate } from "../../actions";
@@ -18,16 +19,29 @@ export default function App() {
   // "Data" is actually openWeather api data
   const [data, setData] = useState([]);
   const [moonData, setMoonData] = useState(null);
-  const [sign, setSign] = useState([]);
+  const [sign, setSign] = useState("aries");
   // Flag to check if location has been fetched to avoid constant calling of API
   let [locationFetched, setLocationFetched] = useState(false);
   // Flag to fade everything out after button is clicked
   const [fade, setFade] = useState(false);
   // Flag to hide the button indefinitely after the click
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-
+  // Flag if the component mounted for message ti be displayed to user on load
+  const isMounted = useRef(true);
+  // Redux
   const dispatch = useDispatch();
 
+  // This is polite message to the user to allow location access 
+  // useEffect(() => {
+  //   if (isMounted.current === true) {
+  //   alert(
+  //     "This app uses your location. Please allow location access through your privacy settings if you experience issues."
+  //   );
+  //   isMounted.current = false;
+  //   }
+  // }, []);
+
+  // One useEffect to rule them all
   useEffect(() => {
     // Get the date for GPT
     const dateObj = new Date();
@@ -84,6 +98,10 @@ export default function App() {
           dispatch(updateLocation(locationData));
           // Set flag to true to avoid constant calling of API
           setLocationFetched(true);
+          // set your search terms for business's in your area
+          let search = "yoga";
+          // Call the yelp API with arguments (right now it searches business name not events i.e. 'meetups')
+          getMeetUp(search, lat, long, dispatch);
           return `
           ${res.data.results[0].address_components[2].long_name},
           ${res.data.results[0].address_components[3].long_name}, 
@@ -103,6 +121,10 @@ export default function App() {
   let time = useSelector((state) => state.userData.time);
   let location = useSelector((state) => state.userData.location);
   let day = useSelector((state) => state.userData.day);
+  let businessName = useSelector((state) => state.userData.businessName);
+  let businessLocation = useSelector((state) => state.userData.businessLocation);
+  console.log("this is the business name", businessName);
+  console.log("this is the business location", businessLocation);
 
   return (
     <div className="App">
@@ -111,7 +133,6 @@ export default function App() {
           <source src="/movies/starz.mp4" type="video/mp4" />
         </video>
       </div>
-      {/* <img className="astroLogo" src="../../images/zodiac.png" alt="" /> */}
       <Header
         data={data}
         time={time}
@@ -130,6 +151,8 @@ export default function App() {
           location={location}
           day={day}
           moonData={moonData}
+          businessLocation={businessLocation}
+          businessName={businessName}
           fade={fade}
           setFade={setFade}
           isButtonVisible={isButtonVisible}
