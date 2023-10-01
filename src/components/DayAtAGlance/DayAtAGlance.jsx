@@ -25,7 +25,9 @@ export default function DayAtAGlance({
 }) {
   // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
-  // Object to grab sign image based on current sign for loading animation
+  // Flag for flashing loading animation
+  const [loadingPrediction, setLoadingPrediction] = useState(false);
+  // Object to grab sign image based on current sign for loading animation based on loadingPrediction flag
   const signImages = {
     aries: "../../images/ariesw.png",
     taurus: "../../images/taurusw.png",
@@ -40,6 +42,8 @@ export default function DayAtAGlance({
     aquarius: "../../images/aquariusw.png",
     pisces: "../../images/piscesw.png",
   };
+  // Make a var to the current sign image
+  let signImage = signImages[sign];
 
   // This useEffect checks if all data has been fetched and sets the flag to true
   useEffect(() => {
@@ -74,10 +78,14 @@ export default function DayAtAGlance({
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
   // Grab the refined prediction from the store
-  let refinedPrediction = useSelector((store) => store.userData.refinedPrediction);
-  
+  let refinedPrediction = useSelector(
+    (store) => store.userData.refinedPrediction
+  );
+
   async function callGpt() {
     try {
+      // Set loading flag on either end of the fetch call to GPT
+      setLoadingPrediction(true);
       let result = await gptApi(
         sign,
         date,
@@ -91,6 +99,7 @@ export default function DayAtAGlance({
         businessName
       );
       setPrediction(result);
+      setLoadingPrediction(false);
     } catch (error) {
       console.log("Error making call to gpt", error);
     }
@@ -100,8 +109,8 @@ export default function DayAtAGlance({
     // this is to prevent the button from being clicked before all data is fetched and to trigger the fade out animation
     if (allGptDataFetched === true) {
       callGpt();
-        setIsButtonVisible(false);
-        setFade(true);
+      setIsButtonVisible(false);
+      setFade(true);
     } else {
       // This doesn't work...yet
       setTimeout(() => {
@@ -123,7 +132,9 @@ export default function DayAtAGlance({
         Ask The Universe
       </button>
       <div className="prediction-container">
-        {!allGptDataFetched ? (
+        {loadingPrediction ? (
+          <img className="loading-zodiac-sign" src={signImage} alt="Sign" />
+        ) : !allGptDataFetched ? (
           <div className="spinner"></div>
         ) : moonData && refinedPrediction ? (
           <div className="prediction-text-fade-in">

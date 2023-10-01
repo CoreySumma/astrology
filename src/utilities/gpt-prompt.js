@@ -40,14 +40,14 @@ Data For Example: Taurus, September 13th 2023, 5:43PM, 82.69F, broken clouds, Au
 Example Response: On this warm Fall Wednesday, under a sky of broken clouds, <em>your Taurus heart is called to romance</em>, echoing Venus influence.
 <br><br>
 The moonlight of this night <strong>guides you</strong> to <em>South 1st Streets Art</em> for the People gallery,
-a space ripe for mesmerizing talks and new acquaintances.<br><br> Afterwards, consider taking a stroll down <em>6th street</em> and clearing your mind with a yoga session at Practice Yoga Austin.
+a space ripe for mesmerizing talks and new acquaintances.<br /><br /> Afterwards, consider taking a stroll down <em>6th street</em> and clearing your mind with a yoga session at Practice Yoga Austin.
 
 Now its your turn:
 Craft a tailored prediction that adheres to a 350-character limit, and is both poetic and deeply resonating,
  inviting the user to step into a day filled with possibility and aligned with their astrological essence. 
  Draw upon every piece of information as a fortune teller, weaving them into a narrative that is at once exciting and comforting, 
  showing the user the magic this day holds specially for them.
- Remember: Max 350 characters. Keep it as short as possible. Use HTML tags especially <strong>, <em>, <u>, <br> to enhance the visual appeal of your message and break paragraphs.
+ Remember: Max 350 characters. Keep it as short as possible. Use HTML tags especially <strong>, <em>, <u>, <br /><br /> to enhance the visual appeal of your message and break paragraphs.
  Tie in something about the moon like in the example. Be creative and weave all the data you have into your response!
 `;
 }

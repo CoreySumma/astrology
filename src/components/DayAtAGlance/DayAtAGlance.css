@@ -88,12 +88,12 @@ button:focus {
 }
 
 .loading-zodiac-sign {
-  width: 15%;
+  width: 300px;
   height: auto;
-  margin-top: 20px;
+  margin-bottom: 80px !important;
   font-size: calc(12px + 1vmin);
   color: white;
-  animation: fadeIn 1s fade-out 1s infinite;
+  animation: fadeInOut 2s infinite;
   z-index: 1;
 }
 
@@ -106,13 +106,28 @@ button:focus {
   }
 }
 
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .prediction-text-fade-in {
   animation: fadeIn 2s;
 }
 
 .fade-out {
   opacity: 0;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 
@@ -143,5 +158,10 @@ button:focus {
     text-align: left;
     padding-left: 4px;
     padding-right: 4px;
+  }
+  .loading-zodiac-sign {
+    width: 188px;
+    height: auto;
+    margin-top: 90px;
   }
 }
