@@ -1,33 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
-/* .video-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border: 1px solid black;
-  border-radius: 20px;
-}
-
-.video-background video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background-size: cover;
-} */
-
 .prediction-container {
   position: absolute;
   top: 0;
   background-color: transparent;
-  /* background-color: transparent; */
-  /* box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4); */
   min-height: 50vh;
   width: 60%;
   padding: 10px;
-  /* border: 1px solid black; */
   border-radius: 23px;
   display: flex;
   flex-direction: column;
@@ -52,20 +31,17 @@ button {
   width: 280px;
   height: 60px;
   border: 1px, transparent, solid;
-  /* background: rgb(0, 0, 0); */
   background: white;
   color: black;
   font-size: 22px;
   line-height: 2px;
-  /* border-radius: 40px; */
   border-radius: 15px;
   text-align: center;
-  /* box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4); */
   position: relative;
   overflow: hidden;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  transition: all 400ms ease-in-out !important ;
+  /* transition: all 400ms ease-in-out !important ; */
 }
 
 .moon {
@@ -79,18 +55,16 @@ button:hover {
   color: white;
   transition: background-color, border-color, color;
   transform: scale(1.1);
+  transition: all 400ms ease-in-out !important ;
 }
 
 button:not(:hover) {
   transform: scale(1);
+  transition: all 400ms ease-in-out !important ;
 }
 
 button:focus {
   transform: scale(1.1);
-  background-color: transparent;
-  color: transparent;
-  border: none;
-  box-shadow: none;
 }
 
 @keyframes spin {
@@ -113,7 +87,6 @@ button:focus {
   z-index: 1;
 }
 
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -129,13 +102,13 @@ button:focus {
 
 .fade-out {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 
 
 @media screen and (max-width: 1024px) {
   button {
-    width: 300px;
+    width: 220px;
     height: 40px;
     font-size: 15px;
     bottom: -100px;

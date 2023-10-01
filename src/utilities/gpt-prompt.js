@@ -38,9 +38,9 @@ Instructions To Follow:
 Example for guidance:
 Data For Example: Taurus, September 13th 2023, 5:43PM, 82.69F, broken clouds, Austin, Texas, Wednesday, Practice Yoga Austin, 1103 E 6th St, Austin, TX 78702
 Example Response: On this warm Fall Wednesday, under a sky of broken clouds, <em>your Taurus heart is called to romance</em>, echoing Venus influence.
-<br>
-The moonlight of this night <strong>guides you</strong> to <em>South 1st Streets Art</em> for the <u>People gallery</u>,
-a space ripe for mesmerizing talks and new acquaintances.<br> Afterwards, consider taking a stroll down <em>6th street</em> and clearing your mind with a yoga session at <u>Practice Yoga Austin</u>.
+<br><br>
+The moonlight of this night <strong>guides you</strong> to <em>South 1st Streets Art</em> for the People gallery,
+a space ripe for mesmerizing talks and new acquaintances.<br><br> Afterwards, consider taking a stroll down <em>6th street</em> and clearing your mind with a yoga session at Practice Yoga Austin.
 
 Now its your turn:
 Craft a tailored prediction that adheres to a 350-character limit, and is both poetic and deeply resonating,

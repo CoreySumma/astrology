@@ -7,10 +7,7 @@ import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance.jsx";
 import weatherApi from "../../utilities/weather-api";
 import moonApi from "../../utilities/moon-api";
 import getMeetUp from "../../utilities/meetup-api";
-import { updateTime } from "../../actions";
-import { updateLocation } from "../../actions";
-import { updateDate } from "../../actions";
-import { updateDay } from "../../actions";
+import { updateTime, updateLocation, updateDate, updateDay } from "../../actions";
 import axios from "axios";
 
 export default function App() {
@@ -26,7 +23,7 @@ export default function App() {
   const [fade, setFade] = useState(false);
   // Flag to hide the button indefinitely after the click
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  // Flag if the component mounted for message ti be displayed to user on load
+  // Flag if the component mounted for message to be displayed to user on load
   const isMounted = useRef(true);
   // Redux
   const dispatch = useDispatch();

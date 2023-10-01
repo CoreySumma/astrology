@@ -1,3 +1,5 @@
+// We don't use this component anymore, but we keep it for reference
+
 export default function Weather({ data, time }) {
   // console.log("this is the log of data in weather", data)
   return (

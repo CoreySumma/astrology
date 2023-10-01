@@ -1,10 +1,11 @@
 import "./DayAtAGlance.css";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import gptApi from "../../utilities/gpt-api";
+import gptApi2 from "../../utilities/gpt-api2";
 import { useEffect } from "react";
 // Library so gpt can return html tags
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 export default function DayAtAGlance({
   date,
@@ -42,10 +43,24 @@ export default function DayAtAGlance({
     ) {
       setAllGptDataFetched(true);
     }
-  }, [sign, temp, location, day, description, date, time, moonData, businessLocation, businessName]);
+  }, [
+    sign,
+    temp,
+    location,
+    day,
+    description,
+    date,
+    time,
+    moonData,
+    businessLocation,
+    businessName,
+  ]);
 
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
+  // Grab the refined prediction from the store
+  let refinedPrediction = useSelector((store) => store.userData.refinedPrediction);
+  
   async function callGpt() {
     try {
       let result = await gptApi(
@@ -60,18 +75,6 @@ export default function DayAtAGlance({
         businessLocation,
         businessName
       );
-      console.log(
-        "this is the result from gptApi",
-        result,
-        "this is the values that were passed --->",
-        sign,
-        date,
-        time,
-        temp,
-        location,
-        description,
-        day
-      );
       setPrediction(result);
     } catch (error) {
       console.log("Error making call to gpt", error);
@@ -82,12 +85,14 @@ export default function DayAtAGlance({
     // this is to prevent the button from being clicked before all data is fetched and to trigger the fade out animation
     if (allGptDataFetched === true) {
       callGpt();
-      setIsButtonVisible(false);
-      setFade(true);
+        setIsButtonVisible(false);
+        setFade(true);
     } else {
       // This doesn't work...yet
       setTimeout(() => {
-        console.log("Waiting for data to be fetched...Trying again in 2 seconds.")
+        console.log(
+          "Waiting for data to be fetched...Trying again in 2 seconds."
+        );
         callGpt();
         setIsButtonVisible(false);
         setFade(true);
@@ -105,10 +110,10 @@ export default function DayAtAGlance({
       <div className="prediction-container">
         {!allGptDataFetched ? (
           <div className="spinner"></div>
-        ) : moonData && prediction ? (
+        ) : moonData && refinedPrediction ? (
           <div className="prediction-text-fade-in">
             <img className="moon" src={moonData} alt="Moon Phase" />
-            <p className="prediction-text">{parse(prediction)}</p>
+            <p className="prediction-text">{parse(refinedPrediction)}</p>
           </div>
         ) : (
           <p className="prediction-text"></p>

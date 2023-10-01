@@ -1,5 +1,7 @@
 import axios from "axios";
 import { updatePrediction } from "../actions";
+import { updateRefinedPrediction } from "../actions";
+import gptApi2 from "./gpt-api2";
 import { gptPrompt } from "./gpt-prompt";
 
 export default async function gptApi(
@@ -12,8 +14,9 @@ export default async function gptApi(
   description,
   day,
   businessLocation,
-  businessName
+  businessName,
 ) {
+  // First API call to GPT
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
@@ -30,7 +33,7 @@ export default async function gptApi(
           businessLocation,
           businessName
         ),
-        temperature: 0.7,
+        temperature: 1,
         max_tokens: 200,
       },
       {
@@ -40,8 +43,26 @@ export default async function gptApi(
         },
       }
     );
+    // Update Redux store with prediction
     dispatch(updatePrediction(response.data.choices[0].text.trim()));
-    // console.log(response.data.choices[0].text.trim());
+    // Set prediction to variable to pass to second call
+    let prediction = response.data.choices[0].text.trim();
+    // Second API call to GPT
+    let refinedPrediction = await gptApi2(
+      signData,
+      date,
+      time,
+      temp,
+      location,
+      dispatch,
+      description,
+      day,
+      businessLocation,
+      businessName,
+      prediction
+    );
+    // Update Redux store with refined prediction
+    dispatch(updateRefinedPrediction(refinedPrediction));
     return response.data.choices[0].text.trim();
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
