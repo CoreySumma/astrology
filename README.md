@@ -8,7 +8,7 @@
 
 
 ## Description:
-This is a React application that utilizes Open AI's API, Open Weathers API, Astronomy API(show current moon phase based on location and date), Yelp Fusion API and Google's reverse geolocation API to generate a specific horoscope for the day for the user based on Date, Time, Astrological Sign, Weather, Temperature, Day of the Week, and the User's Location.
+This is a React application that utilizes Open AI's API, Open Weathers API, Astronomy API(show current moon phase based on location and date), Yelp Fusion API and Google's reverse geolocation API to generate a specific horoscope for the day for the user based on Date, Time, Astrological Sign, Weather, Temperature, Day of the Week, closest Yoga center, and the User's Location.
 
 ## Using the App
 </div>
