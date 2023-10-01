@@ -13,6 +13,8 @@ This is a React application that utilizes Open AI's API, Open Weathers API, Astr
 ## Using the App
 </div>
 
+- Make sure location services is enabled.
+
 - Select your Star Sign.
 
 - Click the "Ask The Universe" Button.
