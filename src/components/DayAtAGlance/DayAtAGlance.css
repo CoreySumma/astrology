@@ -4,6 +4,7 @@
   position: absolute;
   top: 0;
   background-color: transparent;
+  border: transparent;
   min-height: 50vh;
   width: 60%;
   padding: 10px;
@@ -88,13 +89,30 @@ button:focus {
 }
 
 .loading-zodiac-sign {
-  width: 300px;
+  width: 80px;
   height: auto;
-  margin-bottom: 80px !important;
+  /* margin-bottom: 40px !important; */
   font-size: calc(12px + 1vmin);
   color: white;
   animation: fadeInOut 2s infinite;
+  list-style: none;
   z-index: 1;
+}
+
+.loading-zodiac-sign-container {
+  position: absolute;
+  top: 10vw;
+  border: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  width: 250px;
+}
+
+.swiper-slide-custom {
+  margin-top: -5vw;
+  position: fixed;
 }
 
 @keyframes fadeIn {
@@ -130,6 +148,11 @@ button:focus {
   transition: opacity 1s ease-in-out;
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1500px) {
+  .loading-zodiac-sign {
+    margin-top:10vw;
+  }
+}
 
 @media screen and (max-width: 1024px) {
   button {
@@ -137,6 +160,9 @@ button:focus {
     height: 40px;
     font-size: 15px;
     bottom: -100px;
+  }
+  .loading-zodiac-sign {
+    margin-top: 30vw;
   }
 }
 
@@ -160,8 +186,6 @@ button:focus {
     padding-right: 4px;
   }
   .loading-zodiac-sign {
-    width: 188px;
-    height: auto;
-    margin-top: 90px;
+    margin-top: 20vw;
   }
 }

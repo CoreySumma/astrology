@@ -6,6 +6,7 @@ import gptApi2 from "../../utilities/gpt-api2";
 import { useEffect } from "react";
 // Library so gpt can return html tags
 import parse from "html-react-parser";
+import 'swiper/css/bundle';
 
 export default function DayAtAGlance({
   date,
@@ -34,7 +35,7 @@ export default function DayAtAGlance({
     gemini: "../../images/geminiw.png",
     cancer: "../../images/cancerw.png",
     leo: "../../images/leow.png",
-    virgo: "../../images/virgow.png",
+    virgo: "../../images/virgo1w.png",
     libra: "../../images/libraw.png",
     scorpio: "../../images/scorpiow.png",
     sagittarius: "../../images/sagittariusw.png",
@@ -145,6 +146,10 @@ export default function DayAtAGlance({
           <p className="prediction-text"></p>
         )}
       </div>
+      {/* Test loader */}
+        {/* <div className="loading-zodiac-sign-container">
+          <img className="loading-zodiac-sign" src={signImage} alt="Sign" />
+        </div> */}
     </>
   );
 }
