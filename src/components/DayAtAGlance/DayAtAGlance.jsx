@@ -25,6 +25,21 @@ export default function DayAtAGlance({
 }) {
   // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
+  // Object to grab sign image based on current sign for loading animation
+  const signImages = {
+    aries: "../../images/ariesw.png",
+    taurus: "../../images/taurusw.png",
+    gemini: "../../images/geminiw.png",
+    cancer: "../../images/cancerw.png",
+    leo: "../../images/leow.png",
+    virgo: "../../images/virgow.png",
+    libra: "../../images/libraw.png",
+    scorpio: "../../images/scorpiow.png",
+    sagittarius: "../../images/sagittariusw.png",
+    capricorn: "../../images/capricornw.png",
+    aquarius: "../../images/aquariusw.png",
+    pisces: "../../images/piscesw.png",
+  };
 
   // This useEffect checks if all data has been fetched and sets the flag to true
   useEffect(() => {

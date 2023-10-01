@@ -87,6 +87,16 @@ button:focus {
   z-index: 1;
 }
 
+.loading-zodiac-sign {
+  width: 15%;
+  height: auto;
+  margin-top: 20px;
+  font-size: calc(12px + 1vmin);
+  color: white;
+  animation: fadeIn 1s fade-out 1s infinite;
+  z-index: 1;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
