@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import gptApi from "../../utilities/gpt-api";
 import { useEffect } from "react";
+// Library so gpt can return html tags
+import parse from 'html-react-parser';
 
 export default function DayAtAGlance({
   date,
@@ -106,7 +108,7 @@ export default function DayAtAGlance({
         ) : moonData && prediction ? (
           <div className="prediction-text-fade-in">
             <img className="moon" src={moonData} alt="Moon Phase" />
-            <p className="prediction-text">{prediction}</p>
+            <p className="prediction-text">{parse(prediction)}</p>
           </div>
         ) : (
           <p className="prediction-text"></p>

@@ -30,7 +30,7 @@ export default async function gptApi(
           businessLocation,
           businessName
         ),
-        temperature: 0.6,
+        temperature: 0.7,
         max_tokens: 200,
       },
       {
@@ -41,6 +41,7 @@ export default async function gptApi(
       }
     );
     dispatch(updatePrediction(response.data.choices[0].text.trim()));
+    // console.log(response.data.choices[0].text.trim());
     return response.data.choices[0].text.trim();
   } catch (error) {
     console.error("Error calling OpenAI API:", error);

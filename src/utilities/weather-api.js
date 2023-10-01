@@ -23,7 +23,7 @@ export default async function weatherApi(
             `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
           );
           setData(res.data);
-          dispatch(updateTemp(res.data.current.temp));
+          dispatch(updateTemp(Math.floor(res.data.current.temp)));
           dispatch(updateDescription(res.data.current.weather[0].description));
           return res.data;
         } catch (error) {
