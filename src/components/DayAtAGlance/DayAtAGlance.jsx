@@ -2,11 +2,9 @@ import "./DayAtAGlance.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import gptApi from "../../utilities/gpt-api";
-import gptApi2 from "../../utilities/gpt-api2";
 import { useEffect } from "react";
 // Library so gpt can return html tags
 import parse from "html-react-parser";
-import 'swiper/css/bundle';
 
 export default function DayAtAGlance({
   date,

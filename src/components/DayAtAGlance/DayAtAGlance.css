@@ -99,22 +99,6 @@ button:focus {
   z-index: 1;
 }
 
-.loading-zodiac-sign-container {
-  position: absolute;
-  top: 10vw;
-  border: transparent;
-  overflow: hidden;
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
-  width: 250px;
-}
-
-.swiper-slide-custom {
-  margin-top: -5vw;
-  position: fixed;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;

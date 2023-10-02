@@ -28,7 +28,7 @@ export default function App() {
   // Redux
   const dispatch = useDispatch();
 
-  // This is polite message to the user to allow location access
+  // This is polite message to the user to allow location access - uncomment it if you want to use it
   // useEffect(() => {
   //   if (isMounted.current === true) {
   //   alert(

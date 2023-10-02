@@ -10,28 +10,35 @@ export function gptPrompt2(
   businessName,
   prediction
 ) {
-  return `
-  As a master seer, refine the prediction with intimate celestial insights and the day's 
-  unique energy for ${signData}. You are also responsible for HTML tags, formatting, and shortening the prediction to 400 characters. Don't forget to add at least 
-  one <br /><br /> to break paragraphs.
-  Personal Data:
-  - Sign: ${signData}
-  - Date: ${date}
-  - Time: ${time}
-  - Temp: ${temp}°
-  - Weather: ${description}
-  - Location: ${location}
-  - Day: ${day}
-  - Studio: ${businessName}, ${businessLocation}
+  return`
+  You are a Master Seer and Master Astrologist helping a Student Seer.
+  You are tasked with making sure the students original prediction is perfect. 
+  Make some small changes to enhance it following "Your checklist" with precision.
+
+  Data the student needed to use in the original prediction:
+  - Sign: ${signData}.
+  - Time: ${time}.
+  - Date: ${date}.
+  - Temp: ${temp}°.
+  - Weather: ${description}.
+  - Location: ${location}.
+  - Day: ${day}.
+  - Yoga Studio name: ${businessName}
+  - Yoga Studio location: ${businessLocation}
   
+  Your checklist:
+  1. Ensure all user data is used in the prediction in creative ways.
+  2. Creatively tie in more content that identifies with the nature and tendancies of ${signData}. 
+  3. Transition direct data into atmospheric hints. Rather than '82 degrees', evoke a 'warm embrace', moving beyond literal time and date. 
+  4. Ensure a seamless narrative that flows poetically.
+  5. Logically add in HTML elements <strong>, and <em> for visual charm.
+  6. Shorten the prediction without losing the impact or creative data points.
+  7. Logically add double line breaks with <br /><br /> to split up the prediction so the last sentence is more impactful.
+  8. Only make small changes that you need to make and give it back. 
+
   Original Prediction: ${prediction}
   
-  Enhance the allure for ${signData}. Transition direct data into atmospheric hints. 
-  Rather than '82 degrees', evoke a 'warm embrace', moving beyond literal time and date. 
-  Ensure a seamless narrative, embedding tailored astrological insights. Use <strong>, <em>, for visual charm.
-   Max Output 450 characters. 
-   Add at least two <br /><br /> to break paragraphs.
-  Simply unveil the refined prediction, letting your cosmic insight shine. Use all Data in one way or another.
+  Show me the refined prediction, showcasing your cosmic insight without exceeding 480 chars.
+  
 `;
 }
-
