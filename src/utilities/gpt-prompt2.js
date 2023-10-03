@@ -10,7 +10,7 @@ export function gptPrompt2(
   businessName,
   prediction
 ) {
-  return`
+  return `
   You are a Master Seer and Master Astrologist helping a Student Seer.
   You are tasked with making sure the students original prediction is perfect. 
   Make some small changes to enhance it following "Your checklist" with precision.
@@ -23,13 +23,13 @@ export function gptPrompt2(
   - Weather: ${description}.
   - Location: ${location}.
   - Day: ${day}.
-  - Yoga Studio name: ${businessName}
-  - Yoga Studio location: ${businessLocation}
+  - Yoga Studio name: ${businessName}.
+  - Yoga Studio location: ${businessLocation}.
   
   Your checklist:
   1. Ensure all user data is used in the prediction in creative ways.
-  2. Creatively tie in more content that identifies with the nature and tendancies of ${signData}. 
-  3. Transition direct data into atmospheric hints. Rather than '82 degrees', evoke a 'warm embrace', moving beyond literal time and date. 
+  2. Creatively tie in more content that identifies with the nature and tendencies of ${signData}. 
+  3. Transition direct data into atmospheric hints. Rather than '82 degrees', evoke a 'warm embrace', moving beyond literal time and date. Be creative with your atmospheric hints! 
   4. Ensure a seamless narrative that flows poetically.
   5. Logically add in HTML elements <strong>, and <em> for visual charm.
   6. Shorten the prediction without losing the impact or creative data points.
