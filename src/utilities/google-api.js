@@ -1,6 +1,6 @@
 import axios from "axios";
+import { updateLocation } from "../actions";
 
-// Not currently in use but, will be soon ---- MUCH CLEANER
 export default async function getLocationFromGoogs(
   lat,
   long,

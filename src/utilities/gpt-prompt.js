@@ -50,4 +50,8 @@ Craft a tailored prediction that adheres to a 350-character limit, and is both p
  Tie in something about the moon like in the example. Be creative and weave all the data you have into your response!
 `;
 }
-
+// Example for guidance:
+// Data For Example: Taurus, October 3rd 2023, 5:43PM, 82.69F, broken clouds, Austin, Texas, Wednesday, Practice Yoga Austin, 1103 E 6th St, Austin, TX 78702
+// Example Response: On this warm Fall Wednesday, while the sun sets in a sky of broken clouds, your Taurus heart is called to romance, echoing Venus influence.
+// The moonlight of this night guides you as Halloween approaches. This fall night is perfect to for an adventure to South 1st Streets Art for the People gallery,
+// a space ripe for mesmerizing talks and new acquaintances. Afterwards, consider taking a stroll down 6th street and clearing your mind with a yoga session at Practice Yoga Austin nearby.

@@ -1,4 +1,5 @@
 // We don't use this component anymore, but we keep it for reference
+// If we want to display the weather - we can use this 
 
 export default function Weather({ data, time }) {
   // console.log("this is the log of data in weather", data)

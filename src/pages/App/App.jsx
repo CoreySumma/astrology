@@ -1,15 +1,15 @@
 import "./App.css";
 import React from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
+import { updateTime, updateLocation, updateDate, updateDay } from "../../actions";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance.jsx";
 import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import moonApi from "../../utilities/moon-api";
 import getMeetUp from "../../utilities/meetup-api";
-import { updateTime, updateLocation, updateDate, updateDay } from "../../actions";
-import axios from "axios";
 
 export default function App() {
   const [lat, setLat] = useState(null);
@@ -70,50 +70,17 @@ export default function App() {
     dispatch(updateDay(dayOfWeek));
     dispatch(updateDate(newDate));
     dispatch(updateTime(time));
-    // Call the weather API with arguments
+    // Call the weather API with arguments which also gets user longitude and latitude
     weatherApi(lat, long, setLat, setLong, setData, dispatch);
-    // Call the moon API with arguments to get moon phase image and display it with local state
-    moonApi(setMoonData, lat, long, moonDate);
-    // set your search terms for business's in your area
-    let search = "yoga";
-    // Call the yelp API with arguments (right now it searches business name not events i.e. 'meetups')
-    getMeetUp(search, lat, long, dispatch);
-    // Call the google maps API to get the city name, state etc
     if (long && lat) {
-      const fetchData = async () => {
-        try {
-          const res = await axios.get(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
-          );
-          // Delete me
-          // console.log("this is the res from google", res.data);
-          // General location from google
-
-          // const locationData = `
-          // ${res.data.results[0].address_components[2].long_name},
-          // ${res.data.results[0].address_components[3].long_name},
-          // ${res.data.results[0].address_components[5].long_name}`.trim();
-
-          const locationData = `
-          ${res.data.results[0].address_components[3].long_name}, 
-          ${res.data.results[0].address_components[5].long_name}`.trim();
-
-          // Exact location from google (gpt seems to work better with the general location)
-          // const locationData = `${res.data.results[0].formatted_address}`.trim();
-
-          // Save location to redux store
-          dispatch(updateLocation(locationData));
-          // Set flag to true to avoid constant calling of API
-          setLocationFetched(true);
-          return `
-          ${res.data.results[0].address_components[2].long_name},
-          ${res.data.results[0].address_components[3].long_name}, 
-          ${res.data.results[0].address_components[5].long_name}`;
-        } catch (error) {
-          console.log("Error making geo call", error);
-        }
-      };
-      fetchData();
+      // Call the google maps API to get the city name, state etc of the user
+      getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
+      // Call the moon API with arguments to get moon phase image and display it with local state
+      moonApi(setMoonData, lat, long, moonDate);
+      // set your search terms for business's in your area
+      let search = "yoga";
+      // Call the yelp API with arguments (right now it searches business name not events i.e. 'meetups')
+      getMeetUp(search, lat, long, dispatch);
     }
   }, [lat, long, dispatch, locationFetched]);
 

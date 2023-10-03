@@ -144,7 +144,7 @@ export default function DayAtAGlance({
           <p className="prediction-text"></p>
         )}
       </div>
-      {/* Test loader */}
+      {/* Test loader without fade */}
         {/* <div className="loading-zodiac-sign-container">
           <img className="loading-zodiac-sign" src={signImage} alt="Sign" />
         </div> */}
