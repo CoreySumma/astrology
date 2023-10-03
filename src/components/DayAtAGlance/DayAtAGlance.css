@@ -99,6 +99,7 @@ button:focus {
   z-index: 1;
 }
 
+/* Not using this I don't think I even need it */
 .constellation-container {
   display: flex;
   flex-direction: column;
@@ -112,7 +113,42 @@ button:focus {
   display: block;
   position: relative;
   margin: 0 auto;
-  padding: 10vmin;
+  margin-top: -1vmin;
+  margin-bottom: 5vmin;
+  /* clip-path: circle(0%); */
+  /* animation: circle 4s ease-in-out infinite; */
+  clip-path: inset(0 0% 0 0);
+  animation: leftToRight 3s forwards;
+}
+
+.display-sign {
+  color: white;
+  font-size: 5vmin;
+  letter-spacing: 1vmin;
+  margin-top: -1vmin;
+}
+
+.display-sign::first-letter {
+text-transform: capitalize;
+}
+
+/* Not using but could be useful */
+@keyframes circle {
+  0% {
+    clip-path: circle(0);
+  }
+  100% {
+    clip-path: circle(105%);
+  }
+}
+
+@keyframes leftToRight {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 @keyframes fadeIn {
@@ -187,5 +223,9 @@ button:focus {
   }
   .loading-zodiac-sign {
     margin-top: 20vw;
+  }
+  .constellation {
+    margin-bottom: 8vmin;
+    margin-top: 5vmin;
   }
 }

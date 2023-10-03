@@ -43,7 +43,18 @@ export default function DayAtAGlance({
   };
   const constellationImage = {
     aries: "../../images/aries-constellation.png",
-  }
+    taurus: "../../images/taurus-constellation.png",
+    gemini: "../../images/gemini-constellation.png",
+    cancer: "../../images/cancer-constellation.png",
+    leo: "../../images/leo-constellation.png",
+    virgo: "../../images/virgo-constellation.png",
+    libra: "../../images/libra-constellation.png",
+    scorpio: "../../images/scorpio-constellation.png",
+    sagittarius: "../../images/sagittarius-constellation.png",
+    capricorn: "../../images/capricorn-constellation.png",
+    aquarius: "../../images/aquarius-constellation.png",
+    pisces: "../../images/pisces-constellation.png",
+  };
   // Make a var to the current sign image
   let signImage = signImages[sign];
   // Make a var to the current constellation image
@@ -143,8 +154,15 @@ export default function DayAtAGlance({
         ) : moonData && refinedPrediction ? (
           <div className="prediction-text-fade-in">
             {/* <img className="moon" src={moonData} alt="Moon Phase" /> */}
-            <img className="constellation" src={constellation} alt="Constellation" />
-            <p className="prediction-text">{parse(refinedPrediction)}</p>
+            <div className="constellation-container">
+              <p className="display-sign">{sign}</p>
+              <img
+                className="constellation"
+                src={constellation}
+                alt="Constellation"
+              />
+              <p className="prediction-text">{parse(refinedPrediction)}</p>
+            </div>
           </div>
         ) : (
           <p className="prediction-text"></p>
