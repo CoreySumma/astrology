@@ -41,8 +41,13 @@ export default function DayAtAGlance({
     aquarius: "../../images/aquariusw.png",
     pisces: "../../images/piscesw.png",
   };
+  const constellationImage = {
+    aries: "../../images/aries-constellation.png",
+  }
   // Make a var to the current sign image
   let signImage = signImages[sign];
+  // Make a var to the current constellation image
+  let constellation = constellationImage[sign];
 
   // This useEffect checks if all data has been fetched and sets the flag to true
   useEffect(() => {
@@ -137,17 +142,14 @@ export default function DayAtAGlance({
           <div className="spinner"></div>
         ) : moonData && refinedPrediction ? (
           <div className="prediction-text-fade-in">
-            <img className="moon" src={moonData} alt="Moon Phase" />
+            {/* <img className="moon" src={moonData} alt="Moon Phase" /> */}
+            <img className="constellation" src={constellation} alt="Constellation" />
             <p className="prediction-text">{parse(refinedPrediction)}</p>
           </div>
         ) : (
           <p className="prediction-text"></p>
         )}
       </div>
-      {/* Test loader without fade */}
-        {/* <div className="loading-zodiac-sign-container">
-          <img className="loading-zodiac-sign" src={signImage} alt="Sign" />
-        </div> */}
     </>
   );
 }

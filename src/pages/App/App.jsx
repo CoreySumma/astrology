@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
@@ -30,14 +29,14 @@ export default function App() {
   const dispatch = useDispatch();
 
   // This is polite message to the user to allow location access - uncomment it if you want to use it
-  // useEffect(() => {
-  //   if (isMounted.current === true) {
-  //   alert(
-  //     "This app uses your location. Please allow location access through your privacy settings if you experience issues."
-  //   );
-  //   isMounted.current = false;
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (isMounted.current === true) {
+    alert(
+      "This app uses your location so the heavens can accuratley make a prediction. Please allow location access through your settings if you experience issues."
+    );
+    isMounted.current = false;
+    }
+  }, []);
 
   // One useEffect to rule them all
   useEffect(() => {
@@ -77,9 +76,9 @@ export default function App() {
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       // Call the moon API with arguments to get moon phase image and display it with local state
       moonApi(setMoonData, lat, long, moonDate);
-      // set your search terms for business's in your area
+      // Set your search terms for business's in your area
       let search = "yoga";
-      // Call the yelp API with arguments (right now it searches business name not events i.e. 'meetups')
+      // Call the yelp API with arguments (right now it searches business name not events despite naming convention of 'getMeetUp')
       getMeetUp(search, lat, long, dispatch);
     }
   }, [lat, long, dispatch, locationFetched]);

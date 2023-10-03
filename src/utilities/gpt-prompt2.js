@@ -29,7 +29,7 @@ export function gptPrompt2(
   Your checklist:
   1. Ensure all user data is used in the prediction in creative ways.
   2. Creatively tie in more content that identifies with the nature and tendencies of ${signData}. 
-  3. Transition direct data into atmospheric hints. Rather than '82 degrees', evoke a 'warm embrace', moving beyond literal time and date. Be creative with your atmospheric hints! 
+  3. Transition direct data into atmospheric hints. Rather than '82 degrees', evoke a description, moving beyond literal data. Be creative with your atmospheric hints! 
   4. Ensure a seamless narrative that flows poetically.
   5. Logically add in HTML elements <strong>, and <em> for visual charm.
   6. Shorten the prediction without losing the impact or creative data points.
@@ -39,6 +39,5 @@ export function gptPrompt2(
   Original Prediction: ${prediction}
   
   Show me the refined prediction, showcasing your cosmic insight without exceeding 480 chars.
-  
 `;
 }
