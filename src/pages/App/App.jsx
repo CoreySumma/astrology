@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
 import Modal from "react-modal";
+import { motion } from "framer-motion";
 import {
   updateTime,
   updateLocation,
@@ -113,34 +114,46 @@ export default function App() {
             <source src="/movies/starz.mp4" type="video/mp4" />
           </video>
         </div>
-        <Modal
-          isOpen={showModal}
-          contentLabel="Minimal Modal Example"
-          overlayClassName="Overlay"
-          className={"custom-modal"}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ rotate: 180, scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
         >
-          <div className="modal-title-container">
-            <h1>The Gods Cannot Find You</h1>
-          </div>
-          <div className="modal-body-container">
-            <p>
-              This app uses your location so the heavens can accuratley make a
-              prediction. Please allow location access through your settings if
-              you experience issues.
-            </p>
-          </div>
-          <div className="modal-button-container">
-            <button
-              className="modal-button"
-              onClick={() => {
-                setShowModal(false);
-                window.location.reload();
-              }}
-            >
-              Refresh
-            </button>
-          </div>
-        </Modal>
+          <Modal
+            isOpen={showModal}
+            contentLabel="Minimal Modal Example"
+            overlayClassName="Overlay"
+            className={"custom-modal"}
+            ariaHideApp={false}
+          >
+            <div className="modal-title-container">
+              <h2>The Gods Cannot Find You</h2>
+            </div>
+            <div className="modal-body-container">
+              <p>
+                This app uses your location so the heavens can accuratley make a
+                prediction. <em>Please allow location access through your settings
+                if you experience issues.</em>
+              </p>
+            </div>
+            <div className="modal-button-container">
+              <button
+                className="modal-button"
+                onClick={() => {
+                  setShowModal(false);
+                  window.location.reload();
+                }}
+              >
+                Refresh
+              </button>
+            </div>
+          </Modal>
+        </motion.div>
+        
         <Header
           data={data}
           time={time}
