@@ -6,6 +6,18 @@
   position: relative;
 }
 
+.animation-container {
+  height: auto;
+  width: auto;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .custom-modal {
   z-index: 3;
   position: absolute;
