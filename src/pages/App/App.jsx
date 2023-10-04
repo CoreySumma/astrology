@@ -5,7 +5,6 @@ import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance.jsx";
 import Modal from "../../components/Modal/Modal";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   updateTime,
   updateLocation,
@@ -95,8 +94,7 @@ export default function App() {
   );
 
   // This is polite message to the user to allow location access if not found
-  // It also checks if the location has been fetched and if so, it immediately closes the modal
-  // Then, it checks every 5 seconds if the location has been fetched and if not, it displays the modal
+  // It's basically a useEffect loop that checks if the location has been fetched and escapes the loop if so
   useEffect(() => {
     console.log("Entered modal useEffect", showModal);
     if (locationFetched) {
