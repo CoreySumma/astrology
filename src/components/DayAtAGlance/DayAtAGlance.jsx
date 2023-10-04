@@ -142,7 +142,7 @@ export default function DayAtAGlance({
     <>
       <button
         onClick={handleClick}
-        className={!isButtonVisible ? "fade-out" : ""}
+        className={`prediction-button ${!isButtonVisible ? "fade-out" : ""}`}
       >
         Ask The Universe
       </button>

@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
-
+import Modal from "react-modal";
 import {
   updateTime,
   updateLocation,
@@ -15,7 +15,6 @@ import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import moonApi from "../../utilities/moon-api";
 import getMeetUp from "../../utilities/meetup-api";
-import { Modal } from "materialize-css";
 
 export default function App() {
   const [lat, setLat] = useState(null);
@@ -114,8 +113,33 @@ export default function App() {
             <source src="/movies/starz.mp4" type="video/mp4" />
           </video>
         </div>
-        <Modal>
-          
+        <Modal
+          isOpen={showModal}
+          contentLabel="Minimal Modal Example"
+          overlayClassName="Overlay"
+          className={"custom-modal"}
+        >
+          <div className="modal-title-container">
+            <h1>The Gods Cannot Find You</h1>
+          </div>
+          <div className="modal-body-container">
+            <p>
+              This app uses your location so the heavens can accuratley make a
+              prediction. Please allow location access through your settings if
+              you experience issues.
+            </p>
+          </div>
+          <div className="modal-button-container">
+            <button
+              className="modal-button"
+              onClick={() => {
+                setShowModal(false);
+                window.location.reload();
+              }}
+            >
+              Refresh
+            </button>
+          </div>
         </Modal>
         <Header
           data={data}

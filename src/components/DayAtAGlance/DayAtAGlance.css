@@ -26,7 +26,7 @@
   z-index: 1;
 }
 
-button {
+.prediction-button {
   margin-top: 60px;
   margin-bottom: 10px;
   width: 280px;
@@ -50,7 +50,7 @@ button {
   position: relative;
 }
 
-button:hover {
+.prediction-button:hover {
   background: transparent;
   border: black;
   color: white;
@@ -59,12 +59,12 @@ button:hover {
   transition: all 400ms ease-in-out !important ;
 }
 
-button:not(:hover) {
+.prediction-button:not(:hover) {
   transform: scale(1);
   transition: all 400ms ease-in-out !important ;
 }
 
-button:focus {
+.prediction-button:focus {
   transform: scale(1.1);
 }
 
@@ -191,7 +191,7 @@ text-transform: capitalize;
 }
 
 @media screen and (max-width: 1024px) {
-  button {
+  .prediction-button {
     width: 220px;
     height: 40px;
     font-size: 15px;
@@ -203,7 +203,7 @@ text-transform: capitalize;
 }
 
 @media screen and (max-width: 600px) {
-  button {
+  .prediction-button {
     width: 195px;
     height: 40px;
     font-size: 15px;

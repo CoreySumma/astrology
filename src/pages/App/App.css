@@ -6,6 +6,68 @@
   position: relative;
 }
 
+.custom-modal {
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: auto;
+  /* max-width: 500px;  */
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.custom-modal:focus {
+  outline: none;
+}
+
+.modal-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.modal-body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.modal-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 280px;
+  height: 60px;
+  border: 1px, transparent, solid;
+  background: black;
+  color: white;
+  font-size: 3vmin;
+  line-height: 2px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  /* transition: all 400ms ease-in-out !important ; */
+}
+
 .video-background {
   position: absolute; /* Changed from fixed to absolute */
   top: 0;
