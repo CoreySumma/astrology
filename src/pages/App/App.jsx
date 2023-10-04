@@ -33,7 +33,7 @@ export default function App() {
   // Flag if the component mounted for message to be displayed to user on load
   const isMounted = useRef(true);
   // Flag for Modal
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   // Redux
   const dispatch = useDispatch();
 
@@ -114,30 +114,26 @@ export default function App() {
             <source src="/movies/starz.mp4" type="video/mp4" />
           </video>
         </div>
-        <motion.div
-        className="motion-container"
-          initial={{ scale: 0 }}
-          animate={{ rotate: 180, scale: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-          }}
-        >
-            <Modal
-              isOpen={showModal}
-              contentLabel="Minimal Modal Example"
-              overlayClassName="Overlay"
-              className={"custom-modal"}
-              ariaHideApp={false}
-            >
+        {showModal && (
+          <motion.div
+            className="overlay"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ rotate: 0, scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+            }}
+          >
+            <div className="custom-modal">
               <div className="modal-title-container">
                 <h2>The Gods Cannot Find You</h2>
               </div>
               <div className="modal-body-container">
                 <p>
-                  This app uses your location so the heavens can accuratley make
-                  a prediction.{" "}
+                  This app uses your location so the heavens can accurately make
+                  a prediction.
+                  <br />
                   <em>
                     Please allow location access through your settings if you
                     experience issues.
@@ -155,8 +151,9 @@ export default function App() {
                   Refresh
                 </button>
               </div>
-            </Modal>
-        </motion.div>
+            </div>
+          </motion.div>
+        )}
 
         <Header
           data={data}
