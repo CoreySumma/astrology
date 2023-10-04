@@ -227,5 +227,10 @@ text-transform: capitalize;
   .constellation {
     margin-bottom: 8vmin;
     margin-top: 5vmin;
+    width: 40vmin;
+    height: auto;
+  }
+  .display-sign {
+    font-size: 10vmin;
   }
 }
