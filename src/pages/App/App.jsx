@@ -3,12 +3,19 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
-import { updateTime, updateLocation, updateDate, updateDay } from "../../actions";
+
+import {
+  updateTime,
+  updateLocation,
+  updateDate,
+  updateDay,
+} from "../../actions";
 import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance.jsx";
 import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import moonApi from "../../utilities/moon-api";
 import getMeetUp from "../../utilities/meetup-api";
+import { Modal } from "materialize-css";
 
 export default function App() {
   const [lat, setLat] = useState(null);
@@ -25,18 +32,20 @@ export default function App() {
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   // Flag if the component mounted for message to be displayed to user on load
   const isMounted = useRef(true);
+  // Flag for Modal
+  const [showModal, setShowModal] = useState(false);
   // Redux
   const dispatch = useDispatch();
 
   // This is polite message to the user to allow location access - uncomment it if you want to use it
-  useEffect(() => {
-    if (isMounted.current === true) {
-    alert(
-      "This app uses your location so the heavens can accuratley make a prediction. Please allow location access through your settings if you experience issues."
-    );
-    isMounted.current = false;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (isMounted.current === true) {
+  //     alert(
+  //       "This app uses your location so the heavens can accuratley make a prediction. Please allow location access through your settings if you experience issues."
+  //     );
+  //     isMounted.current = false;
+  //   }
+  // }, []);
 
   // One useEffect to rule them all
   useEffect(() => {
@@ -80,6 +89,8 @@ export default function App() {
       let search = "yoga";
       // Call the yelp API with arguments (right now it searches business name not events despite naming convention of 'getMeetUp')
       getMeetUp(search, lat, long, dispatch);
+    } else {
+      setShowModal(true);
     }
   }, [lat, long, dispatch, locationFetched]);
 
@@ -96,38 +107,43 @@ export default function App() {
   );
 
   return (
-    <div className="App">
-      <div className="video-background">
-        <video autoPlay={true} playsInline muted loop preload="auto">
-          <source src="/movies/starz.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <Header
-        data={data}
-        time={time}
-        sign={sign}
-        setSign={setSign}
-        fade={fade}
-        setFade={setFade}
-      />
-      <main>
-        <DayAtAGlance
-          temp={temp}
-          date={date}
+    <>
+      <div className="App">
+        <div className="video-background">
+          <video autoPlay={true} playsInline muted loop preload="auto">
+            <source src="/movies/starz.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <Modal>
+          
+        </Modal>
+        <Header
+          data={data}
           time={time}
-          description={description}
           sign={sign}
-          location={location}
-          day={day}
-          moonData={moonData}
-          businessLocation={businessLocation}
-          businessName={businessName}
+          setSign={setSign}
           fade={fade}
           setFade={setFade}
-          isButtonVisible={isButtonVisible}
-          setIsButtonVisible={setIsButtonVisible}
         />
-      </main>
-    </div>
+        <main>
+          <DayAtAGlance
+            temp={temp}
+            date={date}
+            time={time}
+            description={description}
+            sign={sign}
+            location={location}
+            day={day}
+            moonData={moonData}
+            businessLocation={businessLocation}
+            businessName={businessName}
+            fade={fade}
+            setFade={setFade}
+            isButtonVisible={isButtonVisible}
+            setIsButtonVisible={setIsButtonVisible}
+          />
+        </main>
+      </div>
+    </>
   );
 }

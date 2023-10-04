@@ -42,9 +42,12 @@ export default async function gptApi2(
         },
       }
     );
-    dispatch(updateRefinedPrediction(response.data.choices[0].text.trim()));
-    // console.log(response.data.choices[0].text.trim());
-    return response.data.choices[0].text.trim();
+    let refinedText = response.data.choices[0].text.trim();
+    if (refinedText.startsWith("Refined Prediction:")) {
+      refinedText = refinedText.replace("Refined Prediction:", "").trim();
+    }
+    dispatch(updateRefinedPrediction(refinedText));
+    return refinedText;
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
   }
