@@ -14,8 +14,8 @@ export default async function weatherApi(
     navigator.geolocation.getCurrentPosition(async function (position) {
       const currentLat = position.coords.latitude;
       const currentLong = position.coords.longitude;
-      // setLat(currentLat);
-      // setLong(currentLong);
+      setLat(currentLat);
+      setLong(currentLong);
       // This will fetch the weather data from the API using the latitude and longitude states
       if (currentLat && currentLong) {
         try {
@@ -29,7 +29,7 @@ export default async function weatherApi(
         } catch (error) {
           console.error("Error calling weather API:", error);
         }
-      }
+      } 
     });
   };
   fetchData();

@@ -98,8 +98,8 @@
   position: absolute; /* Changed from fixed to absolute */
   top: 0;
   left: 0;
-  width: 100vw; 
-  height: 100vh; 
+  width: 100vw;
+  height: 100vh;
   z-index: -1; /* Set to -1 to ensure it stays behind other content */
   overflow: hidden;
 }
@@ -178,5 +178,23 @@ main {
     height: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+  .modal-title-container {
+    font-size: 3vmin;
+    margin-top: 4vmin;
+    margin-bottom: 4vmin;
+    height: 8vmin;
+  }
+
+  .modal-button-container {
+    margin: 1vmin;
+  }
+
+  .modal-body-container {
+    font-size: 3vmin;
+  }
+
+  .custom-modal {
+    margin-top: -35vmin;
   }
 }

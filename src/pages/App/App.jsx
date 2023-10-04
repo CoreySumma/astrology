@@ -3,8 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import Header from "../../components/Header/Header.jsx";
-import Modal from "react-modal";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   updateTime,
   updateLocation,
@@ -25,7 +24,7 @@ export default function App() {
   const [moonData, setMoonData] = useState(null);
   const [sign, setSign] = useState("aries");
   // Flag to check if location has been fetched to avoid constant calling of API
-  let [locationFetched, setLocationFetched] = useState(false);
+  const [locationFetched, setLocationFetched] = useState(false);
   // Flag to fade everything out after button is clicked
   const [fade, setFade] = useState(false);
   // Flag to hide the button indefinitely after the click
@@ -36,16 +35,6 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
   // Redux
   const dispatch = useDispatch();
-
-  // This is polite message to the user to allow location access - uncomment it if you want to use it
-  // useEffect(() => {
-  //   if (isMounted.current === true) {
-  //     alert(
-  //       "This app uses your location so the heavens can accuratley make a prediction. Please allow location access through your settings if you experience issues."
-  //     );
-  //     isMounted.current = false;
-  //   }
-  // }, []);
 
   // One useEffect to rule them all
   useEffect(() => {
@@ -89,8 +78,6 @@ export default function App() {
       let search = "yoga";
       // Call the yelp API with arguments (right now it searches business name not events despite naming convention of 'getMeetUp')
       getMeetUp(search, lat, long, dispatch);
-    } else {
-      setShowModal(true);
     }
   }, [lat, long, dispatch, locationFetched]);
 
@@ -106,6 +93,30 @@ export default function App() {
     (state) => state.userData.businessLocation
   );
 
+  // This is polite message to the user to allow location access if not found
+  // It also checks if the location has been fetched and if so, it immediately closes the modal
+  // Then, it checks every 5 seconds if the location has been fetched and if not, it displays the modal
+  useEffect(() => {
+    console.log("Entered modal useEffect", showModal);
+    if (locationFetched) {
+      // Location has been fetched, immediately decide about the modal
+      console.log("Location already fetched");
+      setShowModal(false);
+      return; // Exit the useEffect
+    }
+    console.log("Waiting for location or timeout");
+    const timer = setTimeout(() => {
+      if (locationFetched) {
+        console.log("Location fetched within timeout");
+        setShowModal(false);
+      } else {
+        console.log("Timeout reached without fetching location");
+        setShowModal(true);
+      }
+    }, 6000);
+    return () => clearTimeout(timer); // Clean up timer on unmount or if useEffect runs again
+  }, [locationFetched]);
+
   return (
     <>
       <div className="App">
@@ -114,46 +125,51 @@ export default function App() {
             <source src="/movies/starz.mp4" type="video/mp4" />
           </video>
         </div>
-        {showModal && (
-          <motion.div
-            className="overlay"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ rotate: 0, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 20,
-            }}
-          >
-            <div className="custom-modal">
-              <div className="modal-title-container">
-                <h2>The Gods Cannot Find You</h2>
+        <AnimatePresence>
+          {showModal && (
+            <motion.div
+              className="overlay"
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ rotate: 0, scale: 1 }}
+              exit={{ scale: 0, rotate: 180 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+              }}
+            >
+              <div className="custom-modal">
+                <div className="modal-title-container">
+                  <h2>The Gods Cannot Find You</h2>
+                </div>
+                <div className="modal-body-container">
+                  <p>
+                    This app uses your location so the heavens can accurately
+                    make a prediction.
+                    <br />
+                    <em>
+                      Please allow location access through your settings if you
+                      experience issues.
+                    </em>
+                  </p>
+                </div>
+                <div className="modal-button-container">
+                  <button
+                    className="modal-button"
+                    onClick={() => {
+                      setShowModal(false);
+                      setTimeout(() => {
+                        window.location.reload();
+                      }, 1000);
+                    }}
+                  >
+                    Refresh
+                  </button>
+                </div>
               </div>
-              <div className="modal-body-container">
-                <p>
-                  This app uses your location so the heavens can accurately make
-                  a prediction.
-                  <br />
-                  <em>
-                    Please allow location access through your settings if you
-                    experience issues.
-                  </em>
-                </p>
-              </div>
-              <div className="modal-button-container">
-                <button
-                  className="modal-button"
-                  onClick={() => {
-                    setShowModal(false);
-                    window.location.reload();
-                  }}
-                >
-                  Refresh
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <Header
           data={data}

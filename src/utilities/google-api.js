@@ -5,7 +5,7 @@ export default async function getLocationFromGoogs(
   lat,
   long,
   dispatch,
-  setLocationFetched
+  setLocationFetched,
 ) {
   try {
     const res = await axios.get(
@@ -17,7 +17,7 @@ export default async function getLocationFromGoogs(
     // ${res.data.results[0].address_components[2].long_name},
     // ${res.data.results[0].address_components[3].long_name},
     // ${res.data.results[0].address_components[5].long_name}`.trim();
-
+    
     const locationData = `
     ${res.data.results[0].address_components[3].long_name}, 
     ${res.data.results[0].address_components[5].long_name}`.trim();
@@ -28,7 +28,7 @@ export default async function getLocationFromGoogs(
     // Save location to redux store
     dispatch(updateLocation(locationData));
     // Set flag to true to avoid constant calling of API
-    setLocationFetched(true);
+    // setLocationFetched(true);
     return `
     ${res.data.results[0].address_components[2].long_name},
     ${res.data.results[0].address_components[3].long_name}, 
