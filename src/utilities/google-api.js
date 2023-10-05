@@ -28,7 +28,7 @@ export default async function getLocationFromGoogs(
     // Save location to redux store
     dispatch(updateLocation(locationData));
     // Set flag to true to avoid constant calling of API and for Modal display
-    setLocationFetched(true);
+    // setLocationFetched(true);
     return `
     ${res.data.results[0].address_components[2].long_name},
     ${res.data.results[0].address_components[3].long_name}, 

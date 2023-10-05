@@ -98,6 +98,14 @@
 }
 
 @media screen and (max-width: 600px) {
+  .custom-modal {
+    height: min-content;
+    width: 75%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 2vmin;
+  }
   .modal-title-container {
     font-size: 3vmin;
     margin-top: 4vmin;
