@@ -94,22 +94,17 @@ export default function App() {
   );
 
   // This is polite message to the user to allow location access if not found
-  // It's basically a useEffect loop that checks if the location has been fetched and escapes the loop if so
+  // It's basically a useEffect loop that runs if every 6 seconds if location is not fetched and checks if the location has been fetched and escapes the loop if it has
   useEffect(() => {
-    console.log("Entered modal useEffect", showModal);
     if (locationFetched) {
-      // Location has been fetched, immediately decide about the modal
-      console.log("Location already fetched");
+      // Location has been fetched, immediately decide not to show Modal
       setShowModal(false);
       return; // Exit the useEffect
     }
-    console.log("Waiting for location or timeout");
     const timer = setTimeout(() => {
       if (locationFetched) {
-        console.log("Location fetched within timeout");
         setShowModal(false);
       } else {
-        console.log("Timeout reached without fetching location");
         setShowModal(true);
       }
     }, 6000);
