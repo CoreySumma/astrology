@@ -41,6 +41,3 @@ export function gptPrompt2(
   Show me the refined prediction, showcasing your cosmic insight without exceeding 480 chars. MANDATORY: Follow "Your checklist" with precision.
 `;
 }
-
-// Transition direct data into varied atmospheric hints. Rather than '82 degrees', 
-// evoke a creative, and unique ambiance hint - moving beyond literal data.

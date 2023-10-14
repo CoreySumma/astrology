@@ -6,7 +6,7 @@ export default async function moonApi(setMoonData, lat, long, moonDate) {
   );
   try {
     const response = await axios.post(
-      "https://api.astronomyapi.com/api/v2/studio/moon-phase",
+      "https://corsproxy.io/?https://api.astronomyapi.com/api/v2/studio/moon-phase",
       {
         format: "png",
         style: {

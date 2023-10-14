@@ -17,6 +17,8 @@ export default async function getLocationFromGoogs(
     // ${res.data.results[0].address_components[2].long_name},
     // ${res.data.results[0].address_components[3].long_name},
     // ${res.data.results[0].address_components[5].long_name}`.trim();
+
+    console.log(res)
     
     const locationData = `
     ${res.data.results[0].address_components[3].long_name}, 

@@ -10,6 +10,7 @@ export default async function getMeetUp(search, lat, long, dispatch) {
         "Content-Type": "application/json",
       }
     });
+    console.log("Yelp API response", response);
     const businessName = response.data.businesses[0].name;
     const businessImage = response.data.businesses[0].image_url;
     const businessUrl = response.data.businesses[0].url;
