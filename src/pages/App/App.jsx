@@ -33,6 +33,11 @@ export default function App() {
   const isMounted = useRef(true);
   // Flag for Modal
   const [showModal, setShowModal] = useState(false);
+  // Flag for if user has visited before
+  const [hasVisited, setHasVisited] = useState(false);
+  // If the user has visited before this was their previous prediction
+  const [previousPrediction, setPreviousPrediction] = useState(null);
+  
   // Redux
   const dispatch = useDispatch();
 
@@ -73,7 +78,7 @@ export default function App() {
       // Call the google maps API to get the city name, state etc of the user
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       // Call the moon API with arguments to get moon phase image and display it with local state
-      moonApi(setMoonData, lat, long, moonDate);
+      // moonApi(setMoonData, lat, long, moonDate);
       // Set your search terms for business's in your area
       let search = "yoga";
       // Call the yelp API with arguments (right now it searches business name not events despite naming convention of 'getMeetUp')

@@ -41,6 +41,7 @@ export default function DayAtAGlance({
     aquarius: "../../images/aquariusw.png",
     pisces: "../../images/piscesw.png",
   };
+  // Object to grab constellation image based on current sign for loading animation based on loadingPrediction flag
   const constellationImage = {
     aries: "../../images/aries-constellation.png",
     taurus: "../../images/taurus-constellation.png",
@@ -70,8 +71,8 @@ export default function DayAtAGlance({
       description !== "" &&
       date !== "" &&
       time !== "" &&
-      moonData !== null &&
-      moonData !== "" &&
+      // moonData !== null &&
+      // moonData !== "" &&
       businessLocation !== "" &&
       businessName !== ""
     ) {
@@ -151,7 +152,7 @@ export default function DayAtAGlance({
           <img className="loading-zodiac-sign" src={signImage} alt="Sign" />
         ) : !allGptDataFetched ? (
           <div className="spinner"></div>
-        ) : moonData && refinedPrediction ? (
+        ) : refinedPrediction ? (
           <div className="prediction-text-fade-in">
             {/* <img className="moon" src={moonData} alt="Moon Phase" /> */}
             <div className="constellation-container">
