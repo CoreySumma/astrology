@@ -15,6 +15,7 @@ import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import moonApi from "../../utilities/moon-api";
 import getMeetUp from "../../utilities/meetup-api";
+import {awsCheckIfVisited} from "../../utilities/aws-database-api";
 
 export default function App() {
   const [lat, setLat] = useState(null);
@@ -30,14 +31,14 @@ export default function App() {
   // Flag to hide the button indefinitely after the click
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   // Flag if the component mounted for message to be displayed to user on load
-  const isMounted = useRef(true);
+  const isMounted = useRef(false);
   // Flag for Modal
   const [showModal, setShowModal] = useState(false);
   // Flag for if user has visited before
   const [hasVisited, setHasVisited] = useState(false);
   // If the user has visited before this was their previous prediction
   const [previousPrediction, setPreviousPrediction] = useState(null);
-  
+
   // Redux
   const dispatch = useDispatch();
 
@@ -104,11 +105,14 @@ export default function App() {
     if (locationFetched) {
       // Location has been fetched, immediately decide not to show Modal
       setShowModal(false);
+      // Check if user has visited before (cheap way of doing this without clean logic for component mount)
+      awsCheckIfVisited(date);
       return; // Exit the useEffect
     }
     const timer = setTimeout(() => {
       if (locationFetched) {
         setShowModal(false);
+        awsCheckIfVisited(date);
       } else {
         setShowModal(true);
       }

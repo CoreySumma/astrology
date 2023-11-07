@@ -1,29 +1,67 @@
-// Fetch to our AWS gateway endpoint that triggers our Lambda function
-// which grabs the users ip address and if it's not there stores it in our DynamoDB table
-// if it is there it returns a flag to let us know it's already there.
-// the table will save ip address, date, and last prediciton made
-
 import axios from "axios";
 
-export default async function awsApi() {
+// Fetch to our AWS gateway endpoint that triggers our Lambda function
+// We are grabing the users ip address and if it's not there stores it in our DynamoDB table
+// If it is there it returns a flag to let us know it's already there 
+// If not, the table will save ip address, and the date
+export async function awsCheckIfVisited(date) {
   try {
+    console.log("aws function enetered");
     // Get user IP address
-    const ipRes = await axios.get("https://corsproxy.io/?https://api.ipify.org?format=json");
+    const ipRes = await axios.get(
+      "https://corsproxy.io/?https://api.ipify.org?format=json"
+    );
     const ipAddress = ipRes.data.ip;
-    // Send ip address to our AWS gateway endpoint
+    const data = {
+      ipAddress: ipAddress,
+      date: date
+    };
+    // Send data to our AWS gateway endpoint
     const res = await axios.post(
       "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",
+      data,
       {
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
-        ipAddress: ipAddress,
-      }
+      } 
     );
+    console.log("console log response from AWS -->", res.data);
     return res.data;
   } catch (error) {
     console.log("Error making AWS call - ", error);
   }
 }
 
+// function to add prediction to our DynamoDB table using the same endpoint
+
+export async function awsAddPrediction(prediction) {
+  try {
+        console.log("aws function enetered");
+        // Get user IP address
+        const ipRes = await axios.get(
+          "https://corsproxy.io/?https://api.ipify.org?format=json"
+        );
+        const ipAddress = ipRes.data.ip;
+        const data = {
+          prediction: prediction,
+          ipAddress: ipAddress,
+    };
+    // Send data to our AWS gateway endpoint
+    const res = await axios.post(
+      "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      } 
+    );
+    console.log("console log response from AWS -->", res.data);
+    return res.data;
+  } catch (error) {
+    console.log("Error making AWS call - ", error);
+  }
+}

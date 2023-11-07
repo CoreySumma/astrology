@@ -1,6 +1,7 @@
 import axios from "axios";
 import { updateRefinedPrediction } from "../actions";
 import { gptPrompt2 } from "./gpt-prompt2";
+import { awsAddPrediction } from "./aws-database-api";
 
 export default async function gptApi2(
   signData,
@@ -47,6 +48,8 @@ export default async function gptApi2(
       refinedText = refinedText.replace("Refined Prediction:", "").trim();
     }
     dispatch(updateRefinedPrediction(refinedText));
+    console.log("refined text", refinedText)
+    awsAddPrediction(refinedText);
     return refinedText;
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
