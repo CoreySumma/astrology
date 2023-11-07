@@ -6,7 +6,7 @@ import axios from "axios";
 // If not, the table will save ip address, and the date
 export async function awsCheckIfVisited(date) {
   try {
-    console.log("aws function enetered");
+    console.log("aws checkVisited function enetered");
     // Get user IP address
     const ipRes = await axios.get(
       "https://corsproxy.io/?https://api.ipify.org?format=json"
@@ -36,9 +36,9 @@ export async function awsCheckIfVisited(date) {
 
 // function to add prediction to our DynamoDB table using the same endpoint
 
-export async function awsAddPrediction(prediction) {
+export async function awsAddPrediction(prediction, date) {
   try {
-        console.log("aws function enetered");
+        console.log("aws Add prediction function enetered");
         // Get user IP address
         const ipRes = await axios.get(
           "https://corsproxy.io/?https://api.ipify.org?format=json"
@@ -47,6 +47,7 @@ export async function awsAddPrediction(prediction) {
         const data = {
           prediction: prediction,
           ipAddress: ipAddress,
+          date: date,
     };
     // Send data to our AWS gateway endpoint
     const res = await axios.post(

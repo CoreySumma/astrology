@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import Weather from "../Weather/Weather";
 import SignForm from "../SignForm/SignForm";
 import "./Header.css";
-import { updateDate } from "../../actions";
-import { useDispatch } from "react-redux";
 
 export default function Header({
   data,
@@ -13,7 +11,6 @@ export default function Header({
   fade,
   setFade,
 }) {
-  const dispatch = useDispatch();
 
   return (
     data && (

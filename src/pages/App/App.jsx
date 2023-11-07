@@ -37,7 +37,7 @@ export default function App() {
   // Flag for if user has visited before
   const [hasVisited, setHasVisited] = useState(false);
   // If the user has visited before this was their previous prediction
-  const [previousPrediction, setPreviousPrediction] = useState(null);
+  const [previousPrediction, setPreviousPrediction] = useState("");
 
   // Redux
   const dispatch = useDispatch();
