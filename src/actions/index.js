@@ -10,6 +10,9 @@ export const UPDATE_DAY = 'UPDATE_DAY';
 export const UPDATE_BUSINESS_NAME = 'UPDATE_BUSINESS_NAME';
 export const UPDATE_BUSINESS_LOCATION = 'UPDATE_BUSINESS_LOCATION';
 export const UPDATE_REFINED_PREDICTION = 'UPDATE_REFINED_PREDICTION';
+export const UPDATE_USER_EXISTS = 'UPDATE_USER_EXISTS';
+export const UPDATE_LAST_DATE_VISITED = 'UPDATE_LAST_DATE_VISITED';
+export const UPDATE_LAST_PREDICTION = 'UPDATE_LAST_PREDICTION';
 
 
 // Action Creators
@@ -86,6 +89,27 @@ export const updateRefinedPrediction = (refinedPrediction) => {
   return {
     type: UPDATE_REFINED_PREDICTION,
     payload: refinedPrediction,
+  };
+}
+
+export const updateUserExists = (userExists) => {
+  return {
+    type: UPDATE_USER_EXISTS,
+    payload: userExists,
+  };
+}
+
+export const updateLastDateVisited = (lastDateVisited) => {
+  return {
+    type: UPDATE_LAST_DATE_VISITED,
+    payload: lastDateVisited,
+  };
+}
+
+export const updateLastPrediction = (lastPrediction) => {
+  return {
+    type: UPDATE_LAST_PREDICTION,
+    payload: lastPrediction,
   };
 }
 

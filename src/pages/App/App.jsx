@@ -34,10 +34,6 @@ export default function App() {
   const isMounted = useRef(false);
   // Flag for Modal
   const [showModal, setShowModal] = useState(false);
-  // Flag for if user has visited before
-  const [hasVisited, setHasVisited] = useState(false);
-  // If the user has visited before this was their previous prediction
-  const [previousPrediction, setPreviousPrediction] = useState("");
 
   // Redux
   const dispatch = useDispatch();
@@ -106,13 +102,13 @@ export default function App() {
       // Location has been fetched, immediately decide not to show Modal
       setShowModal(false);
       // Check if user has visited before (cheap way of doing this without clean logic for component mount)
-      awsCheckIfVisited(date);
+      awsCheckIfVisited(date, dispatch);
       return; // Exit the useEffect
     }
     const timer = setTimeout(() => {
       if (locationFetched) {
         setShowModal(false);
-        awsCheckIfVisited(date);
+        awsCheckIfVisited(date, dispatch);
       } else {
         setShowModal(true);
       }

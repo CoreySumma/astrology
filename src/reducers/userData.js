@@ -10,6 +10,9 @@ import {
   UPDATE_BUSINESS_NAME,
   UPDATE_BUSINESS_LOCATION,
   UPDATE_REFINED_PREDICTION,
+  UPDATE_USER_EXISTS,
+  UPDATE_LAST_DATE_VISITED,
+  UPDATE_LAST_PREDICTION,
 } from "../actions/index";
 
 const intializeState = {
@@ -24,6 +27,9 @@ const intializeState = {
   businessName: "",
   businessLocation: "",
   refinedPrediction: "",
+  userExists: "",
+  lastDateVisited: "",
+  lastPrediction: "",
 };
 
 const userData = (state = intializeState, action) => {
@@ -93,6 +99,24 @@ const userData = (state = intializeState, action) => {
       return {
         ...state,
         refinedPrediction: action.payload,
+      };
+    case UPDATE_USER_EXISTS:
+      // console.log("Handling UPDATE_USER_EXISTS action", action);
+      return {
+        ...state,
+        userExists: action.payload,
+      };
+    case UPDATE_LAST_DATE_VISITED:
+      // console.log("Handling UPDATE_LAST_DATE_VISITED action", action);
+      return {
+        ...state,
+        lastDateVisited: action.payload,
+      };
+    case UPDATE_LAST_PREDICTION:
+      // console.log("Handling UPDATE_LAST_PREDICTION action", action);
+      return {
+        ...state,
+        lastPrediction: action.payload,
       };
     default:
       return state;
