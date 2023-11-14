@@ -13,6 +13,7 @@ export const UPDATE_REFINED_PREDICTION = 'UPDATE_REFINED_PREDICTION';
 export const UPDATE_USER_EXISTS = 'UPDATE_USER_EXISTS';
 export const UPDATE_LAST_DATE_VISITED = 'UPDATE_LAST_DATE_VISITED';
 export const UPDATE_LAST_PREDICTION = 'UPDATE_LAST_PREDICTION';
+export const UPDATE_FINAL_PREDICTION = 'UPDATE_FINAL_PREDICTION';
 
 
 // Action Creators
@@ -110,6 +111,12 @@ export const updateLastPrediction = (lastPrediction) => {
   return {
     type: UPDATE_LAST_PREDICTION,
     payload: lastPrediction,
+  };
+}
+export const updateFinalPrediction = (finalPrediction) => {
+  return {
+    type: UPDATE_FINAL_PREDICTION,
+    payload: finalPrediction,
   };
 }
 

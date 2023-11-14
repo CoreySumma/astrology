@@ -21,6 +21,11 @@ export default function DayAtAGlance({
   setFade,
   isButtonVisible,
   setIsButtonVisible,
+  finalPrediction,
+  setFinalPrediction,
+  userExists,
+  prevDateVisited,
+  prevPrediction,
 }) {
   // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
@@ -93,10 +98,18 @@ export default function DayAtAGlance({
 
   const dispatch = useDispatch();
   const [prediction, setPrediction] = useState("");
-  // Grab the refined prediction from the store
-  let refinedPrediction = useSelector(
+  // Grab the refined prediction from the store depending on if the user has visited before for front end display
+  let refinedPrediction;
+  let finalPredictionFirstVisit = useSelector(
     (store) => store.userData.refinedPrediction
   );
+  // Grab the refined prediction from the store depending on if the user has visited before for front end display
+  let finalPredictionNotFirstVisit = useSelector((store) => store.userData.finalPrediction);
+  if (userExists) {
+    refinedPrediction = finalPredictionNotFirstVisit;
+  } else {
+    refinedPrediction = finalPredictionFirstVisit;
+  }
 
   async function callGpt() {
     try {
@@ -112,7 +125,10 @@ export default function DayAtAGlance({
         description,
         day,
         businessLocation,
-        businessName
+        businessName,
+        prevDateVisited,
+        prevPrediction,
+        userExists
       );
       setPrediction(result);
       setLoadingPrediction(false);

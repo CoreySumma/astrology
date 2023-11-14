@@ -34,6 +34,8 @@ export default function App() {
   const isMounted = useRef(false);
   // Flag for Modal
   const [showModal, setShowModal] = useState(false);
+  // Final prediction state if user visited
+  const [finalPrediction, setFinalPrediction] = useState("");
 
   // Redux
   const dispatch = useDispatch();
@@ -94,6 +96,9 @@ export default function App() {
   let businessLocation = useSelector(
     (state) => state.userData.businessLocation
   );
+  let userExists = useSelector((state) => state.userData.userExists);
+  let prevDateVisited = useSelector((state) => state.userData.lastDateVisited);
+  let prevPrediction = useSelector((state) => state.userData.lastPrediction);
 
   // This is polite message to the user to allow location access if not found
   // It's basically a useEffect loop that runs if every 6 seconds if location is not fetched and checks if the location has been fetched and escapes the loop if it has
@@ -149,6 +154,11 @@ export default function App() {
             setFade={setFade}
             isButtonVisible={isButtonVisible}
             setIsButtonVisible={setIsButtonVisible}
+            finalPrediction={finalPrediction}
+            setFinalPrediction={setFinalPrediction}
+            userExists={userExists}
+            prevDateVisited={prevDateVisited}
+            prevPrediction={prevPrediction}
           />
         </main>
       </div>

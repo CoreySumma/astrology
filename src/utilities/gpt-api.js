@@ -1,7 +1,8 @@
 import axios from "axios";
 import { updatePrediction } from "../actions";
-import { updateRefinedPrediction } from "../actions";
+import { updateRefinedPrediction, updateFinalPrediction } from "../actions";
 import gptApi2 from "./gpt-api2";
+import gptApi3 from "./gpt-api3";
 import { gptPrompt } from "./gpt-prompt";
 
 export default async function gptApi(
@@ -15,6 +16,9 @@ export default async function gptApi(
   day,
   businessLocation,
   businessName,
+  prevDateVisited,
+  prevPrediction,
+  userExists
 ) {
   // First API call to GPT
   try {
@@ -63,6 +67,19 @@ export default async function gptApi(
     );
     // Update Redux store with refined prediction
     dispatch(updateRefinedPrediction(refinedPrediction));
+
+    // Only proceed with the third call if userExists is true
+    if (userExists) {
+      let finalPrediction = await gptApi3(
+        prevPrediction,
+        refinedPrediction,
+        prevDateVisited,
+        date
+      );
+
+      // Save this to Redux for easy access
+      dispatch(updateFinalPrediction(finalPrediction));
+    }
     return response.data.choices[0].text.trim();
   } catch (error) {
     console.error("Error calling OpenAI API:", error);

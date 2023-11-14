@@ -13,6 +13,7 @@ import {
   UPDATE_USER_EXISTS,
   UPDATE_LAST_DATE_VISITED,
   UPDATE_LAST_PREDICTION,
+  UPDATE_FINAL_PREDICTION,
 } from "../actions/index";
 
 const intializeState = {
@@ -30,6 +31,7 @@ const intializeState = {
   userExists: "",
   lastDateVisited: "",
   lastPrediction: "",
+  finalPrediction: "",
 };
 
 const userData = (state = intializeState, action) => {
@@ -117,6 +119,12 @@ const userData = (state = intializeState, action) => {
       return {
         ...state,
         lastPrediction: action.payload,
+      };
+    case UPDATE_FINAL_PREDICTION:
+      // console.log("Handling UPDATE_FINAL_PREDICTION action", action);
+      return {
+        ...state,
+        finalPrediction: action.payload,
       };
     default:
       return state;
