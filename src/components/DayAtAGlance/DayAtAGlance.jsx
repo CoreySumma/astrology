@@ -79,7 +79,8 @@ export default function DayAtAGlance({
       // moonData !== null &&
       // moonData !== "" &&
       businessLocation !== "" &&
-      businessName !== ""
+      businessName !== "" &&
+      userExists !== ""
     ) {
       setAllGptDataFetched(true);
     }
@@ -94,6 +95,7 @@ export default function DayAtAGlance({
     moonData,
     businessLocation,
     businessName,
+    userExists,
   ]);
 
   const dispatch = useDispatch();
@@ -104,8 +106,9 @@ export default function DayAtAGlance({
     (store) => store.userData.refinedPrediction
   );
   // Grab the refined prediction from the store depending on if the user has visited before for front end display
+  // Address's edge case of them refreshing the page and not having a prediction from last visit
   let finalPredictionNotFirstVisit = useSelector((store) => store.userData.finalPrediction);
-  if (userExists) {
+  if (userExists && prevPrediction !== "No prediction available") {
     refinedPrediction = finalPredictionNotFirstVisit;
   } else {
     refinedPrediction = finalPredictionFirstVisit;

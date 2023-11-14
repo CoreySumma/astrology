@@ -69,7 +69,8 @@ export default async function gptApi(
     dispatch(updateRefinedPrediction(refinedPrediction));
 
     // Only proceed with the third call if userExists is true
-    if (userExists) {
+    if (userExists && prevPrediction !== "No prediction available") {
+      console.log("User exists, calling third API")
       let finalPrediction = await gptApi3(
         prevPrediction,
         refinedPrediction,
