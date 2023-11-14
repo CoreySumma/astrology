@@ -38,6 +38,6 @@ export function gptPrompt2(
 
   Original Prediction: ${prediction}
   
-  Show me the refined prediction, showcasing your cosmic insight without exceeding 480 chars. MANDATORY: Follow "Your checklist" with precision.
+  Show me the refined prediction, showcasing your cosmic insight without exceeding 350 chars. MANDATORY: Follow "Your checklist" with precision and don't exceed 350 characters.
 `;
 }

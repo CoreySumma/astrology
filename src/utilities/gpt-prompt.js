@@ -45,9 +45,9 @@ Craft a tailored prediction that and is both poetic and deeply resonating,
  inviting the user to step into a day filled with possibility and aligned with their astrological essence. 
  Draw upon every piece of information as a fortune teller, weaving them into a narrative that is at once exciting and comforting, 
  showing the user the magic this day holds specially for them.
- Remember: Keep it as short as possible. 
+MANDATORY: Keep it as short as possible. 
  Be creative and weave all the data you have into your response 
- without exceeding 420 characters!
+ without exceeding 350 characters!
 `;
 }
 // Example for guidance:
