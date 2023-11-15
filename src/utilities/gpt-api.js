@@ -38,7 +38,7 @@ export default async function gptApi(
           businessName
         ),
         temperature: 0.7,
-        max_tokens: 200,
+        max_tokens: 400,
       },
       {
         headers: {

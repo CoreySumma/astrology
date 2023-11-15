@@ -25,14 +25,16 @@ Personalized data for today:
 - Day of the week: ${day}
 - Yoga Studio location: ${businessLocation}
 - Yoga Studio name: ${businessName}
+- Max characters: 350.
 
 Instructions To Follow:
 1. Engrain your prediction with astrology terminology that is relevant to ${signData} and the ongoing astrological period.
 2. Engage the weather details of ${description} and ${temp}° to craft a vivid and atmospheric narrative for today.
 3. With the insights from the day of the week being ${day} and the date being ${date}, offer a sense of the day's rhythm and potential mentioning the current season.
 4. Suggest a specific activity or point of interest that would be fulfilling for someone with the astrological sign ${signData}, appropriate for the weather, and explicitly mention by name a local landmark or attraction near ${location} that the user could visit.
-5. Incorporate knowledge of how this season, and the time ${time} can traditionally influence ${signData}, grounding your prediction with astrological insights.
+5. Incorporate knowledge of how this season and the time of day of ${time}, and how they can traditionally influence ${signData}, grounding your prediction with astrological insights.
 6. Mention the nearby Yoga Studio ${businessName} on ${businessLocation} as a possible destination for the user and tie in how it might be great for a ${signData}.
+7. MANDATORY: Take into consideration the weather, time of day, and season when you make suggestions. Don't tell the user to do soemthing that doesn't make sense!
 
 Example for guidance:
 Data For Example: Taurus, October 3rd 2023, 5:43PM, 82.69F, broken clouds, Austin, Texas, Wednesday, Practice Yoga Austin, 1103 E 6th St, Austin, TX 78702

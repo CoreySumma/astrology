@@ -40,31 +40,28 @@ if (timeDiff === 0) {
 
   // Explicitly stating that the output should only include the edits
   return `
-  As an Editor, refine the current horoscope prediction to subtly link it with the previous one, acknowledging any shared insights and the passage of time in a creative way. Ensure the edit feels like an ongoing conversation with the cosmos, and maintain all original HTML formatting.
+  As an Editor, minimally refine the Current Horoscope Prediction to subtly link it with the previous one, 
+  acknowledging any shared insights and the passage of time in a creative way. 
+  Ensure the edit feels like an ongoing conversation with the cosmos, 
+  and maintain all HTML tags from the Current Horoscope Prediction - especially the <br /><br />.
 
-  - Previous Prediction: ${prevPrediction}
-  - Last Date Visited: ${prevDateVisited}
-  - Current Date: ${date}
-  - Current prediction to be refined: ${currentPrediction}
+  - Previous Horoscpoe Prediction: ${prevPrediction}.
+  - Last Date Visited: ${prevDateVisited}.
+  - Current Date: ${date}.
+  - Current Horoscope Prediction: ${currentPrediction}.
+
 
   Your Checklist:
-  1. MANDATORY: Keep all HTML tags from the previous and current predictions intact.
-  2. Insert minimal edits into the current prediction, subtly echoing any similar insights from the previous prediction.
+  1. MANDATORY: Keep all HTML tags from the Current Horoscope Prediction intact IMPORTANT: Especially the < br/>< br/> tags!
+  2. Insert MINIMAL edits into the current prediction, subtly echoing any similar insights from the previous prediction.
   3. Do not explicitly state the dates of the predictions. Instead, use ${timePhrase} to creatively indicate the time elapsed.
   4. Ensure that your edit unifies both predictions, making them feel like parts of a larger celestial dialogue.
-  5. The edit should feel like a natural continuation of the current prediction, delicately acknowledging the ongoing journey.
+  5. The edit should feel like a natural continuation of the Current Horoscope Prediction, delicately acknowledging the ongoing journey.
   6. Focus on creative and fluent phrasing to weave past insights with present revelations, as if narrated by the heavens themselves.
 
   The aim is to craft an edit that enhances the sense of a continuous, evolving dialogue with the stars, respecting the passage of time and the journey of the reader.
 
-    MANDATORY: Adhere to 'Your Checklist' precisely, and only small edits to the current prediction. Let me see your editorial prowess - Don't forget the HTML tags!
+    MANDATORY: Adhere to 'Your Checklist' precisely, and only make minimal edits to the current prediction keeping ALL HTML tags intact. Let me see your editorial prowess! Keep it as short as possible. Think step by step!
   `;
 }
 
-// Your Checklist:
-// 1. Keep all HTML tags from the previous and current predictions intact.
-// 2. Insert one minimal, seamless edit into the current prediction to create a link with the previous prediction.
-// 3. Do not use the exact date of the last prediction in your edit. Instead, imply the passage of time or continuity creatively.
-// 4. Try to use phrases that imply you have a sense of time since the last prediciton in saying things like "Earlier toda
-//  when the heavens spoke to you" or "A few days ago when the gods gave you insight", or
-//  "Earlier this month" - Make sure it's relivant to the date of last prediction and the date today.

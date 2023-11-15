@@ -25,6 +25,7 @@ export function gptPrompt2(
   - Day: ${day}.
   - Yoga Studio name: ${businessName}.
   - Yoga Studio location: ${businessLocation}.
+  - Max characters: 350.
   
   Your checklist:
   1. Ensure all user data is used in the prediction in creative ways.
@@ -34,7 +35,7 @@ export function gptPrompt2(
   5. Logically add in HTML elements <strong>, <em>, for visual charm.
   6. Shorten the prediction without losing the impact or creative data points.
   7. Add double line breaks with <br /><br /> to the last sentence so it is more impactful.
-  8. Only make small changes that you need to make and give it back. 
+  8. Only make small changes that you need to make and give it back. IMPORTANT: Do not exceed 350 characters! 
 
   Original Prediction: ${prediction}
   
