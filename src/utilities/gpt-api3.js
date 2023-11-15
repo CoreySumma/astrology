@@ -5,8 +5,8 @@ import { awsAddPrediction } from "./aws-database-api";
 export default async function gptApi3(
   prevPrediction,
   currentPrediction,
-  date,
   prevDateVisited,
+  date,
 ) {
 
   try {
@@ -37,6 +37,7 @@ export default async function gptApi3(
     }
     // If we call this fetch we need to update the last prediction in our database
     awsAddPrediction(finalPrediction, date);
+    console.log(date);
     return finalPrediction;
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
