@@ -14,6 +14,7 @@ import {
   UPDATE_LAST_DATE_VISITED,
   UPDATE_LAST_PREDICTION,
   UPDATE_FINAL_PREDICTION,
+  UPDATE_SHORTENED_PREDICTION,
 } from "../actions/index";
 
 const intializeState = {
@@ -32,6 +33,7 @@ const intializeState = {
   lastDateVisited: "",
   lastPrediction: "",
   finalPrediction: "",
+  shortenedPrediction: "",
 };
 
 const userData = (state = intializeState, action) => {
@@ -125,6 +127,12 @@ const userData = (state = intializeState, action) => {
       return {
         ...state,
         finalPrediction: action.payload,
+      };
+    case UPDATE_SHORTENED_PREDICTION:
+      // console.log("Handling UPDATE_FINAL_PREDICTION action", action);
+      return {
+        ...state,
+        shortenedPrediction: action.payload,
       };
     default:
       return state;

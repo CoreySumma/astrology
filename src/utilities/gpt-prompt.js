@@ -25,7 +25,6 @@ Personalized data for today:
 - Day of the week: ${day}
 - Yoga Studio location: ${businessLocation}
 - Yoga Studio name: ${businessName}
-- Max characters: 350.
 
 Instructions To Follow:
 1. Engrain your prediction with astrology terminology that is relevant to ${signData} and the ongoing astrological period.

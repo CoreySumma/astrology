@@ -4,10 +4,6 @@ export function gptPrompt3(
   currentPrediction,
   date
 ) {
-  console.log("prev pred", prevPrediction);
-  console.log("prev date", prevDateVisited);
-  console.log("date", date);
-  console.log("current prediction", currentPrediction);
 
 // Function to parse dates in MM/DD/YYYY format
 const parseDate = (dateString) => {
@@ -64,4 +60,7 @@ if (timeDiff === 0) {
     MANDATORY: Adhere to 'Your Checklist' precisely, and only make minimal edits to the current prediction keeping ALL HTML tags intact. Let me see your editorial prowess! Keep it as short as possible. Think step by step!
   `;
 }
+
+// 7. IMPORTANT: IF YOU ADD TO THE PREDICTION MAKE ADDITIONAL EDITS TO KEEP IT THE SAME LENGTH OR SHORTER.
+
 

@@ -1,9 +1,11 @@
 import axios from "axios";
 import { updatePrediction } from "../actions";
-import { updateRefinedPrediction, updateFinalPrediction } from "../actions";
+import { updateRefinedPrediction, updateFinalPrediction, updateShortenedPrediction } from "../actions";
 import gptApi2 from "./gpt-api2";
 import gptApi3 from "./gpt-api3";
+import gptApi4 from "./gpt-api4";
 import { gptPrompt } from "./gpt-prompt";
+import { awsAddPrediction } from "./aws-database-api";
 
 export default async function gptApi(
   signData,
@@ -77,9 +79,12 @@ export default async function gptApi(
         prevDateVisited,
         date
       );
+      let shortenedPrediction = await gptApi4(finalPrediction);
 
       // Save this to Redux for easy access
       dispatch(updateFinalPrediction(finalPrediction));
+      dispatch(updateShortenedPrediction(shortenedPrediction));
+      awsAddPrediction(shortenedPrediction, date);
     }
     return response.data.choices[0].text.trim();
   } catch (error) {

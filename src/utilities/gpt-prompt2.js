@@ -25,7 +25,6 @@ export function gptPrompt2(
   - Day: ${day}.
   - Yoga Studio name: ${businessName}.
   - Yoga Studio location: ${businessLocation}.
-  - Max characters: 350.
   
   Your checklist:
   1. Ensure all user data is used in the prediction in creative ways.

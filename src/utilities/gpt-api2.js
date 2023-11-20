@@ -48,7 +48,7 @@ export default async function gptApi2(
       refinedText = refinedText.replace("Refined Prediction:", "").trim();
     }
     dispatch(updateRefinedPrediction(refinedText));
-    awsAddPrediction(refinedText, date);
+    // awsAddPrediction(refinedText, date);
     return refinedText;
   } catch (error) {
     console.error("Error calling OpenAI API:", error);

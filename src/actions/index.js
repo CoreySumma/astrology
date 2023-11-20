@@ -14,6 +14,7 @@ export const UPDATE_USER_EXISTS = 'UPDATE_USER_EXISTS';
 export const UPDATE_LAST_DATE_VISITED = 'UPDATE_LAST_DATE_VISITED';
 export const UPDATE_LAST_PREDICTION = 'UPDATE_LAST_PREDICTION';
 export const UPDATE_FINAL_PREDICTION = 'UPDATE_FINAL_PREDICTION';
+export const UPDATE_SHORTENED_PREDICTION = 'UPDATE_SHORTENED_PREDICTION';
 
 
 // Action Creators
@@ -117,6 +118,12 @@ export const updateFinalPrediction = (finalPrediction) => {
   return {
     type: UPDATE_FINAL_PREDICTION,
     payload: finalPrediction,
+  };
+}
+export const updateShortenedPrediction = (shortenedPrediction) => {
+  return {
+    type: UPDATE_SHORTENED_PREDICTION,
+    payload: shortenedPrediction,
   };
 }
 
