@@ -79,12 +79,13 @@ export default async function gptApi(
         prevDateVisited,
         date
       );
-      let shortenedPrediction = await gptApi4(finalPrediction);
+      // Testing 4th call to shorten GPT response - Not in use
+      // let shortenedPrediction = await gptApi4(finalPrediction);
+      // dispatch(updateShortenedPrediction(shortenedPrediction));
+      // awsAddPrediction(shortenedPrediction, date);
 
       // Save this to Redux for easy access
       dispatch(updateFinalPrediction(finalPrediction));
-      dispatch(updateShortenedPrediction(shortenedPrediction));
-      awsAddPrediction(shortenedPrediction, date);
     }
     return response.data.choices[0].text.trim();
   } catch (error) {

@@ -106,7 +106,8 @@ export default function DayAtAGlance({
     (store) => store.userData.refinedPrediction
   );
   let finalPredictionNotFirstVisit = useSelector(
-    (store) => store.userData.shortenedPrediction
+    // (store) => store.userData.shortenedPrediction
+    (store) => store.userData.finalPrediction
   );
   // Grab the refined(shortened) prediction from the store depending on if the user has visited before for front end display
   // Address's edge case of them refreshing the page and not having a prediction from last visit

@@ -36,7 +36,7 @@ export default async function gptApi3(
       finalPrediction = finalPrediction.substring(prefix.length).trim();
     }
     // If we call this fetch we need to update the last prediction in our database
-    // awsAddPrediction(finalPrediction, date);
+    awsAddPrediction(finalPrediction, date);
     console.log(date);
     return finalPrediction;
   } catch (error) {
