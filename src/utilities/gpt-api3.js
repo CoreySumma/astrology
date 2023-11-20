@@ -21,7 +21,7 @@ export default async function gptApi3(
           date,
         ),
         temperature: 0.7,
-        max_tokens: 400,
+        max_tokens: 200,
       },
       {
         headers: {

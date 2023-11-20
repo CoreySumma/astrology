@@ -34,7 +34,7 @@ export default async function gptApi2(
           prediction
         ),
         temperature: 0.6,
-        max_tokens: 400,
+        max_tokens: 200,
       },
       {
         headers: {
