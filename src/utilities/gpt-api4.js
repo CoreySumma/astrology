@@ -6,7 +6,7 @@ export default async function gptApi4(prediction) {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
       {
-        model: "text-davinci-003",
+        model: "gpt-3.5-turbo-instruct",
         prompt: gptPrompt4(prediction),
         temperature: 0.6,
         max_tokens: 400,

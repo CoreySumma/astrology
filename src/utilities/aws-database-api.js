@@ -32,7 +32,6 @@ export async function awsCheckIfVisited(date, dispatch) {
         },
       }
     );
-    console.log("console log response from AWS -->", res.data);
     // Update Redux store with response from our gateway endpoint
     const exists = res.data.exists;
     const lastDateVisited = res.data.lastDateVisited;
@@ -50,7 +49,6 @@ export async function awsCheckIfVisited(date, dispatch) {
 
 export async function awsAddPrediction(prediction, date) {
   try {
-    console.log("aws Add prediction function enetered");
     // Get user IP address
     const ipRes = await axios.get(
       "https://corsproxy.io/?https://api.ipify.org?format=json"
@@ -72,7 +70,6 @@ export async function awsAddPrediction(prediction, date) {
         },
       }
     );
-    console.log("console log response from AWS -->", res.data);
     return res.data;
   } catch (error) {
     console.log("Error making AWS call - ", error);

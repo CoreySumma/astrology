@@ -203,6 +203,7 @@ text-transform: capitalize;
 }
 
 @media screen and (max-width: 600px) {
+
   .prediction-button {
     width: 195px;
     height: 40px;
@@ -211,7 +212,7 @@ text-transform: capitalize;
   }
   .prediction-container {
     width: 90%;
-    height: auto;
+    height: 100vh;
   }
   .spinner {
     margin: 155px auto;
@@ -221,6 +222,7 @@ text-transform: capitalize;
     padding-left: 4px;
     padding-right: 4px;
   }
+  
   .loading-zodiac-sign {
     margin-top: 20vw;
   }
