@@ -212,7 +212,7 @@ text-transform: capitalize;
   }
   .prediction-container {
     width: 90%;
-    height: 100vh;
+    height: auto;
   }
   .spinner {
     margin: 155px auto;
