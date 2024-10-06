@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
 import Weather from "../Weather/Weather";
-import SignForm from "../SignForm/SignForm";
-import "./Header.css";
+import ZodiacSwiper from "../ZodiacSwiper/ZodiacSwiper";
+import "./SignSelection.css";
 
-export default function Header({
+export default function SignSelection({
   data,
   time,
   sign,
@@ -15,7 +14,7 @@ export default function Header({
   return (
     data && (
       <header className="App-header">
-        <SignForm
+        <ZodiacSwiper
           sign={sign}
           setSign={setSign}
           data={data}

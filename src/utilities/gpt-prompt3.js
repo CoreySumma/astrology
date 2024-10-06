@@ -4,35 +4,37 @@ export function gptPrompt3(
   currentPrediction,
   date
 ) {
+  // Function to parse dates in MM/DD/YYYY format
+  const parseDate = (dateString) => {
+    const [month, day, year] = dateString
+      .split("/")
+      .map((num) => parseInt(num, 10));
+    return new Date(year, month - 1, day);
+  };
 
-// Function to parse dates in MM/DD/YYYY format
-const parseDate = (dateString) => {
-  const [month, day, year] = dateString.split('/').map(num => parseInt(num, 10));
-  return new Date(year, month - 1, day);
-};
+  const lastVisit = parseDate(prevDateVisited);
+  const currentDate = parseDate(date);
 
-const lastVisit = parseDate(prevDateVisited);
-const currentDate = parseDate(date);
+  // Debugging: Log parsed dates
+  console.log("Parsed Last Visit:", lastVisit);
+  console.log("Parsed Current Date:", currentDate);
 
-// Debugging: Log parsed dates
-console.log('Parsed Last Visit:', lastVisit);
-console.log('Parsed Current Date:', currentDate);
+  // Calculate time difference in days
+  const timeDiff = Math.round(
+    (currentDate - lastVisit) / (1000 * 60 * 60 * 24)
+  );
 
-// Calculate time difference in days
-const timeDiff = Math.round((currentDate - lastVisit) / (1000 * 60 * 60 * 24));
+  // Debugging: Log time difference
+  console.log("Time Difference (days):", timeDiff);
 
-// Debugging: Log time difference
-console.log('Time Difference (days):', timeDiff);
-
-let timePhrase;
-if (timeDiff === 0) {
-  timePhrase = "As today's celestial story continues,";
-} else if (timeDiff < 7) {
-  timePhrase = "In the days since the stars last whispered,";
-} else {
-  timePhrase = "As the weeks under the heavens have passed,";
-}
-
+  let timePhrase;
+  if (timeDiff === 0) {
+    timePhrase = "As today's celestial story continues,";
+  } else if (timeDiff < 7) {
+    timePhrase = "In the days since the stars last whispered,";
+  } else {
+    timePhrase = "As the weeks under the heavens have passed,";
+  }
 
   // Explicitly stating that the output should only include the edits
   return `

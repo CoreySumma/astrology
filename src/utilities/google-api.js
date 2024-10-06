@@ -5,7 +5,7 @@ export default async function getLocationFromGoogs(
   lat,
   long,
   dispatch,
-  setLocationFetched,
+  setLocationFetched
 ) {
   try {
     const res = await axios.get(
@@ -18,8 +18,8 @@ export default async function getLocationFromGoogs(
     // ${res.data.results[0].address_components[3].long_name},
     // ${res.data.results[0].address_components[5].long_name}`.trim();
 
-    console.log(res)
-    
+    console.log(res);
+
     const locationData = `
     ${res.data.results[0].address_components[3].long_name}, 
     ${res.data.results[0].address_components[5].long_name}`.trim();

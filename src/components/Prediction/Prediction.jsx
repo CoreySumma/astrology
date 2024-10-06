@@ -1,12 +1,11 @@
-import "./DayAtAGlance.css";
-import React, { useState } from "react";
+import "./Prediction.css";
+import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import gptApi from "../../utilities/gpt-api";
-import { useEffect } from "react";
 // Library so gpt can return html tags
 import parse from "html-react-parser";
+import gptApi from "../../utilities/gpt-api";
 
-export default function DayAtAGlance({
+export default function Prediction({
   date,
   time,
   description,
@@ -62,9 +61,9 @@ export default function DayAtAGlance({
     pisces: "../../images/pisces-constellation.png",
   };
   // Make a var to the current sign image
-  let signImage = signImages[sign];
+  const signImage = signImages[sign];
   // Make a var to the current constellation image
-  let constellation = constellationImage[sign];
+  const constellation = constellationImage[sign];
 
   // This useEffect checks if all data has been fetched and sets the flag to true
   useEffect(() => {
@@ -102,10 +101,10 @@ export default function DayAtAGlance({
   const [prediction, setPrediction] = useState("");
   // Grab the refined prediction from the store depending on if the user has visited before for front end display
   let refinedPrediction;
-  let finalPredictionFirstVisit = useSelector(
+  const finalPredictionFirstVisit = useSelector(
     (store) => store.userData.refinedPrediction
   );
-  let finalPredictionNotFirstVisit = useSelector(
+  const finalPredictionNotFirstVisit = useSelector(
     // (store) => store.userData.shortenedPrediction
     (store) => store.userData.finalPrediction
   );
@@ -121,7 +120,7 @@ export default function DayAtAGlance({
     try {
       // Set loading flag on either end of the fetch call to GPT
       setLoadingPrediction(true);
-      let result = await gptApi(
+      const result = await gptApi(
         sign,
         date,
         time,
@@ -145,7 +144,7 @@ export default function DayAtAGlance({
 
   async function handleClick() {
     // this is to prevent the button from being clicked before all data is fetched and to trigger the fade out animation
-    if (allGptDataFetched === true) {
+    if (allGptDataFetched) {
       callGpt();
       setIsButtonVisible(false);
       setFade(true);
@@ -164,17 +163,20 @@ export default function DayAtAGlance({
   return (
     <>
       <button
+      type="button"
         onClick={handleClick}
         className={`prediction-button ${!isButtonVisible ? "fade-out" : ""}`}
       >
         Ask The Universe
       </button>
       <div className="prediction-container">
-        {loadingPrediction ? (
+        {loadingPrediction && (
           <img className="loading-zodiac-sign" src={signImage} alt="Sign" />
-        ) : !allGptDataFetched ? (
-          <div className="spinner"></div>
-        ) : refinedPrediction ? (
+        )}
+        {!loadingPrediction && !allGptDataFetched && (
+          <div className="spinner" />
+        )}
+        {!loadingPrediction && allGptDataFetched && refinedPrediction && (
           <div className="prediction-text-fade-in">
             {/* <img className="moon" src={moonData} alt="Moon Phase" /> */}
             <div className="constellation-container">
@@ -187,8 +189,9 @@ export default function DayAtAGlance({
               <p className="prediction-text">{parse(refinedPrediction)}</p>
             </div>
           </div>
-        ) : (
-          <p className="prediction-text"></p>
+        )}
+        {!loadingPrediction && allGptDataFetched && !refinedPrediction && (
+          <p className="prediction-text" />
         )}
       </div>
     </>

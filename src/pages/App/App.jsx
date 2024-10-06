@@ -2,8 +2,8 @@ import "./App.css";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
-import Header from "../../components/Header/Header.jsx";
-import DayAtAGlance from "../../components/DayAtAGlance/DayAtAGlance.jsx";
+import SignSelection from "../../components/SignSelection/SignSelection.jsx";
+import Prediction from "../../components/Prediction/Prediction.jsx";
 import Modal from "../../components/Modal/Modal";
 import {
   updateTime,
@@ -30,8 +30,6 @@ export default function App() {
   const [fade, setFade] = useState(false);
   // Flag to hide the button indefinitely after the click
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  // Flag if the component mounted for message to be displayed to user on load
-  const isMounted = useRef(false);
   // Flag for Modal
   const [showModal, setShowModal] = useState(false);
   // Final prediction state if user visited
@@ -40,7 +38,7 @@ export default function App() {
   // Redux
   const dispatch = useDispatch();
 
-  // One useEffect to rule them all
+  // One useEffect to rule them all(this is kinda bad I think)
   useEffect(() => {
     // Get the date for GPT
     const dateObj = new Date();
@@ -78,6 +76,7 @@ export default function App() {
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       // Call the moon API with arguments to get moon phase image and display it with local state
       // moonApi(setMoonData, lat, long, moonDate);
+      
       // Set your search terms for business's in your area
       let search = "yoga";
       // Call the yelp API with arguments (right now it searches business name not events despite naming convention of 'getMeetUp')
@@ -104,7 +103,7 @@ export default function App() {
   // It's basically a useEffect loop that runs if every 6 seconds if location is not fetched and checks if the location has been fetched and escapes the loop if it has
   useEffect(() => {
     if (locationFetched) {
-      // Location has been fetched, immediately decide not to show Modal
+      // Location has been fetched, immediately set modal visibility to hidden
       setShowModal(false);
       // Check if user has visited before (cheap way of doing this without clean logic for component mount)
       awsCheckIfVisited(date, dispatch);
@@ -130,7 +129,7 @@ export default function App() {
           </video>
         </div>
         <Modal showModal={showModal} setShowModal={setShowModal} />
-        <Header
+        <SignSelection
           data={data}
           time={time}
           sign={sign}
@@ -139,7 +138,7 @@ export default function App() {
           setFade={setFade}
         />
         <main>
-          <DayAtAGlance
+          <Prediction
             temp={temp}
             date={date}
             time={time}
