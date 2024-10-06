@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
 import SignSelection from "../../components/SignSelection/SignSelection";
 import Prediction from "../../components/Prediction/Prediction";
 import Modal from "../../components/Modal/Modal";
@@ -22,12 +22,9 @@ export default function App() {
   const [fade, setFade] = useState(false);
   // Flag to hide the button indefinitely after the click
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  // Flag for Modal
   const [showModal, setShowModal] = useState(false);
-  // Final prediction state if user visited
   const [finalPrediction, setFinalPrediction] = useState("");
 
-  // Redux
   const dispatch = useDispatch();
 
   // One useEffect to rule them all(this is kinda bad I think)
@@ -56,13 +53,12 @@ export default function App() {
     dispatch(updateDate(newDate));
     dispatch(updateTime(time));
     // Call the weather API with arguments which also gets user longitude and latitude
-    weatherApi(lat, long, setLat, setLong, setData, dispatch);
+    weatherApi(setLat, setLong, setData, dispatch);
     if (long && lat) {
       // Call the google maps API to get the city name, state etc of the user
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       // Call the moon API with arguments to get moon phase image and display it with local state
       // moonApi(setMoonData, lat, long, moonDate);
-
       // Set your search terms for business's in your area
       const search = "yoga";
       // Call the yelp API with arguments (right now it searches business name not events despite naming convention of 'getMeetUp')
@@ -92,11 +88,9 @@ export default function App() {
   // is not fetched and checks if the location has been fetched and escapes the loop if it has
   useEffect(() => {
     if (locationFetched) {
-      // Location has been fetched, immediately set modal visibility to hidden
       setShowModal(false);
-      // Check if user has visited before (cheap way of doing this without clean logic for component mount)
       awsCheckIfVisited(date, dispatch);
-      return; // Exit the useEffect
+      return; 
     }
     const timer = setTimeout(() => {
       if (locationFetched) {

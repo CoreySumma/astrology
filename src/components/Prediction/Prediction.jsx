@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import "./Prediction.css";
 import { useDispatch, useSelector } from "react-redux";
 import parse from "html-react-parser";
@@ -152,10 +152,11 @@ export default function Prediction({
       }, 2000);
     }
   }
+
   return (
     <>
       <button
-      type="button"
+        type="button"
         onClick={handleClick}
         className={`prediction-button ${!isButtonVisible ? "fade-out" : ""}`}
       >
@@ -170,7 +171,6 @@ export default function Prediction({
         )}
         {!loadingPrediction && allGptDataFetched && refinedPrediction && (
           <div className="prediction-text-fade-in">
-            {/* <img className="moon" src={moonData} alt="Moon Phase" /> */}
             <div className="constellation-container">
               <p className="display-sign">{sign}</p>
               <img

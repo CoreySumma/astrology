@@ -54,11 +54,3 @@ export default function gptPrompt3(
     MANDATORY: Adhere to 'Your Checklist' precisely, and only small edits to the current prediction. Let me see your editorial prowess - Don't forget the HTML tags!
   `;
 }
-
-// Your Checklist:
-// 1. Keep all HTML tags from the previous and current predictions intact.
-// 2. Insert one minimal, seamless edit into the current prediction to create a link with the previous prediction.
-// 3. Do not use the exact date of the last prediction in your edit. Instead, imply the passage of time or continuity creatively.
-// 4. Try to use phrases that imply you have a sense of time since the last prediciton in saying things like "Earlier toda
-//  when the heavens spoke to you" or "A few days ago when the gods gave you insight", or
-//  "Earlier this month" - Make sure it's relivant to the date of last prediction and the date today.

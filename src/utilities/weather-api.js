@@ -2,37 +2,38 @@
 import axios from "axios";
 import { updateTemp, updateDescription } from "../actions";
 
-export default async function weatherApi(
-  lat,
-  long,
-  setLat,
-  setLong,
-  setData,
-  dispatch
-) {
-  // This will get the user's current location and set the latitude and longitude react states
-  const fetchData = async () => {
-    // eslint-disable-next-line consistent-return, no-undef
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const currentLat = position.coords.latitude;
-      const currentLong = position.coords.longitude;
-      setLat(currentLat);
-      setLong(currentLong);
-      // This will fetch the weather data from the API using the latitude and longitude states
-      if (currentLat && currentLong) {
+export default function weatherApi(setLat, setLong, setData, dispatch) {
+  return new Promise((resolve, reject) => {
+    // eslint-disable-next-line no-undef
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const currentLat = position.coords.latitude;
+        const currentLong = position.coords.longitude;
+        setLat(currentLat);
+        setLong(currentLong);
+
+        if (!currentLat || !currentLong) {
+          reject(new Error("Latitude or longitude is undefined"));
+          return;
+        }
+
         try {
           const res = await axios.get(
-            `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+            `https://api.openweathermap.org/data/3.0/onecall?lat=${currentLat}&lon=${currentLong}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
           );
           setData(res.data);
           dispatch(updateTemp(Math.floor(res.data.current.temp)));
           dispatch(updateDescription(res.data.current.weather[0].description));
-          return res.data;
+          resolve(res.data);
         } catch (error) {
           console.error("Error calling weather API:", error);
+          reject(error);
         }
+      },
+      (error) => {
+        console.error("Error getting geolocation:", error);
+        reject(error);
       }
-    });
-  };
-  fetchData();
+    );
+  });
 }

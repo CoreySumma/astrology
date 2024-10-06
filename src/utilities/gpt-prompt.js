@@ -47,7 +47,7 @@ Craft a tailored prediction that and is both poetic and deeply resonating,
  showing the user the magic this day holds specially for them.
 MANDATORY: Keep it as short as possible. 
  Be creative and weave all the data you have into your response 
- without exceeding 350 characters!
+ without exceeding 250 characters.
 `;
 }
 // Example for guidance:

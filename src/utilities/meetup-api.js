@@ -10,7 +10,7 @@ export default async function getMeetUp(search, lat, long, dispatch) {
     const response = await axios.get(`https://proxy.cors.sh/${url}`, {
       // const response = await axios.get(`${url}`, {
       headers: {
-        // 'x-cors-api-key': process.env.REACT_APP_CORS_API_KEY,
+        'x-cors-api-key': process.env.REACT_APP_CORS_API_KEY,
         Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`,
         "Content-Type": "application/json",
       },

@@ -147,6 +147,27 @@ text-transform: capitalize;
   }
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  margin: 200px auto;
+  border: 8px solid black;
+  border-top: 8px solid rgb(189, 189, 189);
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  animation: spin 1s linear infinite;
+  z-index: 1;
+}
+
+
 .prediction-text-fade-in {
   animation: fadeIn 2s;
 }
