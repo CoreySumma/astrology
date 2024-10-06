@@ -19,7 +19,7 @@ import "swiper/css/bundle";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFlip]);
 
-export default function ZodiacSwiper({ setSign, fade }) {
+export default function ZodiacSwiper({ setSign, fade, data }) {
   const dispatch = useDispatch();
 
   const handleChange = (sign) => {
@@ -28,10 +28,9 @@ export default function ZodiacSwiper({ setSign, fade }) {
   };
 
   return (
-    <form className={`form-container ${fade ? "fade-out" : ""}`}>
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label>
-        <p className="form-title">My zodiac sign is</p>
+    data && (
+      <div className={`zodiac-container ${fade ? "fade-out" : ""}`}>
+        <p className="zodiac-title">My zodiac sign is</p>
         <Swiper
           className="mySwiper"
           effect="flip"
@@ -109,7 +108,7 @@ export default function ZodiacSwiper({ setSign, fade }) {
           </SwiperSlide>
         </Swiper>
         <br />
-      </label>
-    </form>
+      </div>
+    )
   );
 }

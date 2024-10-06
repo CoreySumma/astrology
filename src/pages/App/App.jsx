@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import SignSelection from "../../components/SignSelection/SignSelection";
 import Prediction from "../../components/Prediction/Prediction";
 import Modal from "../../components/Modal/Modal";
 import { updateTime, updateDate, updateDay } from "../../actions";
@@ -9,6 +8,7 @@ import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import getMeetUp from "../../utilities/meetup-api";
 import { awsCheckIfVisited } from "../../utilities/aws-database-api";
+import ZodiacSwiper from "../../components/ZodiacSwiper/ZodiacSwiper";
 
 export default function App() {
   const [lat, setLat] = useState(null);
@@ -111,7 +111,7 @@ export default function App() {
         </video>
       </div>
       <Modal showModal={showModal} setShowModal={setShowModal} />
-      <SignSelection
+      <ZodiacSwiper
         data={data}
         time={time}
         sign={sign}
