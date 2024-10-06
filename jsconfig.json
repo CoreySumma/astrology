@@ -3,8 +3,8 @@
     "target": "ES6",
     "module": "commonjs",
     "importHelpers": false,
-    "checkJs":false,
-    "allowJs": true,
+    "checkJs": false,
+    "allowJs": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]

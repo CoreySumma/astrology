@@ -1,7 +1,6 @@
-import "./Prediction.css";
 import React, { useState, useEffect  } from "react";
+import "./Prediction.css";
 import { useDispatch, useSelector } from "react-redux";
-// Library so gpt can return html tags
 import parse from "html-react-parser";
 import gptApi from "../../utilities/gpt-api";
 

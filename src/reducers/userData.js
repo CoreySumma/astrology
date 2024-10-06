@@ -3,8 +3,8 @@ import {
   UPDATE_DATE,
   UPDATE_TIME,
   UPDATE_TEMP,
-  UPDATE_DESCRIPTION,
   UPDATE_PREDICTION,
+  UPDATE_DESCRIPTION,
   UPDATE_LOCATION,
   UPDATE_DAY,
   UPDATE_BUSINESS_NAME,
@@ -15,28 +15,28 @@ import {
   UPDATE_LAST_PREDICTION,
   UPDATE_FINAL_PREDICTION,
   UPDATE_SHORTENED_PREDICTION,
-} from "../actions/index";
+} from '../actions/index';
 
-const intializeState = {
-  signData: "",
-  date: "",
-  time: "",
+const initialState = {
+  signData: '',
+  date: '',
+  time: '',
   temp: null,
-  location: "",
-  prediction: "",
-  description: "",
-  day: "",
-  businessName: "",
-  businessLocation: "",
-  refinedPrediction: "",
-  userExists: "",
-  lastDateVisited: "",
-  lastPrediction: "",
-  finalPrediction: "",
-  shortenedPrediction: "",
+  location: '',
+  prediction: '',
+  description: '',
+  day: '',
+  businessName: '',
+  businessLocation: '',
+  refinedPrediction: '',
+  userExists: '',
+  lastDateVisited: '',
+  lastPrediction: '',
+  finalPrediction: '',
+  shortenedPrediction: '',
 };
 
-const userData = (action, state = intializeState) => {
+const userData = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_SIGN:
       return {
