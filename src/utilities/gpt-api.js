@@ -1,12 +1,14 @@
 import axios from "axios";
-import { updatePrediction } from "../actions";
-import { updateRefinedPrediction, updateFinalPrediction, updateShortenedPrediction } from "../actions";
+import {
+  updateRefinedPrediction,
+  updatePrediction,
+  updateFinalPrediction,
+} from "../actions";
 import gptApi2 from "./gpt-api2";
 import gptApi3 from "./gpt-api3";
-import gptApi4 from "./gpt-api4";
-import { gptPrompt } from "./gpt-prompt";
-import { awsAddPrediction } from "./aws-database-api";
+import gptPrompt from "./gpt-prompt";
 
+// eslint-disable-next-line consistent-return
 export default async function gptApi(
   signData,
   date,
@@ -52,9 +54,9 @@ export default async function gptApi(
     // Update Redux store with prediction
     dispatch(updatePrediction(response.data.choices[0].text.trim()));
     // Set prediction to variable to pass to second call
-    let prediction = response.data.choices[0].text.trim();
+    const prediction = response.data.choices[0].text.trim();
     // Second API call to GPT
-    let refinedPrediction = await gptApi2(
+    const refinedPrediction = await gptApi2(
       signData,
       date,
       time,
@@ -72,8 +74,8 @@ export default async function gptApi(
 
     // Only proceed with the third call if userExists is true
     if (userExists && prevPrediction !== "No prediction available") {
-      console.log("User exists, calling third API")
-      let finalPrediction = await gptApi3(
+      console.log("User exists, calling third API");
+      const finalPrediction = await gptApi3(
         prevPrediction,
         refinedPrediction,
         prevDateVisited,

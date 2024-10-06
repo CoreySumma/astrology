@@ -1,7 +1,8 @@
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Modal.css";
 
-export default function Modal({showModal, setShowModal}) {
+export default function Modal({ showModal, setShowModal }) {
   return (
     <AnimatePresence>
       {showModal && (
@@ -33,6 +34,7 @@ export default function Modal({showModal, setShowModal}) {
             </div>
             <div className="modal-button-container">
               <button
+                type="button"
                 className="modal-button"
                 onClick={() => {
                   setShowModal(false);

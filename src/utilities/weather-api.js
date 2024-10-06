@@ -1,5 +1,6 @@
+// TODO Fix this file - its a mess
 import axios from "axios";
-import { updateTemp, updateDescription} from "../actions";
+import { updateTemp, updateDescription } from "../actions";
 
 export default async function weatherApi(
   lat,
@@ -7,11 +8,12 @@ export default async function weatherApi(
   setLat,
   setLong,
   setData,
-  dispatch,
+  dispatch
 ) {
   // This will get the user's current location and set the latitude and longitude react states
   const fetchData = async () => {
-    navigator.geolocation.getCurrentPosition(async function (position) {
+    // eslint-disable-next-line consistent-return, no-undef
+    navigator.geolocation.getCurrentPosition(async (position) => {
       const currentLat = position.coords.latitude;
       const currentLong = position.coords.longitude;
       setLat(currentLat);
@@ -29,7 +31,7 @@ export default async function weatherApi(
         } catch (error) {
           console.error("Error calling weather API:", error);
         }
-      } 
+      }
     });
   };
   fetchData();

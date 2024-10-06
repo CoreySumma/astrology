@@ -1,22 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from '../src/pages/App/App.jsx';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './reducers/index';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import App from "./pages/App/App";
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
+import reportWebVitals from "./reportWebVitals";
+import rootReducer from "./reducers/index";
 
 const store = configureStore({
   reducer: rootReducer,
 });
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// eslint-disable-next-line no-undef
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </React.StrictMode>
 );

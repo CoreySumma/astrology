@@ -9,6 +9,7 @@ import {
 // We are grabing the users ip address and if it's not there stores it in our DynamoDB table
 // If it is there it returns a flag to let us know it's already there
 // If not, the table will save ip address, and the date
+// eslint-disable-next-line consistent-return
 export async function awsCheckIfVisited(date, dispatch) {
   try {
     console.log("aws checkVisited function enetered");
@@ -18,8 +19,8 @@ export async function awsCheckIfVisited(date, dispatch) {
     );
     const ipAddress = ipRes.data.ip;
     const data = {
-      ipAddress: ipAddress,
-      date: date,
+      ipAddress,
+      date,
     };
     // Send data to our AWS gateway endpoint
     const res = await axios.post(
@@ -33,9 +34,9 @@ export async function awsCheckIfVisited(date, dispatch) {
       }
     );
     // Update Redux store with response from our gateway endpoint
-    const exists = res.data.exists;
-    const lastDateVisited = res.data.lastDateVisited;
-    const pastPrediction = res.data.pastPrediction;
+    const { exists } = res.data;
+    const { lastDateVisited } = res.data;
+    const { pastPrediction } = res.data;
     dispatch(updateUserExists(exists));
     dispatch(updateLastDateVisited(lastDateVisited));
     dispatch(updateLastPrediction(pastPrediction));
@@ -47,6 +48,7 @@ export async function awsCheckIfVisited(date, dispatch) {
 
 // function to add prediction to our DynamoDB table using the same endpoint
 
+// eslint-disable-next-line consistent-return
 export async function awsAddPrediction(prediction, date) {
   try {
     // Get user IP address
@@ -55,9 +57,9 @@ export async function awsAddPrediction(prediction, date) {
     );
     const ipAddress = ipRes.data.ip;
     const data = {
-      prediction: prediction,
-      ipAddress: ipAddress,
-      date: date,
+      prediction,
+      ipAddress,
+      date,
     };
     // Send data to our AWS gateway endpoint
     const res = await axios.post(

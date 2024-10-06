@@ -36,7 +36,7 @@ const intializeState = {
   shortenedPrediction: "",
 };
 
-const userData = (state = intializeState, action) => {
+const userData = (action, state = intializeState) => {
   switch (action.type) {
     case UPDATE_SIGN:
       return {

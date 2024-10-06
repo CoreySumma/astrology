@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// eslint-disable-next-line consistent-return
 export default async function moonApi(setMoonData, lat, long, moonDate) {
   const authString = btoa(
     `${process.env.REACT_APP_MOON_APP_ID}:${process.env.REACT_APP_MOON_API_KEY}`

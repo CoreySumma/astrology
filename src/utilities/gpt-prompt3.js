@@ -1,4 +1,4 @@
-export function gptPrompt3(
+export default function gptPrompt3(
   prevPrediction,
   prevDateVisited,
   currentPrediction,
@@ -15,17 +15,10 @@ export function gptPrompt3(
   const lastVisit = parseDate(prevDateVisited);
   const currentDate = parseDate(date);
 
-  // Debugging: Log parsed dates
-  console.log("Parsed Last Visit:", lastVisit);
-  console.log("Parsed Current Date:", currentDate);
-
   // Calculate time difference in days
   const timeDiff = Math.round(
     (currentDate - lastVisit) / (1000 * 60 * 60 * 24)
   );
-
-  // Debugging: Log time difference
-  console.log("Time Difference (days):", timeDiff);
 
   let timePhrase;
   if (timeDiff === 0) {

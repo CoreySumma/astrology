@@ -16,12 +16,9 @@ export default function Prediction({
   moonData,
   businessLocation,
   businessName,
-  fade,
   setFade,
   isButtonVisible,
   setIsButtonVisible,
-  finalPrediction,
-  setFinalPrediction,
   userExists,
   prevDateVisited,
   prevPrediction,
@@ -75,8 +72,6 @@ export default function Prediction({
       description !== "" &&
       date !== "" &&
       time !== "" &&
-      // moonData !== null &&
-      // moonData !== "" &&
       businessLocation !== "" &&
       businessName !== "" &&
       userExists !== ""
@@ -98,7 +93,6 @@ export default function Prediction({
   ]);
 
   const dispatch = useDispatch();
-  const [prediction, setPrediction] = useState("");
   // Grab the refined prediction from the store depending on if the user has visited before for front end display
   let refinedPrediction;
   const finalPredictionFirstVisit = useSelector(
@@ -120,7 +114,7 @@ export default function Prediction({
     try {
       // Set loading flag on either end of the fetch call to GPT
       setLoadingPrediction(true);
-      const result = await gptApi(
+      await gptApi(
         sign,
         date,
         time,
@@ -135,7 +129,6 @@ export default function Prediction({
         prevPrediction,
         userExists
       );
-      setPrediction(result);
       setLoadingPrediction(false);
     } catch (error) {
       console.log("Error making call to gpt", error);

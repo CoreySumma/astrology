@@ -1,14 +1,14 @@
 import axios from "axios";
-import { gptPrompt3 } from "./gpt-prompt3";
+import gptPrompt3 from "./gpt-prompt3";
 import { awsAddPrediction } from "./aws-database-api";
 
+// eslint-disable-next-line consistent-return
 export default async function gptApi3(
   prevPrediction,
   currentPrediction,
   prevDateVisited,
-  date,
+  date
 ) {
-
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
@@ -18,7 +18,7 @@ export default async function gptApi3(
           prevPrediction,
           prevDateVisited,
           currentPrediction,
-          date,
+          date
         ),
         temperature: 0.7,
         max_tokens: 200,
@@ -31,7 +31,8 @@ export default async function gptApi3(
       }
     );
     let finalPrediction = response.data.choices[0].text.trim();
-    const prefix = "Edited Prediction:" || "Revised Prediction:" || "Final Prediction:";
+    const prefix =
+      "Edited Prediction:" || "Revised Prediction:" || "Final Prediction:";
     if (finalPrediction.startsWith(prefix)) {
       finalPrediction = finalPrediction.substring(prefix.length).trim();
     }

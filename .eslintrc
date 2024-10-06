@@ -1,13 +1,16 @@
 {
-  "extends": [
-    "react-app",
-    "airbnb",
-    "plugin:jsx-a11y/recommended",
-    "prettier"
-  ],
+  "extends": ["airbnb", "plugin:jsx-a11y/recommended", "prettier"],
   "plugins": ["jsx-a11y", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prop-types": "off"
-  }
+    "react/prop-types": "off",
+  },
+  "ignorePatterns": [
+    "reportWebVitals.js",
+    "App.test.js",
+    "node_modules/",
+    "build/",
+    "dist/",
+    "*.min.js"
+  ]
 }

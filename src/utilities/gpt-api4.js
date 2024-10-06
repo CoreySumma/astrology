@@ -1,6 +1,7 @@
 import axios from "axios";
-import { gptPrompt4 } from "./gpt-prompt4";
+import gptPrompt4 from "./gpt-prompt4";
 
+// eslint-disable-next-line consistent-return
 export default async function gptApi4(prediction) {
   try {
     const response = await axios.post(
@@ -20,7 +21,14 @@ export default async function gptApi4(prediction) {
     );
     let shortenedPrediction = response.data.choices[0].text.trim();
     if (shortenedPrediction.startsWith("Shortened Prediction:")) {
-      shortenedPrediction = shortenedPrediction.replace("Shortened Prediction:" || "Revised Prediction:" || "Final Prediction:", "").trim();
+      shortenedPrediction = shortenedPrediction
+        .replace(
+          "Shortened Prediction:" ||
+            "Revised Prediction:" ||
+            "Final Prediction:",
+          ""
+        )
+        .trim();
     }
     return shortenedPrediction;
   } catch (error) {

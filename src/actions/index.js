@@ -18,112 +18,80 @@ export const UPDATE_SHORTENED_PREDICTION = 'UPDATE_SHORTENED_PREDICTION';
 
 
 // Action Creators
-export const updateSign = (sign) => {
-  return {
+export const updateSign = (sign) => ({
     type: UPDATE_SIGN,
     payload: sign,
-  };
-};
+  });
 
-export const updateDate = (date) => {
-  return {
+export const updateDate = (date) => ({
     type: UPDATE_DATE,
     payload: date,
-  };
-}
+  })
 
-export const updateTime = (time) => {
-  return {
+export const updateTime = (time) => ({
     type: UPDATE_TIME,
     payload: time,
-  };
-}
+  })
 
-export const updateTemp = (temp) => {
-  return {
+export const updateTemp = (temp) => ({
     type: UPDATE_TEMP,
     payload: temp,
-  };
-}
+  })
 
-export const updateDescription = (description) => {
-  return {
+export const updateDescription = (description) => ({
     type: UPDATE_DESCRIPTION,
     payload: description,
-  };
-}
+  })
 
-export const updatePrediction = (prediction) => {
-  return {
+export const updatePrediction = (prediction) => ({
     type: UPDATE_PREDICTION,
     payload: prediction,
-  };
-}
+  })
 
-export const updateLocation = (location) => {
-  return {
+export const updateLocation = (location) => ({
     type: UPDATE_LOCATION,
     payload: location,
-  };
-}
+  })
 
-export const updateDay = (day) => {
-  return {
+export const updateDay = (day) => ({
     type: UPDATE_DAY,
     payload: day,
-  };
-}
+  })
 
-export const updateBusinessName = (businessName) => {
-  return {
+export const updateBusinessName = (businessName) => ({
     type: UPDATE_BUSINESS_NAME,
     payload: businessName,
-  };
-}
+  })
 
-export const updateBusinessLocation = (businessLocation) => {
-  return {
+export const updateBusinessLocation = (businessLocation) => ({
     type: UPDATE_BUSINESS_LOCATION,
     payload: businessLocation,
-  };
-}
-export const updateRefinedPrediction = (refinedPrediction) => {
-  return {
+  })
+export const updateRefinedPrediction = (refinedPrediction) => ({
     type: UPDATE_REFINED_PREDICTION,
     payload: refinedPrediction,
-  };
-}
+  })
 
-export const updateUserExists = (userExists) => {
-  return {
+export const updateUserExists = (userExists) => ({
     type: UPDATE_USER_EXISTS,
     payload: userExists,
-  };
-}
+  })
 
-export const updateLastDateVisited = (lastDateVisited) => {
-  return {
+export const updateLastDateVisited = (lastDateVisited) => ({
     type: UPDATE_LAST_DATE_VISITED,
     payload: lastDateVisited,
-  };
-}
+  })
 
-export const updateLastPrediction = (lastPrediction) => {
-  return {
+export const updateLastPrediction = (lastPrediction) => ({
     type: UPDATE_LAST_PREDICTION,
     payload: lastPrediction,
-  };
-}
-export const updateFinalPrediction = (finalPrediction) => {
-  return {
+  })
+export const updateFinalPrediction = (finalPrediction) => ({
     type: UPDATE_FINAL_PREDICTION,
     payload: finalPrediction,
-  };
-}
-export const updateShortenedPrediction = (shortenedPrediction) => {
-  return {
+  })
+export const updateShortenedPrediction = (shortenedPrediction) => ({
     type: UPDATE_SHORTENED_PREDICTION,
     payload: shortenedPrediction,
-  };
-}
+  })
 

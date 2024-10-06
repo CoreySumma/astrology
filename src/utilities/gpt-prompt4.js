@@ -1,6 +1,4 @@
-export function gptPrompt4(prediction) {
-
-
+export default function gptPrompt4(prediction) {
   // Explicitly stating that the output should only include the edits
   return `
   As the final AI assistant you are tasked with making edits to a horoscope prediction right before the user see's it.
@@ -15,5 +13,3 @@ export function gptPrompt4(prediction) {
 }
 
 // 7. IMPORTANT: IF YOU ADD TO THE PREDICTION MAKE ADDITIONAL EDITS TO KEEP IT THE SAME LENGTH OR SHORTER.
-
-

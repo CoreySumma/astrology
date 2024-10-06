@@ -1,4 +1,4 @@
-export function gptPrompt(
+export default function gptPrompt(
   signData,
   date,
   time,
