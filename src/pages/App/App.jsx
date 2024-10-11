@@ -13,21 +13,16 @@ import ZodiacSwiper from "../../components/ZodiacSwiper/ZodiacSwiper";
 export default function App() {
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
-  // "Data" is actually openWeather api data
   const [data, setData] = useState([]);
   const [sign, setSign] = useState("aries");
-  // Flag to check if location has been fetched to avoid constant calling of API
   const [locationFetched, setLocationFetched] = useState(false);
-  // Flag to fade everything out after button is clicked
   const [fade, setFade] = useState(false);
-  // Flag to hide the button indefinitely after the click
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [finalPrediction, setFinalPrediction] = useState("");
 
   const dispatch = useDispatch();
 
-  // One useEffect to rule them all(this is kinda bad I think)
   useEffect(() => {
     // Get the date for GPT
     const dateObj = new Date();
@@ -48,7 +43,6 @@ export default function App() {
       "Saturday",
     ];
     const dayOfWeek = daysOfWeek[dateObj.getDay()];
-    // Save to redux store
     dispatch(updateDay(dayOfWeek));
     dispatch(updateDate(newDate));
     dispatch(updateTime(time));
@@ -57,11 +51,7 @@ export default function App() {
     if (long && lat) {
       // Call the google maps API to get the city name, state etc of the user
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
-      // Call the moon API with arguments to get moon phase image and display it with local state
-      // moonApi(setMoonData, lat, long, moonDate);
-      // Set your search terms for business's in your area
       const search = "yoga";
-      // Call the yelp API with arguments (right now it searches business name not events despite naming convention of 'getMeetUp')
       getMeetUp(search, lat, long, dispatch);
     }
   }, [lat, long, dispatch, locationFetched]);

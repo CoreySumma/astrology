@@ -1,5 +1,5 @@
 import axios from "axios";
-import gptPrompt3 from "./gpt-prompt3";
+import gptPrompt3 from "./prompts/gpt-prompt3";
 import { awsAddPrediction } from "./aws-database-api";
 
 // eslint-disable-next-line consistent-return
@@ -38,7 +38,6 @@ export default async function gptApi3(
     }
     // If we call this fetch we need to update the last prediction in our database
     awsAddPrediction(finalPrediction, date);
-    console.log(date);
     return finalPrediction;
   } catch (error) {
     console.error("Error calling OpenAI API:", error);

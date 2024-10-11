@@ -1,6 +1,6 @@
 import axios from "axios";
 import { updateRefinedPrediction } from "../actions";
-import gptPrompt2 from "./gpt-prompt2";
+import gptPrompt2 from "./prompts/gpt-prompt2";
 import { awsAddPrediction } from "./aws-database-api";
 
 // eslint-disable-next-line consistent-return

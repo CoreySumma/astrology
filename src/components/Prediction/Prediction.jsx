@@ -22,6 +22,7 @@ export default function Prediction({
   prevDateVisited,
   prevPrediction,
 }) {
+  const dispatch = useDispatch();
   // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
   // Flag for flashing loading animation
@@ -91,9 +92,7 @@ export default function Prediction({
     userExists,
   ]);
 
-  const dispatch = useDispatch();
   // Grab the refined prediction from the store depending on if the user has visited before for front end display
-  let refinedPrediction;
   const finalPredictionFirstVisit = useSelector(
     (store) => store.userData.refinedPrediction
   );
@@ -103,6 +102,7 @@ export default function Prediction({
   );
   // Grab the refined(shortened) prediction from the store depending on if the user has visited before for front end display
   // Address's edge case of them refreshing the page and not having a prediction from last visit
+  let refinedPrediction;
   if (userExists && prevPrediction !== "No prediction available") {
     refinedPrediction = finalPredictionNotFirstVisit;
   } else {

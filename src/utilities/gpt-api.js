@@ -6,9 +6,8 @@ import {
 } from "../actions";
 import gptApi2 from "./gpt-api2";
 import gptApi3 from "./gpt-api3";
-import gptPrompt from "./gpt-prompt";
+import gptPrompt from "./prompts/gpt-prompt";
 
-// eslint-disable-next-line consistent-return
 export default async function gptApi(
   signData,
   date,
@@ -24,7 +23,7 @@ export default async function gptApi(
   prevPrediction,
   userExists
 ) {
-  // First API call to GPT
+  // 1st API call to GPT
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
@@ -51,11 +50,11 @@ export default async function gptApi(
         },
       }
     );
-    // Update Redux store with prediction
-    dispatch(updatePrediction(response.data.choices[0].text.trim()));
     // Set prediction to variable to pass to second call
     const prediction = response.data.choices[0].text.trim();
-    // Second API call to GPT
+    // Update Redux store with first prediction
+    dispatch(updatePrediction(prediction));
+    // 2nd API call to GPT
     const refinedPrediction = await gptApi2(
       signData,
       date,
@@ -69,9 +68,8 @@ export default async function gptApi(
       businessName,
       prediction
     );
-    // Update Redux store with refined prediction
+    // Save the refined version
     dispatch(updateRefinedPrediction(refinedPrediction));
-
     // Only proceed with the third call if userExists is true
     if (userExists && prevPrediction !== "No prediction available") {
       console.log("User exists, calling third API...");
@@ -81,15 +79,8 @@ export default async function gptApi(
         prevDateVisited,
         date
       );
-      // Testing 4th call to shorten GPT response - Not in use
-      // let shortenedPrediction = await gptApi4(finalPrediction);
-      // dispatch(updateShortenedPrediction(shortenedPrediction));
-      // awsAddPrediction(shortenedPrediction, date);
-
-      // Save this to Redux for easy access
       dispatch(updateFinalPrediction(finalPrediction));
     }
-    return response.data.choices[0].text.trim();
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
   }
