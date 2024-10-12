@@ -101,7 +101,7 @@
 }
 
 .display-sign::first-letter {
-text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 /* Not using but could be useful */
@@ -167,7 +167,6 @@ text-transform: capitalize;
   z-index: 1;
 }
 
-
 .prediction-text-fade-in {
   animation: fadeIn 2s;
 }
@@ -175,11 +174,13 @@ text-transform: capitalize;
 .fade-out {
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  cursor:default;
+  pointer-events: none;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1500px) {
   .loading-zodiac-sign {
-    margin-top:10vw;
+    margin-top: 10vw;
   }
 }
 
@@ -196,7 +197,6 @@ text-transform: capitalize;
 }
 
 @media screen and (max-width: 600px) {
-
   .prediction-button {
     width: 195px;
     height: 40px;
@@ -215,7 +215,7 @@ text-transform: capitalize;
     padding-left: 4px;
     padding-right: 4px;
   }
-  
+
   .loading-zodiac-sign {
     margin-top: 20vw;
   }

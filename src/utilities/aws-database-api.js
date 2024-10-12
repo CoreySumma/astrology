@@ -11,19 +11,15 @@ import {
 // If not, the table will save ip address, and the date
 export async function awsCheckIfVisited(date, dispatch) {
   try {
-    // Get user IP address
-    const ipRes = await axios.get(
+    const { data: { ip: ipAddress } } = await axios.get(
       "https://corsproxy.io/?https://api.ipify.org?format=json"
-    );
-    const ipAddress = ipRes.data.ip;
-    const data = {
-      ipAddress,
-      date,
-    };
-    // Send data to our AWS gateway endpoint
+    );    
     const res = await axios.post(
       "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",
-      data,
+      {
+        ipAddress,
+        date,
+      },
       {
         headers: {
           "Content-Type": "application/json",
@@ -46,19 +42,18 @@ export async function awsCheckIfVisited(date, dispatch) {
 export async function awsAddPrediction(prediction, date) {
   try {
     // Get user IP address
-    const ipRes = await axios.get(
+    const { data: { ip: ipAddress } } = await axios.get(
       "https://corsproxy.io/?https://api.ipify.org?format=json"
     );
-    const ipAddress = ipRes.data.ip;
-    const data = {
-      prediction,
-      ipAddress,
-      date,
-    };
+    
     // Send data to our AWS gateway endpoint
     axios.post(
       "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",
-      data,
+      {
+        prediction,
+        ipAddress,
+        date,
+      },
       {
         headers: {
           "Content-Type": "application/json",

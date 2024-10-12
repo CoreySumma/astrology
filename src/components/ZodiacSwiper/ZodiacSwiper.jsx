@@ -39,8 +39,6 @@ export default function ZodiacSwiper({ setSign, fade, data }) {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSlideChange={(swiper) => {
-            // Save the index of the active slide through swiper
-            const activeSlideIndex = swiper.activeIndex;
             const signs = [
               "aries",
               "taurus",
@@ -55,7 +53,7 @@ export default function ZodiacSwiper({ setSign, fade, data }) {
               "aquarius",
               "pisces",
             ];
-            handleChange(signs[activeSlideIndex]);
+            handleChange(signs[swiper.activeIndex]);
           }}
         >
           <SwiperSlide>
