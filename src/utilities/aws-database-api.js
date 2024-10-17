@@ -6,9 +6,6 @@ import {
 } from "../actions";
 
 // Fetch to our AWS gateway endpoint that triggers our Lambda function
-// We are grabing the users ip address and if it's not there stores it in our DynamoDB table
-// If it is there it returns a flag to let us know it's already there
-// If not, the table will save ip address, and the date
 export async function awsCheckIfVisited(date, dispatch) {
   try {
     const { data: { ip: ipAddress } } = await axios.get(
@@ -27,7 +24,7 @@ export async function awsCheckIfVisited(date, dispatch) {
         },
       }
     );
-    // Update Redux store with response from our gateway endpoint
+    // Update Redux store from response
     const { exists, lastDateVisited, pastPrediction } = res.data;
     dispatch(updateUserExists(exists));
     dispatch(updateLastDateVisited(lastDateVisited));
@@ -45,8 +42,6 @@ export async function awsAddPrediction(prediction, date) {
     const { data: { ip: ipAddress } } = await axios.get(
       "https://corsproxy.io/?https://api.ipify.org?format=json"
     );
-    
-    // Send data to our AWS gateway endpoint
     axios.post(
       "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",
       {

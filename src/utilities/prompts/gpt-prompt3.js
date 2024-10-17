@@ -29,7 +29,6 @@ export default function gptPrompt3(
     timePhrase = "As the weeks under the heavens have passed,";
   }
 
-  // Explicitly stating that the output should only include the edits
   return `
   As an Editor, refine the current horoscope prediction to subtly link it with the previous one, 
   acknowledging any shared insights and the passage of time in a creative way. 

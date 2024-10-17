@@ -25,9 +25,9 @@ export default function Prediction({
   const dispatch = useDispatch();
   // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
-  // Flag for flashing loading animation
+  // Flag for flashing loading animation afetr button is pressed
   const [loadingPrediction, setLoadingPrediction] = useState(false);
-  // Object to grab sign image based on current sign for loading animation based on loadingPrediction flag
+  // Map sign image based on current sign for loading animation based on loadingPrediction flag
   const signImages = {
     aries: "../../images/ariesw.png",
     taurus: "../../images/taurusw.png",
@@ -42,7 +42,7 @@ export default function Prediction({
     aquarius: "../../images/aquariusw.png",
     pisces: "../../images/piscesw.png",
   };
-  // Object to grab constellation image based on current sign for loading animation based on loadingPrediction flag
+  // Map constellation image based on current sign for loading animation
   const constellationImage = {
     aries: "../../images/aries-constellation.png",
     taurus: "../../images/taurus-constellation.png",
@@ -57,12 +57,7 @@ export default function Prediction({
     aquarius: "../../images/aquarius-constellation.png",
     pisces: "../../images/pisces-constellation.png",
   };
-  // Make a var to the current sign image
-  const signImage = signImages[sign];
-  // Make a var to the current constellation image
-  const constellation = constellationImage[sign];
-
-  // This useEffect checks if all data has been fetched and sets the flag to true
+  // Checks if all data has been fetched
   useEffect(() => {
     if (
       temp !== null &&
@@ -97,10 +92,9 @@ export default function Prediction({
     (store) => store.userData.refinedPrediction
   );
   const finalPredictionNotFirstVisit = useSelector(
-    // (store) => store.userData.shortenedPrediction
     (store) => store.userData.finalPrediction
   );
-  // Grab the refined(shortened) prediction from the store depending on if the user has visited before for front end display
+  // Grab the refined(shortened) prediction from the store depending on if the user has visited before
   // Address's edge case of them refreshing the page and not having a prediction from last visit
   let refinedPrediction;
   if (userExists && prevPrediction !== "No prediction available") {
@@ -135,17 +129,12 @@ export default function Prediction({
   }
 
   async function handleClick() {
-    // this is to prevent the button from being clicked before all data is fetched and to trigger the fade out animation
     if (allGptDataFetched) {
       callGpt();
       setIsButtonVisible(false);
       setFade(true);
     } else {
-      // This doesn't work...yet
       setTimeout(() => {
-        console.log(
-          "Waiting for data to be fetched...Trying again in 2 seconds."
-        );
         callGpt();
         setIsButtonVisible(false);
         setFade(true);
@@ -158,13 +147,19 @@ export default function Prediction({
       <button
         type="button"
         onClick={handleClick}
-        className={`prediction-button ${!isButtonVisible ? "fade-out" : ""}`}
+        className={`prediction-button ${
+          !isButtonVisible ? "fade-out" : allGptDataFetched && "slow-fade-in"
+        }`}
       >
         Ask The Universe
       </button>
       <div className="prediction-container">
         {loadingPrediction && (
-          <img className="loading-zodiac-sign" src={signImage} alt="Sign" />
+          <img
+            className="loading-zodiac-sign"
+            src={signImages[sign]}
+            alt="Sign"
+          />
         )}
         {!loadingPrediction && !allGptDataFetched && (
           <div className="spinner" />
@@ -175,7 +170,7 @@ export default function Prediction({
               <p className="display-sign">{sign}</p>
               <img
                 className="constellation"
-                src={constellation}
+                src={constellationImage[sign]}
                 alt="Constellation"
               />
               <p className="prediction-text">{parse(refinedPrediction)}</p>

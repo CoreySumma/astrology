@@ -56,7 +56,7 @@ export default function App() {
     }
   }, [lat, long, dispatch, locationFetched]);
 
-  // Redux for retrieving data from the store for state to pass to components/GPT
+  // Redux for retrieving data from the store for state to pass to GPT prompts
   const description = useSelector((state) => state.userData.description);
   const temp = useSelector((state) => state.userData.temp);
   const date = useSelector((state) => state.userData.date);

@@ -42,7 +42,7 @@
   overflow: hidden;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  /* transition: all 400ms ease-in-out !important ; */
+  opacity: 0;
 }
 
 .moon {
@@ -176,6 +176,12 @@
   transition: opacity 1s ease-in-out;
   cursor:default;
   pointer-events: none;
+}
+
+.slow-fade-in {
+  opacity: 1;
+  animation: fadeIn 3s;
+  pointer-events: auto;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1500px) {

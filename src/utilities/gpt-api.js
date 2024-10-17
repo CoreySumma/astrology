@@ -50,9 +50,7 @@ export default async function gptApi(
         },
       }
     );
-    // Set prediction to variable to pass to second call
     const prediction = response.data.choices[0].text.trim();
-    // Update Redux store with first prediction
     dispatch(updatePrediction(prediction));
     // 2nd API call to GPT
     const refinedPrediction = await gptApi2(
@@ -68,7 +66,6 @@ export default async function gptApi(
       businessName,
       prediction
     );
-    // Save the refined version
     dispatch(updateRefinedPrediction(refinedPrediction));
     // Only proceed with the third call if userExists is true
     if (userExists && prevPrediction !== "No prediction available") {

@@ -47,11 +47,6 @@ Craft a tailored prediction that and is both poetic and deeply resonating,
  showing the user the magic this day holds specially for them.
 MANDATORY: Keep it as short as possible. 
  Be creative and weave all the data you have into your response 
- without exceeding 250 characters.
+ without exceeding 200 characters.
 `;
 }
-// Example for guidance:
-// Data For Example: Taurus, October 3rd 2023, 5:43PM, 82.69F, broken clouds, Austin, Texas, Wednesday, Practice Yoga Austin, 1103 E 6th St, Austin, TX 78702
-// Example Response: On this warm Fall Wednesday, while the sun sets in a sky of broken clouds, your Taurus heart is called to romance, echoing Venus influence.
-// The moonlight of this night guides you as Halloween approaches. This fall night is perfect to for an adventure to South 1st Streets Art for the People gallery,
-// a space ripe for mesmerizing talks and new acquaintances. Afterwards, consider taking a stroll down 6th street and clearing your mind with a yoga session at Practice Yoga Austin nearby.
