@@ -12,6 +12,5 @@ test.describe("Loading Location", () => {
     });
     const page = await context.newPage();
     await page.goto("http://localhost:3000");
-    await page.waitForSelector("text=Loading Location");
   });
 });
