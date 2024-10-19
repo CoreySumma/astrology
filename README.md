@@ -33,13 +33,10 @@ This is a React application that utilizes Open AI's API, Open Weathers API, Astr
 
 </div>
 
-<div id="description" align="center">
-Want to fork it? Here's how to get started:
-
+## Want to fork it? Here's how to get started:
+<div id="steps-to-fork" align="left">
 1. Clone this repo in the desired directory (currently the prod branch is the most up to date).
-
 2. Run pnpm install to install all the dependencies.
-
 3. Create a .env file in the root directory and add the following:
 - REACT_APP_OPEN_AI_KEY 
 - REACT_APP_WEATHER_API_KEY
