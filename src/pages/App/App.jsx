@@ -25,6 +25,10 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
   const [finalPrediction, setFinalPrediction] = useState("");
 
+  // Search term for whatever business you want to show up in the prediction
+  const search = "yoga";
+
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,8 +43,8 @@ export default function App() {
     weatherApi(setLat, setLong, setData, dispatch);
     if (long && lat) {
       // Call the google maps API to get the city name, state etc of the user
+      // and then call the meetup API to get the nearest yoga studio
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
-      const search = "yoga";
       getMeetUp(search, lat, long, dispatch);
     }
   }, [lat, long, dispatch, locationFetched]);

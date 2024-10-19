@@ -136,6 +136,7 @@ export default function Prediction({
             className="loading-zodiac-sign"
             src={`/images/${sign}w.png`}
             alt={`${sign} Sign`}
+            data-testid="loading-prediction-icon"
           />
         )}
         {!loadingPrediction && !allGptDataFetched && (
@@ -149,8 +150,11 @@ export default function Prediction({
                 className="constellation"
                 src={`/images/${sign}-constellation.png`}
                 alt={`${sign} Constellation`}
+                data-testid="constellation"
               />
-              <p className="prediction-text">{parse(refinedPrediction)}</p>
+              <p className="prediction-text" data-testid="prediction">
+                {parse(refinedPrediction)}
+              </p>
             </div>
           </div>
         )}

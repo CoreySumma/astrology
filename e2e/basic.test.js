@@ -6,30 +6,26 @@ import { v4 as uuidv4 } from "uuid";
 test.describe("Injecting location...", () => {
   let page;
 
-  test("Display zero state and load user data", async ({ browser }) => {
+  test.beforeAll(async ({ browser }) => {
     const context = await browser.newContext({
       recordVideo: {
         dir: `./${dayjs().format("MM-DD-YYYY")}_screen-recordings`,
       },
       permissions: ["geolocation"],
-      // Austin, TX
-      geolocation: { latitude: 30.2672, longitude: -97.7431 },
+      geolocation: { latitude: 30.2672, longitude: -97.7431 }, // Austin, TX
     });
 
     page = await context.newPage();
+  });
 
+  test("Display zero state and load user data", async () => {
     await page.goto("http://localhost:3000", {
       waitUntil: "networkidle",
       timeout: 30000,
     });
 
-    // Inject black background
     await page.addStyleTag({
-      content: `
-        .video-background {
-          background-color: black !important;
-        }
-      `,
+      content: `.video-background { background-color: black !important; }`,
     });
 
     await Promise.all([
@@ -46,6 +42,7 @@ test.describe("Injecting location...", () => {
   });
 
   test("Change zodiac signs", async () => {
+    // Basic nav with selector
     await page.getByLabel("Go to slide 2").click();
     await expect(page.getByRole("img", { name: "Taurus" })).toBeVisible();
 
@@ -78,11 +75,33 @@ test.describe("Injecting location...", () => {
 
     await page.getByLabel("Go to slide 12").click();
     await expect(page.getByRole("img", { name: "Pisces" })).toBeVisible();
+  });
 
-    await expect(
-      page.getByRole("button", { name: "Ask The Universe" })
-    ).toBeVisible();
-    await page.getByRole("button", { name: "Ask The Universe" }).click();
-    // await page.pause();
+  test("Display and hide prediction loading icon when asking the universe", async () => {
+    // Select Taurus
+    await page.getByLabel("Go to slide 2").click();
+    await expect(page.getByRole("img", { name: "Taurus" })).toBeVisible();
+    // Click the "Ask The Universe" button
+    const askButton = page.getByRole("button", { name: "Ask The Universe" });
+    await expect(askButton).toBeVisible();
+    await askButton.click();
+    // Wait for the loading icon to appear and then disappear
+    await expect(page.getByTestId("loading-prediction-icon")).toBeVisible();
+     // Wait for animations
+    await page.waitForTimeout(1000);
+    await page.screenshot({
+      path: `./${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_loading_prediction_state.png`,
+    });
+    await expect(page.getByTestId("loading-prediction-icon")).toBeHidden({
+      timeout: 10000,
+    });
+    // Wait for the prediction to appear
+    await expect(page.getByTestId("prediction")).toBeVisible();
+    await expect(page.getByTestId("constellation")).toBeVisible();
+    // Wait for animations
+    await page.waitForTimeout(2000);
+    await page.screenshot({
+      path: `./${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_fulfilled_prediction.png`,
+    });
   });
 });
