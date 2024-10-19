@@ -1,22 +1,19 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { test, expect } from "@playwright/test";
+import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 
 test.describe("Injecting location...", () => {
   test("Should display zero state", async ({ browser }) => {
     const context = await browser.newContext({
-      recordVideo: { dir: "./test-results/screen-recordings" },
+      recordVideo: {
+        dir: `./test-results/${dayjs().format("MM-DD-YYYY")}-screen-recordings`,
+      },
       permissions: ["geolocation"],
-      viewport: { width: 1280, height: 720 },
-      geolocation: { latitude: 51.507351, longitude: -0.127758 },
+      geolocation: { latitude: 30.2672, longitude: -97.7431 },
     });
 
     const page = await context.newPage();
-
-    page.on("console", (msg) => console.log(`PAGE LOG: ${msg.text()}`));
-    page.on("requestfailed", (request) =>
-      console.log(
-        `Failed request: ${request.url()} - ${request.failure().errorText}`
-      )
-    );
 
     await page.goto("http://localhost:3000", {
       waitUntil: "networkidle",
@@ -29,9 +26,6 @@ test.describe("Injecting location...", () => {
       content: `
         .video-background {
           background-color: black !important;
-          width: 100%;
-          height: 100vh;
-          display: block;
         }
       `,
     });
@@ -42,6 +36,10 @@ test.describe("Injecting location...", () => {
       expect(page.locator(".swiper")).toBeVisible({ timeout: 20000 }),
       expect(page.getByRole("img", { name: "Aries" })).toBeVisible(),
     ]);
+
+    await page.screenshot({
+      path: `./test-results/screenshots-${dayjs().format("MM-DD-YYYY")}/${uuidv4()}_empty_state.png`,
+    });
 
     await page.getByLabel("Go to slide 2").click();
     await expect(page.getByRole("img", { name: "Taurus" })).toBeVisible();
