@@ -6,6 +6,7 @@
     "checkJs": false,
     "allowJs": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/App.test.js"],
   "exclude": ["node_modules", "build"]
 }
+
