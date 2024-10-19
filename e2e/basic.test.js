@@ -99,7 +99,7 @@ test.describe("Injecting location...", () => {
     await expect(page.getByTestId("prediction")).toBeVisible();
     await expect(page.getByTestId("constellation")).toBeVisible();
     // Wait for animations
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
     await page.screenshot({
       path: `./${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_fulfilled_prediction.png`,
     });
