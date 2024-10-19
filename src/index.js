@@ -1,8 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import { SnackbarProvider } from "notistack";
 import App from "./pages/App/App";
 // eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import reportWebVitals from "./reportWebVitals";
@@ -17,7 +19,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <SnackbarProvider
+        maxSnack={1}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <App />
+      </SnackbarProvider>
     </Provider>
   </React.StrictMode>
 );

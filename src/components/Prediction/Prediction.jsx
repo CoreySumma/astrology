@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Prediction.css";
 import { useDispatch, useSelector } from "react-redux";
 import parse from "html-react-parser";
+import { useSnackbar } from "notistack";
 import gptApi from "../../utilities/gpt-api";
 
 export default function Prediction({
@@ -27,7 +28,8 @@ export default function Prediction({
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
   // Flag for flashing loading animation afetr button is pressed
   const [loadingPrediction, setLoadingPrediction] = useState(false);
-
+  // If we fail to call GPT, we can use the snackbar to notify the user
+  const { enqueueSnackbar } = useSnackbar();
 
   // Checks if all data has been fetched
   useEffect(() => {
@@ -96,7 +98,10 @@ export default function Prediction({
       );
       setLoadingPrediction(false);
     } catch (error) {
-      console.log("Error making call to gpt", error);
+      enqueueSnackbar(
+        "The gods grow quiet...Check your API key or make a sacrafice.",
+        { variant: "error" }
+      );
     }
   }
 
