@@ -80,7 +80,6 @@ export default function App() {
     if (locationFetched) {
       setShowModal(false);
       awsCheckIfVisited(date, dispatch);
-      return; 
     }
     const timer = setTimeout(() => {
       if (locationFetched) {
