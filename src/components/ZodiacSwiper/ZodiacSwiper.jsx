@@ -1,6 +1,6 @@
+/* eslint-disable import/no-unresolved */
 import React from "react";
 import { useDispatch } from "react-redux";
-// eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -8,13 +8,10 @@ import {
   Scrollbar,
   A11y,
   EffectFlip,
-  // eslint-disable-next-line import/no-unresolved
 } from "swiper/modules";
-// eslint-disable-next-line import/no-unresolved
 import SwiperCore from "swiper/core";
 import "./ZodiacSwiper.css";
 import { updateSign } from "../../actions";
-// eslint-disable-next-line import/no-unresolved
 import "swiper/css/bundle";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFlip]);
@@ -39,6 +36,7 @@ export default function ZodiacSwiper({ setSign, fade, data }) {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSlideChange={(swiper) => {
+            // TODO make source of truth for signs
             const signs = [
               "aries",
               "taurus",
@@ -56,6 +54,7 @@ export default function ZodiacSwiper({ setSign, fade, data }) {
             handleChange(signs[swiper.activeIndex]);
           }}
         >
+          {/* TODO same here */}
           <SwiperSlide>
             <img src="../../images/ariesw.png" alt="Aries" />
             <p className="image-description">Aries.</p>

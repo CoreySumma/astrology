@@ -4,24 +4,26 @@ import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
 
 test.describe("Injecting location...", () => {
+  let page;
+
   test("Should display zero state", async ({ browser }) => {
     const context = await browser.newContext({
       recordVideo: {
         dir: `./test-results/${dayjs().format("MM-DD-YYYY")}-screen-recordings`,
       },
       permissions: ["geolocation"],
-      geolocation: { latitude: 30.2672, longitude: -97.7431 },
+      // Austin, TX
+      geolocation: { latitude: 30.2672, longitude: -97.7431 }, 
     });
 
-    const page = await context.newPage();
+    page = await context.newPage();
 
     await page.goto("http://localhost:3000", {
       waitUntil: "networkidle",
       timeout: 30000,
     });
 
-    // videos do not load correctly in chromium
-    // we inject a black background for visibility
+    // Inject black background
     await page.addStyleTag({
       content: `
         .video-background {
@@ -29,6 +31,7 @@ test.describe("Injecting location...", () => {
         }
       `,
     });
+
     await Promise.all([
       expect(page.locator(".zodiac-title")).toContainText("My zodiac sign is", {
         timeout: 20000,
@@ -40,7 +43,9 @@ test.describe("Injecting location...", () => {
     await page.screenshot({
       path: `./test-results/screenshots-${dayjs().format("MM-DD-YYYY")}/${uuidv4()}_empty_state.png`,
     });
+  });
 
+  test("Change zodiac signs", async () => {
     await page.getByLabel("Go to slide 2").click();
     await expect(page.getByRole("img", { name: "Taurus" })).toBeVisible();
 
@@ -78,6 +83,6 @@ test.describe("Injecting location...", () => {
       page.getByRole("button", { name: "Ask The Universe" })
     ).toBeVisible();
     await page.getByRole("button", { name: "Ask The Universe" }).click();
-    await page.pause();
+    // await page.pause();
   });
 });
