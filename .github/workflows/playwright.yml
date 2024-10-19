@@ -34,7 +34,7 @@ jobs:
       if: ${{ always() }} 
       with:
         name: test-videos
-        path: test-results/*screen-recordings/*.webm 
+        path: ./*screen-recordings/*.webm 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

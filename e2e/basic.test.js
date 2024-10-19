@@ -9,7 +9,7 @@ test.describe("Injecting location...", () => {
   test("Display zero state and load user data", async ({ browser }) => {
     const context = await browser.newContext({
       recordVideo: {
-        dir: `../test-results/${dayjs().format("MM-DD-YYYY")}_screen-recordings`,
+        dir: `./${dayjs().format("MM-DD-YYYY")}_screen-recordings`,
       },
       permissions: ["geolocation"],
       // Austin, TX
@@ -42,7 +42,7 @@ test.describe("Injecting location...", () => {
     ]);
 
     await page.screenshot({
-      path: `../test-results/${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_empty_state.png`,
+      path: `./${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_empty_state.png`,
     });
   });
 
