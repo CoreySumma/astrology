@@ -87,7 +87,7 @@ test.describe("Injecting location...", () => {
     await askButton.click();
     // Wait for the loading icon to appear and then disappear
     await expect(page.getByTestId("loading-prediction-icon")).toBeVisible();
-     // Wait for animations
+    // Wait for animations
     await page.waitForTimeout(1000);
     await page.screenshot({
       path: `./${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_loading_prediction_state.png`,
@@ -103,5 +103,11 @@ test.describe("Injecting location...", () => {
     await page.screenshot({
       path: `./${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_fulfilled_prediction.png`,
     });
+  });
+  test.afterAll(async ({ browser }) => {
+    // Add a delay to extend video recording time before closing so video captures final state as well
+    await page.waitForTimeout(5000); 
+    await page.close();
+    await browser.close();
   });
 });
