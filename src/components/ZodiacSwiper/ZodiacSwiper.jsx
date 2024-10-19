@@ -36,7 +36,6 @@ export default function ZodiacSwiper({ setSign, fade, data }) {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSlideChange={(swiper) => {
-            // TODO make source of truth for signs
             const signs = [
               "aries",
               "taurus",

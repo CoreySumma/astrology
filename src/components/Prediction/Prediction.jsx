@@ -130,7 +130,7 @@ export default function Prediction({
           <img
             className="loading-zodiac-sign"
             src={`/images/${sign}w.png`}
-            alt="Sign"
+            alt={`${sign} Sign`}
           />
         )}
         {!loadingPrediction && !allGptDataFetched && (
@@ -143,7 +143,7 @@ export default function Prediction({
               <img
                 className="constellation"
                 src={`/images/${sign}-constellation.png`}
-                alt="Constellation"
+                alt={`${sign} Constellation`}
               />
               <p className="prediction-text">{parse(refinedPrediction)}</p>
             </div>
