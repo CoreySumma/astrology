@@ -48,7 +48,7 @@ This is a React application that utilizes Open AI's API, Open Weathers API, Yelp
 - REACT_APP_YELP_API_ID
 - REACT_APP_CORS_API_KEY
 
-Resources for getting the API keys: (Note: All of these or free or available for a free trial.)
+Resources for getting the API keys: (Note: All of these are free or available for a free trial.)
 - Open AI: https://community.openai.com/t/how-do-i-get-my-api-key/29343
 - Open Weather: https://openweathermap.org/api
 - Google: https://developers.google.com/maps/documentation/geolocation/get-api-key
