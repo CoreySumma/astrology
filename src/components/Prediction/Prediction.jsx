@@ -27,36 +27,8 @@ export default function Prediction({
   const [allGptDataFetched, setAllGptDataFetched] = useState(false);
   // Flag for flashing loading animation afetr button is pressed
   const [loadingPrediction, setLoadingPrediction] = useState(false);
-  // Map sign image based on current sign for loading animation based on loadingPrediction flag
-  const signImages = {
-    aries: "../../images/ariesw.png",
-    taurus: "../../images/taurusw.png",
-    gemini: "../../images/geminiw.png",
-    cancer: "../../images/cancerw.png",
-    leo: "../../images/leow.png",
-    virgo: "../../images/virgo1w.png",
-    libra: "../../images/libraw.png",
-    scorpio: "../../images/scorpiow.png",
-    sagittarius: "../../images/sagittariusw.png",
-    capricorn: "../../images/capricornw.png",
-    aquarius: "../../images/aquariusw.png",
-    pisces: "../../images/piscesw.png",
-  };
-  // Map constellation image based on current sign for loading animation
-  const constellationImage = {
-    aries: "../../images/aries-constellation.png",
-    taurus: "../../images/taurus-constellation.png",
-    gemini: "../../images/gemini-constellation.png",
-    cancer: "../../images/cancer-constellation.png",
-    leo: "../../images/leo-constellation.png",
-    virgo: "../../images/virgo-constellation.png",
-    libra: "../../images/libra-constellation.png",
-    scorpio: "../../images/scorpio-constellation.png",
-    sagittarius: "../../images/sagittarius-constellation.png",
-    capricorn: "../../images/capricorn-constellation.png",
-    aquarius: "../../images/aquarius-constellation.png",
-    pisces: "../../images/pisces-constellation.png",
-  };
+
+
   // Checks if all data has been fetched
   useEffect(() => {
     if (
@@ -157,7 +129,7 @@ export default function Prediction({
         {loadingPrediction && (
           <img
             className="loading-zodiac-sign"
-            src={signImages[sign]}
+            src={`/images/${sign}w.png`}
             alt="Sign"
           />
         )}
@@ -170,7 +142,7 @@ export default function Prediction({
               <p className="display-sign">{sign}</p>
               <img
                 className="constellation"
-                src={constellationImage[sign]}
+                src={`/images/${sign}-constellation.png`}
                 alt="Constellation"
               />
               <p className="prediction-text">{parse(refinedPrediction)}</p>

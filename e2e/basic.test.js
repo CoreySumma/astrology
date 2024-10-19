@@ -15,7 +15,6 @@ test.describe("Injecting location...", () => {
       // Austin, TX
       geolocation: { latitude: 30.2672, longitude: -97.7431 },
     });
-    // /Users/coreysumma1/code/astrology/test-results
 
     page = await context.newPage();
 
