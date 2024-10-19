@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import localeData from "dayjs/plugin/localeData";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import Prediction from "../../components/Prediction/Prediction";
@@ -9,6 +11,8 @@ import weatherApi from "../../utilities/weather-api";
 import getMeetUp from "../../utilities/meetup-api";
 import { awsCheckIfVisited } from "../../utilities/aws-database-api";
 import ZodiacSwiper from "../../components/ZodiacSwiper/ZodiacSwiper";
+
+dayjs.extend(localeData);
 
 export default function App() {
   const [lat, setLat] = useState(null);
@@ -24,27 +28,12 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Get the date for GPT
-    const dateObj = new Date();
-    const newDate = dateObj.toLocaleDateString();
-    const time = new Date().toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-    // Get the day of the week for GPT
-    const daysOfWeek = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const dayOfWeek = daysOfWeek[dateObj.getDay()];
+    // Gather time, date, and day of the week data for GPT
+    const date = dayjs().format("MM/DD/YYYY");
+    const time = dayjs().format("hh:mm A");
+    const dayOfWeek = dayjs().format("dddd");
     dispatch(updateDay(dayOfWeek));
-    dispatch(updateDate(newDate));
+    dispatch(updateDate(date));
     dispatch(updateTime(time));
     // Call the weather API with arguments which also gets user longitude and latitude
     weatherApi(setLat, setLong, setData, dispatch);
