@@ -9,11 +9,11 @@ test.describe("Injecting location...", () => {
   test("Should display zero state", async ({ browser }) => {
     const context = await browser.newContext({
       recordVideo: {
-        dir: `./test-results/${dayjs().format("MM-DD-YYYY")}-screen-recordings`,
+        dir: `./test-results/${dayjs().format("MM-DD-YYYY")}_screen-recordings`,
       },
       permissions: ["geolocation"],
       // Austin, TX
-      geolocation: { latitude: 30.2672, longitude: -97.7431 }, 
+      geolocation: { latitude: 30.2672, longitude: -97.7431 },
     });
 
     page = await context.newPage();
@@ -41,7 +41,7 @@ test.describe("Injecting location...", () => {
     ]);
 
     await page.screenshot({
-      path: `./test-results/screenshots-${dayjs().format("MM-DD-YYYY")}/${uuidv4()}_empty_state.png`,
+      path: `./test-results/${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_empty_state.png`,
     });
   });
 
