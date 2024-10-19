@@ -9,12 +9,13 @@ test.describe("Injecting location...", () => {
   test("Display zero state and load user data", async ({ browser }) => {
     const context = await browser.newContext({
       recordVideo: {
-        dir: `./test-results/${dayjs().format("MM-DD-YYYY")}_screen-recordings`,
+        dir: `../test-results/${dayjs().format("MM-DD-YYYY")}_screen-recordings`,
       },
       permissions: ["geolocation"],
       // Austin, TX
       geolocation: { latitude: 30.2672, longitude: -97.7431 },
     });
+    // /Users/coreysumma1/code/astrology/test-results
 
     page = await context.newPage();
 
@@ -41,7 +42,7 @@ test.describe("Injecting location...", () => {
     ]);
 
     await page.screenshot({
-      path: `./test-results/${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_empty_state.png`,
+      path: `../test-results/${dayjs().format("MM-DD-YYYY")}_screenshots/${uuidv4()}_empty_state.png`,
     });
   });
 
