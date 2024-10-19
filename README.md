@@ -1,6 +1,6 @@
 <div id="description" align="center">
 
-# AI Horoscope
+# AI Horoscope (switch to prod branch for most recent changes)
 
 
 ![astronomy](https://github.com/CoreySumma/astrology/assets/66542022/99aa273a-3a59-4bdf-938a-0158a0883764)
