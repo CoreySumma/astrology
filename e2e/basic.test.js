@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 test.describe("Injecting location...", () => {
   let page;
 
-  test("Should display zero state", async ({ browser }) => {
+  test("Display zero state and load user data", async ({ browser }) => {
     const context = await browser.newContext({
       recordVideo: {
         dir: `./test-results/${dayjs().format("MM-DD-YYYY")}_screen-recordings`,
