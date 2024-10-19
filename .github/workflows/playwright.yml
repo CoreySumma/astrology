@@ -20,7 +20,6 @@ jobs:
       run: |
         echo "REACT_APP_CORS_API_KEY=${{ secrets.REACT_APP_CORS_API_KEY }}" >> $GITHUB_ENV
         echo "REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}" >> $GITHUB_ENV
-        echo "REACT_APP_ICON_URL=${{ secrets.REACT_APP_ICON_URL }}" >> $GITHUB_ENV
         echo "REACT_APP_OPEN_AI_KEY=${{ secrets.REACT_APP_OPEN_AI_KEY }}" >> $GITHUB_ENV
         echo "REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }}" >> $GITHUB_ENV
         echo "REACT_APP_YELP_API_ID=${{ secrets.REACT_APP_YELP_API_ID }}" >> $GITHUB_ENV
