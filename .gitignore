@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 node_modules/
 /test-results/
-/e2e/test-results/
+# /e2e/test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
