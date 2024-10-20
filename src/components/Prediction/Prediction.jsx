@@ -118,6 +118,7 @@ export default function Prediction({
       }, 2000);
     }
   }
+  
   return (
     <>
       <button
