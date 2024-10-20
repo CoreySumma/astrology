@@ -50,6 +50,6 @@ export default function gptPrompt3(
 
   The aim is to craft an edit that enhances the sense of a continuous, evolving dialogue with the stars, respecting the passage of time and the journey of the reader.
 
-    MANDATORY: Adhere to 'Your Checklist' precisely, and only small edits to the current prediction. Let me see your editorial prowess - Don't forget the HTML tags!
+    MANDATORY: Adhere to 'Your Checklist' precisely, and only small edits to the current prediction. Let me see your editorial prowess - DON'T FORGET TO KEEP ALL THE HTML TAGS!
   `;
 }

@@ -32,7 +32,13 @@ export default async function gptApi3(
     );
     let finalPrediction = response.data.choices[0].text.trim();
     const prefix =
-      "Edited Prediction:" || "Revised Prediction:" || "Final Prediction:";
+      "Edited Prediction:" ||
+      "Revised Prediction:" ||
+      "Final Prediction:" ||
+      "Updated Prediction:" ||
+      "Your Refined Prediction:" ||
+      "Your Final Prediction:" ||
+      "Your Updated Prediction:";
     if (finalPrediction.startsWith(prefix)) {
       finalPrediction = finalPrediction.substring(prefix.length).trim();
     }

@@ -38,6 +38,7 @@ export default function gptPrompt2(
 
   Original Prediction: ${prediction}
   
-  Show me the refined prediction, showcasing your cosmic insight without exceeding 350 chars. MANDATORY: Follow "Your checklist" with precision and don't exceed 350 characters.
+  Provide the refined prediction following the checklist exactly. 
+  Ensure all required HTML elements are present, and the final output does not exceed 250 characters.
 `;
 }

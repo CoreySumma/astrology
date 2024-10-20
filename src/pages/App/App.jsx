@@ -41,7 +41,7 @@ export default function App() {
     weatherApi(setLat, setLong, dispatch);
     if (long && lat) {
       // Call the google maps API to get the city name, state etc of the user
-      // and then call the meetup API to get the nearest yoga studio
+      // and then call the Yelp API to get the nearest yoga studio
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       getMeetUp(search, lat, long, dispatch);
     }
