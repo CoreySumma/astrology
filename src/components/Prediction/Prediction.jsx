@@ -101,7 +101,9 @@ export default function Prediction({
             data-testid="loading-prediction-icon"
           />
         )}
-        {!isLoadingPrediction && isDataLoading && <div className="spinner" />}
+        {!isLoadingPrediction && isDataLoading && (
+          <div data-testid="spinner" className="spinner" />
+        )}
         {!isLoadingPrediction && !isDataLoading && refinedPrediction && (
           <div className="prediction-text-fade-in">
             <div className="constellation-container">

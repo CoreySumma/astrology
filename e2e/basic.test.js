@@ -81,6 +81,7 @@ test.describe("Injecting location...", () => {
     // Select Taurus
     await page.getByLabel("Go to slide 2").click();
     await expect(page.getByRole("img", { name: "Taurus" })).toBeVisible();
+    await page.waitForSelector('[data-testid="spinner"]', { state: 'hidden' });
     // Click the "Ask The Universe" button
     const askButton = page.getByRole("button", { name: "Ask The Universe" });
     await expect(askButton).toBeVisible();
@@ -107,7 +108,6 @@ test.describe("Injecting location...", () => {
   test.afterAll(async ({ browser }) => {
     // Add a delay to extend video recording time before closing so video captures final state as well
     await page.waitForTimeout(5000); 
-    await page.close();
     await browser.close();
   });
 });
