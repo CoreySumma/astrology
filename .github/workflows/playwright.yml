@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main, master, prod]
 jobs:
-  linting_and_e2e_tests:
+  Linting_and_e2e_tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:

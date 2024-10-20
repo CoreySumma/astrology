@@ -1,5 +1,5 @@
 import axios from "axios";
-import { updateLocation } from "../actions";
+import { updateLocation } from "../redux/actions/actions";
 
 export default async function getLocationFromGoogs(
   lat,

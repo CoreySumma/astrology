@@ -1,5 +1,5 @@
 import axios from "axios";
-import { updateRefinedPrediction } from "../actions";
+import { updateRefinedPrediction } from "../redux/actions/actions";
 import gptPrompt2 from "./prompts/gpt-prompt2";
 import { awsAddPrediction } from "./aws-database-api";
 

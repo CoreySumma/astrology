@@ -3,14 +3,16 @@ import {
   updateUserExists,
   updateLastDateVisited,
   updateLastPrediction,
-} from "../actions";
+} from "../redux/actions/actions";
 
 // Fetch to our AWS gateway endpoint that triggers our Lambda function
 export async function awsCheckIfVisited(date, dispatch) {
   try {
-    const { data: { ip: ipAddress } } = await axios.get(
+    const {
+      data: { ip: ipAddress },
+    } = await axios.get(
       "https://corsproxy.io/?https://api.ipify.org?format=json"
-    );    
+    );
     const res = await axios.post(
       "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",
       {
@@ -39,7 +41,9 @@ export async function awsCheckIfVisited(date, dispatch) {
 export async function awsAddPrediction(prediction, date) {
   try {
     // Get user IP address
-    const { data: { ip: ipAddress } } = await axios.get(
+    const {
+      data: { ip: ipAddress },
+    } = await axios.get(
       "https://corsproxy.io/?https://api.ipify.org?format=json"
     );
     axios.post(

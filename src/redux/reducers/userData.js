@@ -15,7 +15,7 @@ import {
   UPDATE_LAST_PREDICTION,
   UPDATE_FINAL_PREDICTION,
   UPDATE_SHORTENED_PREDICTION,
-} from "../actions/index";
+} from "../actions/actions";
 
 const initialState = {
   sign: "",

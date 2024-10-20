@@ -11,7 +11,7 @@ import {
 } from "swiper/modules";
 import SwiperCore from "swiper/core";
 import "./ZodiacSwiper.css";
-import { updateSign } from "../../actions";
+import { updateSign } from "../../redux/actions/actions";
 import "swiper/css/bundle";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFlip]);

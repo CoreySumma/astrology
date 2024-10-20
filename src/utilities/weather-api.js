@@ -1,6 +1,6 @@
 // TODO Fix this file - its a mess
 import axios from "axios";
-import { updateTemp, updateDescription } from "../actions";
+import { updateTemp, updateDescription } from "../redux/actions/actions";
 
 export default function weatherApi(setLat, setLong, dispatch) {
   return new Promise((resolve, reject) => {

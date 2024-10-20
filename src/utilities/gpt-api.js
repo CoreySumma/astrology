@@ -3,7 +3,7 @@ import {
   updateRefinedPrediction,
   updatePrediction,
   updateFinalPrediction,
-} from "../actions";
+} from "../redux/actions/actions";
 import gptApi2 from "./gpt-api2";
 import gptApi3 from "./gpt-api3";
 import gptPrompt from "./prompts/gpt-prompt";

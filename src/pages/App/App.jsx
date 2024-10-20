@@ -5,7 +5,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import Prediction from "../../components/Prediction/Prediction";
 import Modal from "../../components/Modal/Modal";
-import { updateTime, updateDate, updateDay } from "../../actions";
+import { updateTime, updateDate, updateDay } from "../../redux/actions/actions";
 import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import getMeetUp from "../../utilities/meetup-api";
@@ -64,7 +64,7 @@ export default function App() {
   );
   const prevPrediction = useSelector((state) => state.userData.lastPrediction);
 
-// Continue checking if the location is fetched every 3.5 seconds
+  // Continue checking if the location is fetched every 3.5 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(!locationFetched);

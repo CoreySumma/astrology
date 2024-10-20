@@ -8,7 +8,7 @@ import { SnackbarProvider } from "notistack";
 import App from "./pages/App/App";
 // eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import reportWebVitals from "./reportWebVitals";
-import rootReducer from "./reducers/index";
+import rootReducer from "./redux/reducers/rootReducer";
 
 const store = configureStore({
   reducer: rootReducer,

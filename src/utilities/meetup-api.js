@@ -1,5 +1,8 @@
 import axios from "axios";
-import { updateBusinessName, updateBusinessLocation } from "../actions";
+import {
+  updateBusinessName,
+  updateBusinessLocation,
+} from "../redux/actions/actions";
 
 export default async function getMeetUp(search, lat, long, dispatch) {
   try {
