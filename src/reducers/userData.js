@@ -15,25 +15,25 @@ import {
   UPDATE_LAST_PREDICTION,
   UPDATE_FINAL_PREDICTION,
   UPDATE_SHORTENED_PREDICTION,
-} from '../actions/index';
+} from "../actions/index";
 
 const initialState = {
-  signData: '',
-  date: '',
-  time: '',
+  signData: "",
+  date: "",
+  time: "",
   temp: null,
-  location: '',
-  prediction: '',
-  description: '',
-  day: '',
-  businessName: '',
-  businessLocation: '',
-  refinedPrediction: '',
-  userExists: '',
-  lastDateVisited: '',
-  lastPrediction: '',
-  finalPrediction: '',
-  shortenedPrediction: '',
+  location: "",
+  prediction: "",
+  description: "",
+  day: "",
+  businessName: "",
+  businessLocation: "",
+  refinedPrediction: "",
+  userExists: "",
+  lastDateVisited: "",
+  lastPrediction: "",
+  finalPrediction: "",
+  shortenedPrediction: "",
 };
 
 const userData = (state = initialState, action = {}) => {

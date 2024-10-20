@@ -17,7 +17,6 @@ dayjs.extend(localeData);
 export default function App() {
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
-  const [data, setData] = useState([]);
   const [sign, setSign] = useState("aries");
   const [locationFetched, setLocationFetched] = useState(false);
   const [fade, setFade] = useState(false);
@@ -28,7 +27,6 @@ export default function App() {
   // Search term for whatever business you want to show up in the prediction
   const search = "yoga";
 
-  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +38,7 @@ export default function App() {
     dispatch(updateDate(date));
     dispatch(updateTime(time));
     // Call the weather API with arguments which also gets user longitude and latitude
-    weatherApi(setLat, setLong, setData, dispatch);
+    weatherApi(setLat, setLong, dispatch);
     if (long && lat) {
       // Call the google maps API to get the city name, state etc of the user
       // and then call the meetup API to get the nearest yoga studio
@@ -89,18 +87,15 @@ export default function App() {
     <div className="App">
       <div className="video-background">
         <video autoPlay playsInline muted loop preload="auto">
-          <source src="/movies/starz.mp4" type="video/mp4" />
+          <source
+            src="/movies/starz.mp4"
+            type="video/mp4"
+            alt="space-background"
+          />
         </video>
       </div>
       <Modal showModal={showModal} setShowModal={setShowModal} />
-      <ZodiacSwiper
-        data={data}
-        time={time}
-        sign={sign}
-        setSign={setSign}
-        fade={fade}
-        setFade={setFade}
-      />
+      <ZodiacSwiper setSign={setSign} fade={fade} />
       <main>
         <Prediction
           temp={temp}

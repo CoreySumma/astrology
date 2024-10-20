@@ -2,7 +2,7 @@
 import axios from "axios";
 import { updateTemp, updateDescription } from "../actions";
 
-export default function weatherApi(setLat, setLong, setData, dispatch) {
+export default function weatherApi(setLat, setLong, dispatch) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line no-undef
     navigator.geolocation.getCurrentPosition(
@@ -21,7 +21,6 @@ export default function weatherApi(setLat, setLong, setData, dispatch) {
           const res = await axios.get(
             `https://api.openweathermap.org/data/3.0/onecall?lat=${currentLat}&lon=${currentLong}&exclude={part}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
           );
-          setData(res.data);
           dispatch(updateTemp(Math.floor(res.data.current.temp)));
           dispatch(updateDescription(res.data.current.weather[0].description));
           resolve(res.data);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Prediction.css";
 import { useDispatch, useSelector } from "react-redux";
 import parse from "html-react-parser";
@@ -13,7 +13,6 @@ export default function Prediction({
   temp,
   location,
   day,
-  moonData,
   businessLocation,
   businessName,
   setFade,
@@ -24,63 +23,34 @@ export default function Prediction({
   prevPrediction,
 }) {
   const dispatch = useDispatch();
-  // Flag to check if all data has been fetched to avoid GPT not having all data and loading animation
-  const [allGptDataFetched, setAllGptDataFetched] = useState(false);
-  // Flag for flashing loading animation afetr button is pressed
-  const [loadingPrediction, setLoadingPrediction] = useState(false);
-  // If we fail to call GPT, we can use the snackbar to notify the user
+  const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
-
-  // Checks if all data has been fetched
-  useEffect(() => {
-    if (
-      temp !== null &&
-      temp !== "" &&
-      location !== "" &&
-      day !== "" &&
-      description !== "" &&
-      date !== "" &&
-      time !== "" &&
-      businessLocation !== "" &&
-      businessName !== "" &&
-      userExists !== ""
-    ) {
-      setAllGptDataFetched(true);
-    }
-  }, [
-    sign,
-    temp,
-    location,
-    day,
-    description,
-    date,
-    time,
-    moonData,
-    businessLocation,
-    businessName,
-    userExists,
-  ]);
-
-  // Grab the refined prediction from the store depending on if the user has visited before for front end display
   const finalPredictionFirstVisit = useSelector(
     (store) => store.userData.refinedPrediction
   );
   const finalPredictionNotFirstVisit = useSelector(
     (store) => store.userData.finalPrediction
   );
-  // Grab the refined(shortened) prediction from the store depending on if the user has visited before
-  // Address's edge case of them refreshing the page and not having a prediction from last visit
-  let refinedPrediction;
-  if (userExists && prevPrediction !== "No prediction available") {
-    refinedPrediction = finalPredictionNotFirstVisit;
-  } else {
-    refinedPrediction = finalPredictionFirstVisit;
-  }
+  // Adjust the prediction based on whether the user has visited before
+  const refinedPrediction =
+    userExists && prevPrediction !== "No prediction available"
+      ? finalPredictionNotFirstVisit
+      : finalPredictionFirstVisit;
+
+  const isDataLoading =
+    temp === null ||
+    location === "" ||
+    day === "" ||
+    description === "" ||
+    date === "" ||
+    time === "" ||
+    businessLocation === "" ||
+    businessName === "" ||
+    userExists === "";
 
   async function callGpt() {
     try {
-      // Set loading flag on either end of the fetch call to GPT
-      setLoadingPrediction(true);
+      setIsLoadingPrediction(true);
       await gptApi(
         sign,
         date,
@@ -96,7 +66,7 @@ export default function Prediction({
         prevPrediction,
         userExists
       );
-      setLoadingPrediction(false);
+      setIsLoadingPrediction(false);
     } catch (error) {
       enqueueSnackbar(
         "The gods grow quiet...Check your API key or make a sacrafice.",
@@ -106,32 +76,24 @@ export default function Prediction({
   }
 
   async function handleClick() {
-    if (allGptDataFetched) {
-      callGpt();
-      setIsButtonVisible(false);
-      setFade(true);
-    } else {
-      setTimeout(() => {
-        callGpt();
-        setIsButtonVisible(false);
-        setFade(true);
-      }, 2000);
-    }
+    callGpt();
+    setIsButtonVisible(false);
+    setFade(true);
   }
-  
+
   return (
     <>
       <button
         type="button"
         onClick={handleClick}
         className={`prediction-button ${
-          !isButtonVisible ? "fade-out" : allGptDataFetched && "slow-fade-in"
+          !isButtonVisible ? "fade-out" : !isDataLoading && "slow-fade-in"
         }`}
       >
         Ask The Universe
       </button>
       <div className="prediction-container">
-        {loadingPrediction && (
+        {isLoadingPrediction && (
           <img
             className="loading-zodiac-sign"
             src={`/images/${sign}w.png`}
@@ -139,10 +101,8 @@ export default function Prediction({
             data-testid="loading-prediction-icon"
           />
         )}
-        {!loadingPrediction && !allGptDataFetched && (
-          <div className="spinner" />
-        )}
-        {!loadingPrediction && allGptDataFetched && refinedPrediction && (
+        {!isLoadingPrediction && isDataLoading && <div className="spinner" />}
+        {!isLoadingPrediction && !isDataLoading && refinedPrediction && (
           <div className="prediction-text-fade-in">
             <div className="constellation-container">
               <p className="display-sign">{sign}</p>
@@ -158,7 +118,7 @@ export default function Prediction({
             </div>
           </div>
         )}
-        {!loadingPrediction && allGptDataFetched && !refinedPrediction && (
+        {!isLoadingPrediction && !isDataLoading && !refinedPrediction && (
           <p className="prediction-text" />
         )}
       </div>
