@@ -64,16 +64,16 @@ export default function App() {
   );
   const prevPrediction = useSelector((state) => state.userData.lastPrediction);
 
-  // Continue checking if the location is fetched every 3.5 seconds
+  // Grace period of 4 seconds before the modal 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(!locationFetched);
-      if (locationFetched) {
-        awsCheckIfVisited(date, dispatch);
-      }
-    }, 3500);
+    }, 4000);
+    if (locationFetched) {
+      awsCheckIfVisited(date, dispatch);
+    }
     return () => clearTimeout(timer);
-  }, [date, dispatch, locationFetched]);
+  }, [locationFetched]);
 
   return (
     <div className="App">
