@@ -1,48 +1,49 @@
-
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master, prod ]
+    branches: [main, master, prod]
   pull_request:
-    branches: [ main, master, prod ]
+    branches: [main, master, prod]
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm install -g pnpm && pnpm install
-    - name: Set environment variables
-      run: |
-        echo "REACT_APP_CORS_API_KEY=${{ secrets.REACT_APP_CORS_API_KEY }}" >> $GITHUB_ENV
-        echo "REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}" >> $GITHUB_ENV
-        echo "REACT_APP_OPEN_AI_KEY=${{ secrets.REACT_APP_OPEN_AI_KEY }}" >> $GITHUB_ENV
-        echo "REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }}" >> $GITHUB_ENV
-        echo "REACT_APP_YELP_API_ID=${{ secrets.REACT_APP_YELP_API_ID }}" >> $GITHUB_ENV
-        echo "REACT_APP_YELP_API_KEY=${{ secrets.REACT_APP_YELP_API_KEY }}" >> $GITHUB_ENV
-    - name: Install Playwright Browsers
-      run: pnpm exec playwright install --with-deps
-    - name: Run Playwright tests
-      run: pnpm exec playwright test
-    - name: Upload Screen Recording
-      uses: actions/upload-artifact@v4
-      if: ${{ always() }} 
-      with:
-        name: test-videos
-        path: ./*screen-recordings/*.webm 
-    - name: Upload Screenshots
-      uses: actions/upload-artifact@v4
-      if: ${{ always() }}
-      with:
-        name: test-screenshots
-        path: ./*screenshots/*.png 
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm install -g pnpm && pnpm install
+      - name: Set environment variables
+        run: |
+          echo "REACT_APP_CORS_API_KEY=${{ secrets.REACT_APP_CORS_API_KEY }}" >> $GITHUB_ENV
+          echo "REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}" >> $GITHUB_ENV
+          echo "REACT_APP_OPEN_AI_KEY=${{ secrets.REACT_APP_OPEN_AI_KEY }}" >> $GITHUB_ENV
+          echo "REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }}" >> $GITHUB_ENV
+          echo "REACT_APP_YELP_API_ID=${{ secrets.REACT_APP_YELP_API_ID }}" >> $GITHUB_ENV
+          echo "REACT_APP_YELP_API_KEY=${{ secrets.REACT_APP_YELP_API_KEY }}" >> $GITHUB_ENV
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+      - name: Run Playwright tests
+        run: pnpm exec playwright test
+      - name: Run Linter
+        run: pnpm exec eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Upload Screen Recording
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: test-videos
+          path: ./*screen-recordings/*.webm
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: test-screenshots
+          path: ./*screenshots/*.png
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
