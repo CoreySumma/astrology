@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main, master, prod]
 jobs:
-  test:
+  linting_and_e2e_tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -25,10 +25,10 @@ jobs:
           echo "REACT_APP_YELP_API_KEY=${{ secrets.REACT_APP_YELP_API_KEY }}" >> $GITHUB_ENV
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
-      - name: Run Playwright tests
-        run: pnpm exec playwright test
       - name: Run Linter
         run: pnpm exec eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Run Playwright tests
+        run: pnpm exec playwright test
       - name: Upload Screen Recording
         uses: actions/upload-artifact@v4
         if: ${{ always() }}
