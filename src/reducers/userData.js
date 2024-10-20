@@ -18,7 +18,7 @@ import {
 } from "../actions/index";
 
 const initialState = {
-  signData: "",
+  sign: "",
   date: "",
   time: "",
   temp: null,
@@ -41,7 +41,7 @@ const userData = (state = initialState, action = {}) => {
     case UPDATE_SIGN:
       return {
         ...state,
-        signData: action.payload,
+        sign: action.payload,
       };
     case UPDATE_DATE:
       return {

@@ -64,23 +64,15 @@ export default function App() {
   );
   const prevPrediction = useSelector((state) => state.userData.lastPrediction);
 
-  // This is polite message to the user to allow location access if not found
-  // It's basically a useEffect loop that runs if every 6 seconds if location
-  // is not fetched and checks if the location has been fetched and escapes the loop if it has
+// Continue checking if the location is fetched every 3.5 seconds
   useEffect(() => {
-    if (locationFetched) {
-      setShowModal(false);
-      awsCheckIfVisited(date, dispatch);
-    }
     const timer = setTimeout(() => {
+      setShowModal(!locationFetched);
       if (locationFetched) {
-        setShowModal(false);
         awsCheckIfVisited(date, dispatch);
-      } else {
-        setShowModal(true);
       }
-    }, 6000);
-    clearTimeout(timer);
+    }, 3500);
+    return () => clearTimeout(timer);
   }, [date, dispatch, locationFetched]);
 
   return (

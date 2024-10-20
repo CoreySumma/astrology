@@ -9,7 +9,7 @@ import gptApi3 from "./gpt-api3";
 import gptPrompt from "./prompts/gpt-prompt";
 
 export default async function gptApi(
-  signData,
+  sign,
   date,
   time,
   temp,
@@ -30,7 +30,7 @@ export default async function gptApi(
       {
         model: "gpt-3.5-turbo-instruct",
         prompt: gptPrompt(
-          signData,
+          sign,
           date,
           time,
           temp,
@@ -54,7 +54,7 @@ export default async function gptApi(
     dispatch(updatePrediction(prediction));
     // 2nd API call to GPT
     const refinedPrediction = await gptApi2(
-      signData,
+      sign,
       date,
       time,
       temp,

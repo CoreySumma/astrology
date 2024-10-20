@@ -5,7 +5,7 @@ import { awsAddPrediction } from "./aws-database-api";
 
 // eslint-disable-next-line consistent-return
 export default async function gptApi2(
-  signData,
+  sign,
   date,
   time,
   temp,
@@ -23,7 +23,7 @@ export default async function gptApi2(
       {
         model: "gpt-3.5-turbo-instruct",
         prompt: gptPrompt2(
-          signData,
+          sign,
           date,
           time,
           temp,

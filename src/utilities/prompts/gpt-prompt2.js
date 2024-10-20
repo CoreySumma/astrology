@@ -1,5 +1,5 @@
 export default function gptPrompt2(
-  signData,
+  sign,
   date,
   time,
   temp,
@@ -16,7 +16,7 @@ export default function gptPrompt2(
   Make some small changes to enhance it following "Your checklist" with precision.
 
   Data the student needed to use in the original prediction:
-  - Sign: ${signData}.
+  - Sign: ${sign}.
   - Time: ${time}.
   - Date: ${date}.
   - Temp: ${temp}°.
@@ -28,7 +28,7 @@ export default function gptPrompt2(
   
   Your checklist:
   1. Ensure all user data is used in the prediction in creative ways.
-  2. Creatively tie in more content that identifies with the nature and tendencies of ${signData}. 
+  2. Creatively tie in more content that identifies with the nature and tendencies of ${sign}. 
   3. Transition all direct data into varied atmospheric hints. Replace the temperature ${temp}, and the time ${time} with a creative, and unique atomspheric hints.
   4. Ensure a seamless narrative that flows poetically.
   5. Logically add in HTML elements <strong>, <em>, for visual charm.
