@@ -1,33 +1,25 @@
+import dayjs from "dayjs";
+
 export default function gptPrompt3(
   prevPrediction,
   prevDateVisited,
   currentPrediction,
   date
 ) {
-  // Function to parse dates in MM/DD/YYYY format
-  const parseDate = (dateString) => {
-    const [month, day, year] = dateString
-      .split("/")
-      .map((num) => parseInt(num, 10));
-    return new Date(year, month - 1, day);
-  };
 
-  const lastVisit = parseDate(prevDateVisited);
-  const currentDate = parseDate(date);
-
-  // Calculate time difference in days
-  const timeDiff = Math.round(
-    (currentDate - lastVisit) / (1000 * 60 * 60 * 24)
+  // Calculate how many days since last prediction
+  const timeDiff = dayjs(date, "MM-DD-YYYY").diff(
+    dayjs(prevDateVisited, "MM-DD-YYYY"), 
+    "day"
   );
 
-  let timePhrase;
-  if (timeDiff === 0) {
-    timePhrase = "As today's celestial story continues,";
-  } else if (timeDiff < 7) {
-    timePhrase = "In the days since the stars last whispered,";
-  } else {
-    timePhrase = "As the weeks under the heavens have passed,";
-  }
+  const timePhrase = 
+  // eslint-disable-next-line no-nested-ternary
+  timeDiff === 0 
+    ? "As today's celestial story continues," 
+    : timeDiff < 7 
+      ? "In the days since the stars last whispered," 
+      : "As the weeks under the heavens have passed,";
 
   return `
   As an Editor, refine the current horoscope prediction to subtly link it with the previous one, 
