@@ -3,19 +3,20 @@ import axios from "axios";
 import { updateTemp, updateDescription } from "../redux/actions/actions";
 
 export default function weatherApi(setLat, setLong, dispatch) {
-  return new Promise((resolve, reject) => {
+  return new Promise((_, reject) => {
     // eslint-disable-next-line no-undef
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const currentLat = position.coords.latitude;
         const currentLong = position.coords.longitude;
-        setLat(currentLat);
-        setLong(currentLong);
 
         if (!currentLat || !currentLong) {
-          reject(new Error("Latitude or longitude is undefined"));
+          reject(new Error("Could not get latitude and longitude"));
           return;
         }
+
+        setLat(currentLat);
+        setLong(currentLong);
 
         try {
           const res = await axios.get(
@@ -23,15 +24,12 @@ export default function weatherApi(setLat, setLong, dispatch) {
           );
           dispatch(updateTemp(Math.floor(res.data.current.temp)));
           dispatch(updateDescription(res.data.current.weather[0].description));
-          resolve(res.data);
         } catch (error) {
-          console.error("Error calling weather API:", error);
-          reject(error);
+          reject(new Error(`Error calling OpenWeather API: ${error.message}`));
         }
       },
       (error) => {
-        console.error("Error getting geolocation:", error);
-        reject(error);
+        reject(new Error(`Error calling OpenWeather API: ${error.message}`));
       }
     );
   });

@@ -24,6 +24,6 @@ export default async function getMeetUp(search, lat, long, dispatch) {
       )
     );
   } catch (error) {
-    console.error("Error calling Yelp API", error);
+    throw new Error(`Error calling Yelp API: ${error.message}`);
   }
 }

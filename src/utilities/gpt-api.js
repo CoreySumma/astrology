@@ -69,6 +69,7 @@ export default async function gptApi(
     dispatch(updateRefinedPrediction(refinedPrediction));
     // Only proceed with the third call if userExists is true
     if (userExists && prevPrediction !== "No prediction available") {
+      // The third agent is only needed to incorporare past predictions into the current one
       console.log("User exists, calling third API...");
       const finalPrediction = await gptApi3(
         prevPrediction,
@@ -79,6 +80,6 @@ export default async function gptApi(
       dispatch(updateFinalPrediction(finalPrediction));
     }
   } catch (error) {
-    console.error("Error calling OpenAI API:", error);
+    throw new Error(`Error in first OpenAI call: ${error.message}`);
   }
 }

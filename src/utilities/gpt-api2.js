@@ -52,6 +52,6 @@ export default async function gptApi2(
     awsAddPrediction(refinedText, date);
     return refinedText;
   } catch (error) {
-    console.error("Error calling OpenAI API:", error);
+    throw new Error(`Error in second OpenAI call: ${error.message}`);
   }
 }

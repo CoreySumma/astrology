@@ -25,6 +25,7 @@ export default function App() {
   const [finalPrediction, setFinalPrediction] = useState("");
 
   // Search term for whatever business you want to show up in the prediction
+  // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
   const search = "yoga";
 
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ export default function App() {
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       getMeetUp(search, lat, long, dispatch);
     }
-  }, [lat, long, dispatch, locationFetched]);
+  }, [lat, long, locationFetched]);
 
   // Redux for retrieving data from the store for state to pass to GPT prompts
   const description = useSelector((state) => state.userData.description);
@@ -64,7 +65,7 @@ export default function App() {
   );
   const prevPrediction = useSelector((state) => state.userData.lastPrediction);
 
-  // Grace period of 4 seconds before the modal 
+  // Grace period of 4 seconds before the modal shows
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(!locationFetched);

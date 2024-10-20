@@ -46,6 +46,6 @@ export default async function gptApi3(
     awsAddPrediction(finalPrediction, date);
     return finalPrediction;
   } catch (error) {
-    console.error("Error calling OpenAI API:", error);
+    throw new Error(`Error in third OpenAI call: ${error.message}`);
   }
 }

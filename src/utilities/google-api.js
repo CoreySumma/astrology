@@ -21,6 +21,6 @@ export default async function getLocationFromGoogs(
     );
     setLocationFetched(true);
   } catch (error) {
-    console.log("Error making reverse geo call - cant find you!", error);
+    throw new Error(`Error in Googs call: ${error.message}`);
   }
 }

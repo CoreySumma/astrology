@@ -5,7 +5,8 @@ import {
   updateLastPrediction,
 } from "../redux/actions/actions";
 
-// Fetch to our AWS gateway endpoint that triggers our Lambda function
+// Check if user has visited before and get their last prediction,
+// and if they have visited before
 export async function awsCheckIfVisited(date, dispatch) {
   try {
     const {
@@ -26,21 +27,19 @@ export async function awsCheckIfVisited(date, dispatch) {
         },
       }
     );
-    // Update Redux store from response
     const { exists, lastDateVisited, pastPrediction } = res.data;
     dispatch(updateUserExists(exists));
     dispatch(updateLastDateVisited(lastDateVisited));
     dispatch(updateLastPrediction(pastPrediction));
   } catch (error) {
-    console.log("Error making AWS call - ", error);
+    throw new Error(`Error in AWS call: ${error.message}`);
   }
 }
 
-// add prediction to our DynamoDB table using the same endpoint
+// Add prediction to our DynamoDB table using the same endpoint
 // eslint-disable-next-line consistent-return
 export async function awsAddPrediction(prediction, date) {
   try {
-    // Get user IP address
     const {
       data: { ip: ipAddress },
     } = await axios.get(
@@ -61,6 +60,6 @@ export async function awsAddPrediction(prediction, date) {
       }
     );
   } catch (error) {
-    console.log("Error making AWS call - ", error);
+    throw new Error(`Error in AWS call: ${error.message}`);
   }
 }

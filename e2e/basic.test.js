@@ -24,6 +24,7 @@ test.describe("Injecting location...", () => {
       timeout: 30000,
     });
 
+    // Inject a black background since chronium doesn't support video for visibility of text
     await page.addStyleTag({
       content: `.video-background { background-color: black !important; }`,
     });
@@ -106,8 +107,8 @@ test.describe("Injecting location...", () => {
     });
   });
   test.afterAll(async ({ browser }) => {
-    // Add a delay to extend video recording time before closing so video captures final state 
-    await page.waitForTimeout(5000); 
+    // Add a delay to extend video recording time before closing so recording captures final state
+    await page.waitForTimeout(6000); 
     await browser.close();
   });
 });
