@@ -4,7 +4,7 @@ import {
   updateBusinessLocation,
 } from "../redux/actions/actions";
 
-export default async function getMeetUp(search, lat, long, dispatch) {
+export default async function yelpAPI(search, lat, long, dispatch) {
   try {
     const url = `https://api.yelp.com/v3/businesses/search?term=${search}&latitude=${lat}&longitude=${long}`;
     // const url = 'https://corsproxy.io/?' + encodeURIComponent(`https://api.yelp.com/v3/businesses/search?term=${search}&latitude=${lat}&longitude=${long}`);

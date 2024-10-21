@@ -8,7 +8,7 @@ import Modal from "../../components/Modal/Modal";
 import { updateTime, updateDate, updateDay } from "../../redux/actions/actions";
 import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
-import getMeetUp from "../../utilities/meetup-api";
+import yelpApi from "../../utilities/yelp-api";
 import { awsCheckIfVisited } from "../../utilities/aws-database-api";
 import ZodiacSwiper from "../../components/ZodiacSwiper/ZodiacSwiper";
 
@@ -44,7 +44,7 @@ export default function App() {
       // Call the google maps API to get the city name, state etc of the user
       // and then call the Yelp API to get the nearest yoga studio
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
-      getMeetUp(search, lat, long, dispatch);
+      yelpApi(search, lat, long, dispatch);
     }
   }, [lat, long, locationFetched]);
 
