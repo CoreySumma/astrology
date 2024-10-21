@@ -39,6 +39,7 @@ export default async function gptApi3(
       "Your Refined Prediction:" ||
       "Your Final Prediction:" ||
       "Your Updated Prediction:";
+      
     if (finalPrediction.startsWith(prefix)) {
       finalPrediction = finalPrediction.substring(prefix.length).trim();
     }

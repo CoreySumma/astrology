@@ -38,7 +38,7 @@ export default function gptPrompt3(
   3. Do not explicitly state the dates of the predictions. Instead, use ${timePhrase} to creatively indicate the time elapsed.
   4. Ensure that your edit unifies both predictions, making them feel like parts of a larger celestial dialogue.
   5. The edit should feel like a natural continuation of the current prediction, delicately acknowledging the ongoing journey.
-  6. Focus on creative and fluent phrasing to weave past insights with present revelations, as if narrated by the heavens themselves while keeping it as short as possible.
+  6. Focus on creative and fluent phrasing to weave past insights with present revelations, as if narrated by the heavens themselves while keeping it as short as possible(250 characters).
 
   The aim is to craft an edit that enhances the sense of a continuous, evolving dialogue with the stars, respecting the passage of time and the journey of the reader.
 

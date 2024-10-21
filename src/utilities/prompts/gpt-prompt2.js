@@ -39,6 +39,6 @@ export default function gptPrompt2(
   Original Prediction: ${prediction}
   
   Provide the refined prediction following the checklist exactly. 
-  Ensure all required HTML elements are present, and the final output does not exceed 220 characters.
+  Ensure all required HTML elements are present, and the final output does not exceed 200 characters.
 `;
 }

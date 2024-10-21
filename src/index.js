@@ -5,10 +5,21 @@ import "./index.css";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { SnackbarProvider } from "notistack";
+import posthog from "posthog-js";
 import App from "./pages/App/App";
 // eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import reportWebVitals from "./reportWebVitals";
 import rootReducer from "./redux/reducers/rootReducer";
+
+posthog.init(process.env.REACT_APP_POSTHOG_KEY, {
+  api_host: "https://us.i.posthog.com", 
+  capture_pageview: true, 
+  session_recording: {
+    captureConsoleLogs: true, 
+    recordCanvas: true,      
+    samplingRate: 100,   
+  },
+});
 
 const store = configureStore({
   reducer: rootReducer,
