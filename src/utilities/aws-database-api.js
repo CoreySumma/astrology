@@ -5,14 +5,14 @@ import {
   updateLastPrediction,
 } from "../redux/actions/actions";
 
-// Check if user has visited before and get their last prediction,
-// and if they have visited before
+// Check if user has visited before and get their last prediction -
+// and if they have, update redux with that information
 export async function awsCheckIfVisited(date, dispatch) {
   try {
     const {
       data: { ip: ipAddress },
     } = await axios.get(
-      "https://corsproxy.io/?https://api.ipify.org?format=json"
+      "https://api64.ipify.org?format=json"
     );
     const res = await axios.post(
       "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",
@@ -43,7 +43,7 @@ export async function awsAddPrediction(prediction, date) {
     const {
       data: { ip: ipAddress },
     } = await axios.get(
-      "https://corsproxy.io/?https://api.ipify.org?format=json"
+      "https://api64.ipify.org?format=json"
     );
     axios.post(
       "https://mfx5wug1gl.execute-api.us-east-2.amazonaws.com/default/checkAndSave",

@@ -70,7 +70,7 @@ export default async function gptApi(
     // Only proceed with the third call if userExists is true
     if (userExists && prevPrediction !== "No prediction available") {
       // The third agent is only needed to incorporare past predictions into the current one
-      console.log("User exists, calling third API...");
+      console.log("Nice to see you again");
       const finalPrediction = await gptApi3(
         prevPrediction,
         refinedPrediction,

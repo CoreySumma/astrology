@@ -31,6 +31,7 @@ export default function Prediction({
   const finalPredictionNotFirstVisit = useSelector(
     (store) => store.userData.finalPrediction
   );
+
   // Adjust the prediction based on whether the user has visited before
   const refinedPrediction =
     userExists && prevPrediction !== "No prediction available"

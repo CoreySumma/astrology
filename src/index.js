@@ -11,6 +11,8 @@ import App from "./pages/App/App";
 import reportWebVitals from "./reportWebVitals";
 import rootReducer from "./redux/reducers/rootReducer";
 
+// If you forked this you can delete this block unless you want
+// to use PostHog for analytics
 posthog.init(process.env.REACT_APP_POSTHOG_KEY, {
   api_host: "https://us.i.posthog.com", 
   capture_pageview: true, 

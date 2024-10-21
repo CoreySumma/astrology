@@ -1,4 +1,3 @@
-// Action Types
 export const UPDATE_SIGN = 'UPDATE_SIGN';
 export const UPDATE_DATE = 'UPDATE_DATE';
 export const UPDATE_TIME = 'UPDATE_TIME';
