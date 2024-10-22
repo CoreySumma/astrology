@@ -23,7 +23,7 @@ jobs:
           echo "REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }}" >> $GITHUB_ENV
           echo "REACT_APP_YELP_API_ID=${{ secrets.REACT_APP_YELP_API_ID }}" >> $GITHUB_ENV
           echo "REACT_APP_YELP_API_KEY=${{ secrets.REACT_APP_YELP_API_KEY }}" >> $GITHUB_ENV
-          echo "SONAR_TOKEN=${{ secrets.REACT_APP_SONAR_TOKEN }}" >> $GITHUB_ENV
+          echo "SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}" >> $GITHUB_ENV
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
       - name: Run Linter
