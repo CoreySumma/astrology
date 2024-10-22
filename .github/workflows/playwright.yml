@@ -23,6 +23,7 @@ jobs:
           echo "REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }}" >> $GITHUB_ENV
           echo "REACT_APP_YELP_API_ID=${{ secrets.REACT_APP_YELP_API_ID }}" >> $GITHUB_ENV
           echo "REACT_APP_YELP_API_KEY=${{ secrets.REACT_APP_YELP_API_KEY }}" >> $GITHUB_ENV
+          echo "REACT_APP_SONAR_TOKEN=${{ secrets.REACT_APP_SONAR_TOKEN }}" >> $GITHUB_ENV
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
       - name: Run Linter
@@ -47,3 +48,15 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+  SonarCloud_Analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: SonarCloud Scan
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=CoreySumma_astrology \
+            -Dsonar.organization=coreysumma \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$REACT_APP_SONAR_TOKEN \
+            -Dsonar.branch.name=${{ github.head_ref || github.ref_name }}
