@@ -57,6 +57,60 @@ Resources for getting the API keys: (Note: All of these are free or available fo
 
 4. Run pnpm start to start the development server.
 
-This application also has Github actions set up for CI/CD. The actions are set up to run the tests on push & pull requests. Disable them at will in the .github/workflows folder. Or, add all of your API keys to the secrets in the settings of your repo and the actions should run successfully.
+## CI/CD with GitHub Actions
+
+This application includes **GitHub Actions** to automate **CI/CD workflows**. The actions are triggered on **push** and **pull requests** to the main branches. You can **disable or customize** these workflows in the `.github/workflows/` folder as needed.  
+
+Make sure to **add your API keys and secrets** in **Settings > Secrets and Variables > Actions** to ensure that all workflows run smoothly. The workflows currently include:
+
+- **Linting**: Ensures consistent code style.
+- **e2e tests**: Uses Playwright for end-to-end testing.
+- **SonarCloud Code Analysis**: Runs static analysis to assess code quality and detect security issues.
+
+  **Full Instructions** https://github.com/SonarSource/sonarcloud-github-action
+
+---
+
+### Using SonarCloud for Code Analysis
+
+1. **Set up SonarCloud:**
+   - Create an account on [SonarCloud](https://sonarcloud.io/).
+   - Link your GitHub repository and create a SonarCloud project.
+
+2. **Generate a SonarCloud Token:**
+   - Go to **My Account > Security > Tokens** in SonarCloud.
+   - Generate a new token and **copy** it (you won’t see it again).
+
+3. **Add the Token to GitHub Secrets:**
+   - Go to **Settings > Secrets and Variables > Actions** in your GitHub repository.
+   - Add a **new secret** named `SONAR_TOKEN` with the value of the token you copied.
+
+4. **Update the YAML Workflow:**
+   - Modify the YAML workflow to include your **SonarCloud project key** and **organization**.
+
+OR
+
+Delete this block in the YAML file:
+
+<code>
+ SonarCloud_Analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Code Scan
+        uses: sonarsource/sonarcloud-github-action@v2
+        with:
+          args: >
+            -Dsonar.projectKey=CoreySumma_astrology
+            -Dsonar.organization=coreysumma
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+</code>
 
 </div>
