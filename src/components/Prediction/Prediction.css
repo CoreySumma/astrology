@@ -54,7 +54,6 @@
   background: transparent;
   border: black;
   color: white;
-  transition: background-color, border-color, color;
   transform: scale(1.1);
   transition: all 400ms ease-in-out !important ;
 }
@@ -71,7 +70,6 @@
 .loading-zodiac-sign {
   width: 80px;
   height: auto;
-  /* margin-bottom: 40px !important; */
   font-size: calc(12px + 1vmin);
   color: white;
   animation: fadeInOut 2s infinite;
@@ -87,8 +85,6 @@
   margin: 0 auto;
   margin-top: -1vmin;
   margin-bottom: 5vmin;
-  /* clip-path: circle(0%); */
-  /* animation: circle 4s ease-in-out infinite; */
   clip-path: inset(0 0% 0 0);
   animation: leftToRight 3s forwards;
 }
