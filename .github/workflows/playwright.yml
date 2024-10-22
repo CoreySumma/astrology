@@ -64,5 +64,5 @@ jobs:
             -Dsonar.projectKey=CoreySumma_astrology
             -Dsonar.organization=coreysumma
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=$REACT_APP_SONAR_TOKEN
+            -Dsonar.login=$SONAR_TOKEN
             -Dsonar.branch.name=${{ github.head_ref || github.ref_name }}
