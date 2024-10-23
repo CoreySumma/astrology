@@ -24,7 +24,7 @@ test.describe("Injecting location...", () => {
       timeout: 30000,
     });
 
-    // Inject a black background since chronium doesn't support video for visibility of text
+    // Inject a black background for visibility since chronium doesn't support video (everything is white)
     await page.addStyleTag({
       content: `.video-background { background-color: black !important; }`,
     });

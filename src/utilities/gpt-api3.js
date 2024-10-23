@@ -31,18 +31,20 @@ export default async function gptApi3(
       }
     );
     let finalPrediction = response.data.choices[0].text.trim();
-    const prefix =
-      "Edited Prediction:" ||
-      "Revised Prediction:" ||
-      "Final Prediction:" ||
-      "Updated Prediction:" ||
-      "Your Refined Prediction:" ||
-      "Your Final Prediction:" ||
-      "Your Updated Prediction:";
-      
-    if (finalPrediction.startsWith(prefix)) {
-      finalPrediction = finalPrediction.substring(prefix.length).trim();
-    }
+    const prefixes = [
+      "Edited Prediction:",
+      "Revised Prediction:",
+      "Final Prediction:",
+      "Updated Prediction:",
+      "Your Refined Prediction:",
+      "Your Final Prediction:",
+      "Your Updated Prediction:"
+    ];
+    // Cleanup GPT mistakes
+    finalPrediction = finalPrediction.replace(
+      prefixes.find(prefix => finalPrediction.startsWith(prefix)) || '', 
+      ''
+    ).trim();
     // If we call this fetch we need to update the last prediction in our database
     awsAddPrediction(finalPrediction, date);
     return finalPrediction;

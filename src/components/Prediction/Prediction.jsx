@@ -6,11 +6,11 @@ import { useSnackbar } from "notistack";
 import gptApi from "../../utilities/gpt-api";
 
 export default function Prediction({
+  temp,
   date,
   time,
   description,
   sign,
-  temp,
   location,
   day,
   businessLocation,

@@ -13,13 +13,12 @@ export default function gptPrompt3(
     "day"
   );
 
-  const timePhrase = 
-  // eslint-disable-next-line no-nested-ternary
-  timeDiff === 0 
-    ? "As today's celestial story continues," 
-    : timeDiff < 7 
-      ? "In the days since the stars last whispered," 
-      : "As the weeks under the heavens have passed,";
+  let timePhrase = "As today's celestial story continues,";  
+  if (timeDiff > 7) {
+    timePhrase = "As the weeks under the heavens have passed,";
+  } else if (timeDiff > 0) {  
+    timePhrase = "In the days since the stars last whispered,";
+  }
 
   return `
   As an Editor, refine the current horoscope prediction to subtly link it with the previous one, 

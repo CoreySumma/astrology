@@ -100,7 +100,6 @@ export default function App() {
           day={day}
           businessLocation={businessLocation}
           businessName={businessName}
-          fade={fade}
           setFade={setFade}
           isButtonVisible={isButtonVisible}
           setIsButtonVisible={setIsButtonVisible}

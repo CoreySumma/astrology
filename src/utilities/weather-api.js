@@ -1,4 +1,3 @@
-// TODO Fix this file - its a mess
 import axios from "axios";
 import { updateTemp, updateDescription } from "../redux/actions/actions";
 
