@@ -3,7 +3,7 @@ import "./Prediction.css";
 import { useDispatch, useSelector } from "react-redux";
 import parse from "html-react-parser";
 import { useSnackbar } from "notistack";
-import gptApi from "../../utilities/gpt-api";
+import gptApi from "../../utilities/gpt-api-1";
 
 export default function Prediction({
   temp,
