@@ -7,39 +7,24 @@ import dayjs from "dayjs";
 import gptApi from "../../utilities/gpt-api-1";
 import useUserData from "../../redux/selectors/userDataSelector";
 
-export default function Prediction({
-  date,
-  sign,
-  setFade,
-}) {
+export default function Prediction({ date, sign, setFade }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  // We use Redux for complex state/data management because it needs to
-  // be shared back and fourth between calls/components
-  const {
-    description,
-    temp,
-    location,
-    businessName,
-    businessLocation,
-    userExists,
-    prevDateVisited,
-    prevPrediction,
-    refinedPrediction,
-    finalPrediction,
-  } = useUserData();
+  const userData = useUserData();
   const time = dayjs().format("hh:mm A");
   const day = dayjs().format("dddd");
 
-  // Adjust the prediction based on whether the user has visited before
-  // final prediction does not exist on first visit
-  // TODO change naming convention for final prediction/refined
-  const prediction =
-    userExists && prevPrediction !== "No prediction available"
-      ? finalPrediction
-      : refinedPrediction;
+  const {
+    temp,
+    location,
+    description,
+    businessLocation,
+    businessName,
+    userExists,
+    prediction,
+  } = userData;
 
   const isDataLoading =
     temp === null ||
@@ -55,21 +40,7 @@ export default function Prediction({
   async function callAgents() {
     try {
       setIsLoadingPrediction(true);
-      await gptApi(
-        sign,
-        date,
-        time,
-        temp,
-        location,
-        dispatch,
-        description,
-        day,
-        businessLocation,
-        businessName,
-        prevDateVisited,
-        prevPrediction,
-        userExists
-      );
+      await gptApi(sign, date, time, dispatch, day, userData);
       setIsLoadingPrediction(false);
     } catch (error) {
       enqueueSnackbar(

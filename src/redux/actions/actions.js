@@ -4,12 +4,9 @@ export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 export const UPDATE_BUSINESS_NAME = 'UPDATE_BUSINESS_NAME';
 export const UPDATE_BUSINESS_LOCATION = 'UPDATE_BUSINESS_LOCATION';
-export const UPDATE_REFINED_PREDICTION = 'UPDATE_REFINED_PREDICTION';
 export const UPDATE_USER_EXISTS = 'UPDATE_USER_EXISTS';
 export const UPDATE_LAST_DATE_VISITED = 'UPDATE_LAST_DATE_VISITED';
 export const UPDATE_LAST_PREDICTION = 'UPDATE_LAST_PREDICTION';
-export const UPDATE_FINAL_PREDICTION = 'UPDATE_FINAL_PREDICTION';
-export const UPDATE_SHORTENED_PREDICTION = 'UPDATE_SHORTENED_PREDICTION';
 
 export const updateTemp = (temp) => ({
   type: UPDATE_TEMP,
@@ -41,11 +38,6 @@ export const updateBusinessLocation = (businessLocation) => ({
   payload: businessLocation,
 });
 
-export const updateRefinedPrediction = (refinedPrediction) => ({
-  type: UPDATE_REFINED_PREDICTION,
-  payload: refinedPrediction,
-});
-
 export const updateUserExists = (userExists) => ({
   type: UPDATE_USER_EXISTS,
   payload: userExists,
@@ -59,14 +51,4 @@ export const updateLastDateVisited = (lastDateVisited) => ({
 export const updateLastPrediction = (lastPrediction) => ({
   type: UPDATE_LAST_PREDICTION,
   payload: lastPrediction,
-});
-
-export const updateFinalPrediction = (finalPrediction) => ({
-  type: UPDATE_FINAL_PREDICTION,
-  payload: finalPrediction,
-});
-
-export const updateShortenedPrediction = (shortenedPrediction) => ({
-  type: UPDATE_SHORTENED_PREDICTION,
-  payload: shortenedPrediction,
 });

@@ -2,14 +2,12 @@ export default function gptPrompt2(
   sign,
   date,
   time,
-  temp,
-  description,
-  location,
   day,
-  businessLocation,
-  businessName,
-  prediction
+  prediction,
+  userData
 ) {
+  const { temp, description, location, businessName, businessLocation } =
+    userData;
   return `
   You are a Master Seer and Master Astrologist helping a Student Seer.
   You are tasked with making sure the students original prediction is perfect. 

@@ -4,17 +4,17 @@ import { useGptApi, cleanUp } from "./helpers";
 
 // eslint-disable-next-line consistent-return
 export default async function callThirdAgent(
-  prevPrediction,
   currentPrediction,
-  prevDateVisited,
-  date
+  date,
+  userData
 ) {
+  const { prevPrediction, prevDateVisited } = userData;
   try {
     const response = await useGptApi(
       "gpt-3.5-turbo-instruct",
       gptPrompt3(prevPrediction, prevDateVisited, currentPrediction, date),
       0.7,
-      200
+      280
     );
     // If we call this fetch we need to update the last prediction in our database
     awsAddPrediction(response, date);

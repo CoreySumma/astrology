@@ -30,6 +30,9 @@ export async function getUserIp() {
 
 export function cleanUp(text) {
   const prefixes = [
+    "Your Prediction:",
+    "Your Prediction is:",
+    "Your Prediction for:",
     "Edited Prediction:",
     "Revised Prediction:",
     "Final Prediction:",

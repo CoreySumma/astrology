@@ -13,12 +13,7 @@ const useUserData = () => {
     (state) => state.userData.lastDateVisited
   );
   const prevPrediction = useSelector((state) => state.userData.lastPrediction);
-  const refinedPrediction = useSelector(
-    (state) => state.userData.refinedPrediction
-  );
-  const finalPrediction = useSelector(
-    (state) => state.userData.finalPrediction
-  );
+  const prediction = useSelector((state) => state.userData.prediction);
 
   return {
     description,
@@ -29,8 +24,7 @@ const useUserData = () => {
     userExists,
     prevDateVisited,
     prevPrediction,
-    refinedPrediction,
-    finalPrediction,
+    prediction,
   };
 };
 

@@ -1,22 +1,17 @@
 import dayjs from "dayjs";
 
-export default function gptPrompt3(
-  prevPrediction,
-  prevDateVisited,
-  currentPrediction,
-  date
-) {
-
+export default function gptPrompt3(refinedPrediction, date, userData) {
+  const { prevPrediction, prevDateVisited } = userData;
   // Calculate how many days since last prediction
   const timeDiff = dayjs(date, "MM-DD-YYYY").diff(
-    dayjs(prevDateVisited, "MM-DD-YYYY"), 
+    dayjs(prevDateVisited, "MM-DD-YYYY"),
     "day"
   );
 
-  let timePhrase = "As today's celestial story continues,";  
+  let timePhrase = "As today's celestial story continues,";
   if (timeDiff > 7) {
     timePhrase = "As the weeks under the heavens have passed,";
-  } else if (timeDiff > 0) {  
+  } else if (timeDiff > 0) {
     timePhrase = "In the days since the stars last whispered,";
   }
 
@@ -29,7 +24,7 @@ export default function gptPrompt3(
   - Previous Prediction: ${prevPrediction}
   - Last Date Visited: ${prevDateVisited}
   - Current Date: ${date}
-  - Current prediction to be refined: ${currentPrediction}
+  - Current prediction to be refined: ${refinedPrediction}
 
   Your Checklist:
   1. MANDATORY: Keep all HTML tags from the previous and current predictions intact - Especially the <br /> <br /> before the last sentence.

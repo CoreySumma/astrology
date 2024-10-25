@@ -5,12 +5,9 @@ import {
   UPDATE_LOCATION,
   UPDATE_BUSINESS_NAME,
   UPDATE_BUSINESS_LOCATION,
-  UPDATE_REFINED_PREDICTION,
   UPDATE_USER_EXISTS,
   UPDATE_LAST_DATE_VISITED,
   UPDATE_LAST_PREDICTION,
-  UPDATE_FINAL_PREDICTION,
-  UPDATE_SHORTENED_PREDICTION,
 } from "../actions/actions";
 
 const initialState = {
@@ -20,12 +17,9 @@ const initialState = {
   description: "",
   businessName: "",
   businessLocation: "",
-  refinedPrediction: "",
   userExists: "",
   lastDateVisited: "",
-  lastPrediction: "",
-  finalPrediction: "",
-  shortenedPrediction: "",
+  lastPrediction: "No prediction available",
 };
 
 const userData = (state = initialState, action = {}) => {
@@ -60,11 +54,6 @@ const userData = (state = initialState, action = {}) => {
         ...state,
         businessLocation: action.payload,
       };
-    case UPDATE_REFINED_PREDICTION:
-      return {
-        ...state,
-        refinedPrediction: action.payload,
-      };
     case UPDATE_USER_EXISTS:
       return {
         ...state,
@@ -79,16 +68,6 @@ const userData = (state = initialState, action = {}) => {
       return {
         ...state,
         lastPrediction: action.payload,
-      };
-    case UPDATE_FINAL_PREDICTION:
-      return {
-        ...state,
-        finalPrediction: action.payload,
-      };
-    case UPDATE_SHORTENED_PREDICTION:
-      return {
-        ...state,
-        shortenedPrediction: action.payload,
       };
     default:
       return state;
