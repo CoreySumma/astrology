@@ -4,22 +4,18 @@ import { useGptApi, cleanUp } from "./helpers";
 
 // eslint-disable-next-line consistent-return
 export default async function callSecondAgent(
-  sign,
-  date,
-  time,
   dispatch,
-  day,
   prediction,
   userData
 ) {
   try {
     const response = await useGptApi(
       "gpt-3.5-turbo-instruct",
-      gptPrompt2(sign, date, time, day, prediction, userData),
+      gptPrompt2(prediction, userData),
       0.6,
       280
     );
-    awsAddPrediction(response, date);
+    awsAddPrediction(response, userData.date);
     return cleanUp(response);
   } catch (error) {
     throw new Error(`Error in second OpenAI call: ${error.message}`);

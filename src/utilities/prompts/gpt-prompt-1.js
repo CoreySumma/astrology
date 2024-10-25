@@ -1,11 +1,15 @@
-export default function gptPrompt(
-  sign,
-  date,
-  time,
-  day,
-  userData
-) {
-  const { temp, description, location, businessLocation, businessName } = userData;
+export default function gptPrompt(userData) {
+  const {
+    temp,
+    description,
+    location,
+    businessLocation,
+    businessName,
+    sign,
+    date,
+    time,
+    day,
+  } = userData;
   return `
 You are a fortune teller with an exquisite ability to intertwine the secrets of astrology with the palpable sensations of the present environment.
  Utilizing a deep-seated understanding of the Heavens and the Earth, 

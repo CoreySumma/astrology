@@ -1,6 +1,10 @@
 import { useSelector } from "react-redux";
 
 const useUserData = () => {
+  const sign = useSelector((state) => state.userData.sign);
+  const date = useSelector((state) => state.userData.date);
+  const time = useSelector((state) => state.userData.time);
+  const day = useSelector((state) => state.userData.day);
   const description = useSelector((state) => state.userData.description);
   const temp = useSelector((state) => state.userData.temp);
   const location = useSelector((state) => state.userData.location);
@@ -16,12 +20,16 @@ const useUserData = () => {
   const prediction = useSelector((state) => state.userData.prediction);
 
   return {
-    description,
-    temp,
+    userExists,
+    sign,
+    date,
+    time,
+    day,
     location,
+    temp,
+    description,
     businessName,
     businessLocation,
-    userExists,
     prevDateVisited,
     prevPrediction,
     prediction,

@@ -3,18 +3,15 @@ import "./Prediction.css";
 import { useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import { useSnackbar } from "notistack";
-import dayjs from "dayjs";
 import gptApi from "../../utilities/gpt-api-1";
 import useUserData from "../../redux/selectors/userDataSelector";
 
-export default function Prediction({ date, sign, setFade }) {
+export default function Prediction({ setFade }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const userData = useUserData();
-  const time = dayjs().format("hh:mm A");
-  const day = dayjs().format("dddd");
 
   const {
     temp,
@@ -24,6 +21,10 @@ export default function Prediction({ date, sign, setFade }) {
     businessName,
     userExists,
     prediction,
+    date,
+    time,
+    day,
+    sign,
   } = userData;
 
   const isDataLoading =
@@ -40,11 +41,11 @@ export default function Prediction({ date, sign, setFade }) {
   async function callAgents() {
     try {
       setIsLoadingPrediction(true);
-      await gptApi(sign, date, time, dispatch, day, userData);
+      await gptApi(dispatch, userData);
       setIsLoadingPrediction(false);
     } catch (error) {
       enqueueSnackbar(
-        "The gods grow quiet...Maybe you should make a sacrafice?",
+        `The Gods grow quiet...Maybe you should make a sacrafice? ${error.message}`,
         { variant: "error" }
       );
     }

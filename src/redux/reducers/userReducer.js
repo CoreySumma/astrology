@@ -1,4 +1,8 @@
 import {
+  UPDATE_SIGN,
+  UPDATE_DATE,
+  UPDATE_TIME,
+  UPDATE_DAY,
   UPDATE_TEMP,
   UPDATE_PREDICTION,
   UPDATE_DESCRIPTION,
@@ -11,6 +15,10 @@ import {
 } from "../actions/actions";
 
 const initialState = {
+  sign: "",
+  date: "",
+  time: "",
+  day: "",
   temp: null,
   location: "",
   prediction: "",
@@ -24,6 +32,26 @@ const initialState = {
 
 const userData = (state = initialState, action = {}) => {
   switch (action.type) {
+    case UPDATE_SIGN:
+      return {
+        ...state,
+        sign: action.payload,
+      };
+    case UPDATE_DATE:
+      return {
+        ...state,
+        date: action.payload,
+      };
+    case UPDATE_TIME:
+      return {
+        ...state,
+        time: action.payload,
+      };
+    case UPDATE_DAY:
+      return {
+        ...state,
+        day: action.payload,
+      };
     case UPDATE_TEMP:
       return {
         ...state,

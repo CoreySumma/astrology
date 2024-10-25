@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -9,15 +10,17 @@ import {
   EffectFlip,
 } from "swiper/modules";
 import SwiperCore from "swiper/core";
+import { updateSign } from "../../redux/actions/actions";
 import "./ZodiacSwiper.css";
 import "swiper/css/bundle";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFlip]);
 
-export default function ZodiacSwiper({ setSign, fade }) {
+export default function ZodiacSwiper({ fade }) {
+  const dispatch = useDispatch();
 
   const handleChange = (sign) => {
-    setSign(sign);
+    dispatch(updateSign(sign));
   };
 
   return (

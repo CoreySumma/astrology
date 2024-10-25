@@ -16,7 +16,7 @@ This is a React application that utilizes Open AI's API, Open Weathers API, Yelp
 
 - Make sure location services is enabled.
 
-- Select your Star Sign.
+- Select your Zodiac Sign.
 
 - Click the "Ask The Universe" Button.
 

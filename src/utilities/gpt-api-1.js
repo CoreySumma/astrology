@@ -5,11 +5,7 @@ import gptPrompt from "./prompts/gpt-prompt-1";
 import { useGptApi } from "./helpers";
 // All chained calls are made in this file
 export default async function callFirstAgent(
-  sign,
-  date,
-  time,
   dispatch,
-  day,
   userData
 ) {
   console.log("User data", userData);
@@ -17,22 +13,16 @@ export default async function callFirstAgent(
   try {
     const prediction = await useGptApi(
       "gpt-3.5-turbo-instruct",
-      gptPrompt(sign, date, time, day, userData),
+      gptPrompt(userData),
       0.7,
       280
     );
-    console.log("First prediction", prediction);
     // 2nd API call to GPT
     const refinedPrediction = await callSecondAgent(
-      sign,
-      date,
-      time,
       dispatch,
-      day,
       prediction,
       userData
     );
-    console.log("Second prediction", refinedPrediction);
     dispatch(updatePrediction(refinedPrediction));
     // Only proceed with the third call if userExists and they have a previous prediction
     if (
@@ -43,10 +33,8 @@ export default async function callFirstAgent(
       console.log("Nice to see you again");
       const finalPrediction = await callThirdAgent(
         refinedPrediction,
-        date,
         userData
       );
-      console.log("Final prediction", finalPrediction);
       dispatch(updatePrediction(finalPrediction));
     }
   } catch (error) {

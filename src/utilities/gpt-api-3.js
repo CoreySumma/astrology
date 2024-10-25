@@ -5,10 +5,9 @@ import { useGptApi, cleanUp } from "./helpers";
 // eslint-disable-next-line consistent-return
 export default async function callThirdAgent(
   currentPrediction,
-  date,
   userData
 ) {
-  const { prevPrediction, prevDateVisited } = userData;
+  const { prevPrediction, prevDateVisited, date } = userData;
   try {
     const response = await useGptApi(
       "gpt-3.5-turbo-instruct",
