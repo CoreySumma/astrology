@@ -3,9 +3,6 @@ import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import "./App.css";
 import { useDispatch } from "react-redux";
-// We use Redux for complex state/data management because it needs to
-// be shared back and fourth between components
-import useUserData from "../../redux/selectors/userDataSelector";
 import Prediction from "../../components/Prediction/Prediction";
 import Modal from "../../components/Modal/Modal";
 import getLocationFromGoogs from "../../utilities/google-api";
@@ -25,26 +22,13 @@ export default function App() {
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [finalPrediction, setFinalPrediction] = useState("");
-  const {
-    description,
-    temp,
-    location,
-    businessName,
-    businessLocation,
-    userExists,
-    prevDateVisited,
-    prevPrediction,
-  } = useUserData();
   // Search term for whatever business you want to show up in the prediction
   // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
   const search = "yoga";
 
   const dispatch = useDispatch();
-
-  // Gather time, date, and day of the week data for GPT
+  
   const date = dayjs().format("MM/DD/YYYY");
-  const time = dayjs().format("hh:mm A");
-  const day = dayjs().format("dddd");
 
   // On mount get the user's latitude, longitude and weather
   // (lat and long is baked into the weather API call)
@@ -85,23 +69,13 @@ export default function App() {
       <ZodiacSwiper setSign={setSign} fade={fade} />
       <main>
         <Prediction
-          temp={temp}
           date={date}
-          time={time}
-          description={description}
           sign={sign}
-          location={location}
-          day={day}
-          businessLocation={businessLocation}
-          businessName={businessName}
           setFade={setFade}
           isButtonVisible={isButtonVisible}
           setIsButtonVisible={setIsButtonVisible}
           finalPrediction={finalPrediction}
           setFinalPrediction={setFinalPrediction}
-          userExists={userExists}
-          prevDateVisited={prevDateVisited}
-          prevPrediction={prevPrediction}
         />
       </main>
     </div>

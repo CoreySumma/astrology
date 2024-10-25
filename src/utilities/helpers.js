@@ -28,6 +28,22 @@ export async function getUserIp() {
   }
 }
 
+export function cleanUp(text) {
+  const prefixes = [
+    "Edited Prediction:",
+    "Revised Prediction:",
+    "Final Prediction:",
+    "Updated Prediction:",
+    "Your Refined Prediction:",
+    "Your Final Prediction:",
+    "Your Updated Prediction:",
+    "Your Refinement:",
+  ];
+  return text
+    .replace(prefixes.find((prefix) => text.startsWith(prefix)) || "", "")
+    .trim();
+}
+
 export async function useAwsApi(date, prediction = "") {
   const ipAddress = await getUserIp();
   // endpoint reacts differently if we send a prediction

@@ -3,30 +3,36 @@ import "./Prediction.css";
 import { useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import { useSnackbar } from "notistack";
+import dayjs from "dayjs";
 import gptApi from "../../utilities/gpt-api-1";
 import useUserData from "../../redux/selectors/userDataSelector";
 
 export default function Prediction({
-  temp,
   date,
-  time,
-  description,
   sign,
-  location,
-  day,
-  businessLocation,
-  businessName,
   setFade,
   isButtonVisible,
   setIsButtonVisible,
-  userExists,
-  prevDateVisited,
-  prevPrediction,
 }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
-  const { refinedPrediction, finalPrediction } = useUserData();
+  // We use Redux for complex state/data management because it needs to
+  // be shared back and fourth between calls/components
+  const {
+    description,
+    temp,
+    location,
+    businessName,
+    businessLocation,
+    userExists,
+    prevDateVisited,
+    prevPrediction,
+    refinedPrediction,
+    finalPrediction,
+  } = useUserData();
+  const time = dayjs().format("hh:mm A");
+  const day = dayjs().format("dddd");
 
   // Adjust the prediction based on whether the user has visited before
   // final prediction does not exist on first visit
