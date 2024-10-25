@@ -39,7 +39,6 @@ export default function Modal({ showModal, setShowModal }) {
                 onClick={() => {
                   setShowModal(false);
                   setTimeout(() => {
-                    // eslint-disable-next-line no-undef
                     window.location.reload();
                   }, 1000);
                 }}

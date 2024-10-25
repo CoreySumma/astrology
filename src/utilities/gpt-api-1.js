@@ -4,10 +4,10 @@ import {
   updateFinalPrediction,
 } from "../redux/actions/actions";
 import callSecondAgent from "./gpt-api-2";
-import callThirdAgent from "./gpt-api-3";
+import callThirdAgent from "./gpt-api-3"; 
 import gptPrompt from "./prompts/gpt-prompt-1";
 import { useGptApi } from "./helpers";
-
+// All chained calls are made in this file
 export default async function callFirstAgent(
   sign,
   date,

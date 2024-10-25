@@ -1,11 +1,7 @@
-export const UPDATE_SIGN = 'UPDATE_SIGN';
-export const UPDATE_DATE = 'UPDATE_DATE';
-export const UPDATE_TIME = 'UPDATE_TIME';
 export const UPDATE_TEMP = 'UPDATE_TEMP';
 export const UPDATE_PREDICTION = 'UPDATE_PREDICTION';
 export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
-export const UPDATE_DAY = 'UPDATE_DAY';
 export const UPDATE_BUSINESS_NAME = 'UPDATE_BUSINESS_NAME';
 export const UPDATE_BUSINESS_LOCATION = 'UPDATE_BUSINESS_LOCATION';
 export const UPDATE_REFINED_PREDICTION = 'UPDATE_REFINED_PREDICTION';
@@ -14,22 +10,6 @@ export const UPDATE_LAST_DATE_VISITED = 'UPDATE_LAST_DATE_VISITED';
 export const UPDATE_LAST_PREDICTION = 'UPDATE_LAST_PREDICTION';
 export const UPDATE_FINAL_PREDICTION = 'UPDATE_FINAL_PREDICTION';
 export const UPDATE_SHORTENED_PREDICTION = 'UPDATE_SHORTENED_PREDICTION';
-
-// Action Creators
-export const updateSign = (sign) => ({
-  type: UPDATE_SIGN,
-  payload: sign,
-});
-
-export const updateDate = (date) => ({
-  type: UPDATE_DATE,
-  payload: date,
-});
-
-export const updateTime = (time) => ({
-  type: UPDATE_TIME,
-  payload: time,
-});
 
 export const updateTemp = (temp) => ({
   type: UPDATE_TEMP,
@@ -49,11 +29,6 @@ export const updatePrediction = (prediction) => ({
 export const updateLocation = (location) => ({
   type: UPDATE_LOCATION,
   payload: location,
-});
-
-export const updateDay = (day) => ({
-  type: UPDATE_DAY,
-  payload: day,
 });
 
 export const updateBusinessName = (businessName) => ({

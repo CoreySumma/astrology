@@ -3,7 +3,6 @@ import { updateTemp, updateDescription } from "../redux/actions/actions";
 
 export default function weatherApi(setLat, setLong, dispatch) {
   return new Promise((_, reject) => {
-    // eslint-disable-next-line no-undef
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const currentLat = position.coords.latitude;

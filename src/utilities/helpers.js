@@ -31,6 +31,7 @@ export async function getUserIp() {
 export async function useAwsApi(date, prediction = "") {
   const ipAddress = await getUserIp();
   // endpoint reacts differently if we send a prediction
+  // build the payload accordingly
   const payload = prediction
     ? { prediction, ipAddress, date }
     : { ipAddress, date };

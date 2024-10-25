@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Prediction.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import { useSnackbar } from "notistack";
 import gptApi from "../../utilities/gpt-api-1";
+import useUserData from "../../redux/selectors/userDataSelector";
 
 export default function Prediction({
   temp,
@@ -23,20 +24,17 @@ export default function Prediction({
   prevPrediction,
 }) {
   const dispatch = useDispatch();
-  const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
-  const finalPredictionFirstVisit = useSelector(
-    (store) => store.userData.refinedPrediction
-  );
-  const finalPredictionNotFirstVisit = useSelector(
-    (store) => store.userData.finalPrediction
-  );
+  const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
+  const { refinedPrediction, finalPrediction } = useUserData();
 
   // Adjust the prediction based on whether the user has visited before
-  const refinedPrediction =
+  // final prediction does not exist on first visit
+  // TODO change naming convention for final prediction/refined
+  const prediction =
     userExists && prevPrediction !== "No prediction available"
-      ? finalPredictionNotFirstVisit
-      : finalPredictionFirstVisit;
+      ? finalPrediction
+      : refinedPrediction;
 
   const isDataLoading =
     temp === null ||
@@ -49,7 +47,7 @@ export default function Prediction({
     businessName === "" ||
     userExists === "";
 
-  async function callGpt() {
+  async function callAgents() {
     try {
       setIsLoadingPrediction(true);
       await gptApi(
@@ -77,7 +75,7 @@ export default function Prediction({
   }
 
   async function handleClick() {
-    callGpt();
+    callAgents();
     setIsButtonVisible(false);
     setFade(true);
   }
@@ -105,7 +103,7 @@ export default function Prediction({
         {!isLoadingPrediction && isDataLoading && (
           <div data-testid="spinner" className="spinner" />
         )}
-        {!isLoadingPrediction && !isDataLoading && refinedPrediction && (
+        {!isLoadingPrediction && !isDataLoading && prediction && (
           <div className="prediction-text-fade-in">
             <div className="constellation-container">
               <p className="display-sign">{sign}</p>
@@ -116,12 +114,12 @@ export default function Prediction({
                 data-testid="constellation"
               />
               <p className="prediction-text" data-testid="prediction">
-                {parse(refinedPrediction)}
+                {parse(prediction)}
               </p>
             </div>
           </div>
         )}
-        {!isLoadingPrediction && !isDataLoading && !refinedPrediction && (
+        {!isLoadingPrediction && !isDataLoading && !prediction && (
           <p className="prediction-text" />
         )}
       </div>

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+// We use Redux for complex state/data management because it needs to
+// be shared back and fourth between components
+import useUserData from "../../redux/selectors/userDataSelector";
 import Prediction from "../../components/Prediction/Prediction";
 import Modal from "../../components/Modal/Modal";
-import { updateTime, updateDate, updateDay } from "../../redux/actions/actions";
 import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import yelpApi from "../../utilities/yelp-api";
@@ -23,6 +25,16 @@ export default function App() {
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [finalPrediction, setFinalPrediction] = useState("");
+  const {
+    description,
+    temp,
+    location,
+    businessName,
+    businessLocation,
+    userExists,
+    prevDateVisited,
+    prevPrediction,
+  } = useUserData();
 
   // Search term for whatever business you want to show up in the prediction
   // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
@@ -30,42 +42,24 @@ export default function App() {
 
   const dispatch = useDispatch();
 
+  // Gather time, date, and day of the week data for GPT
+  const date = dayjs().format("MM/DD/YYYY");
+  const time = dayjs().format("hh:mm A");
+  const day = dayjs().format("dddd");
+
+  // On mount get the user's latitude and longitude and the weather
+  // (lat and long is baked into the weather API call)
   useEffect(() => {
-    // Gather time, date, and day of the week data for GPT
-    const date = dayjs().format("MM/DD/YYYY");
-    const time = dayjs().format("hh:mm A");
-    const dayOfWeek = dayjs().format("dddd");
-    dispatch(updateDay(dayOfWeek));
-    dispatch(updateDate(date));
-    dispatch(updateTime(time));
-    // Call the weather API with arguments which also gets user longitude and latitude
     weatherApi(setLat, setLong, dispatch);
+  }, []);
+  // Fire off the Google Maps and Yelp API calls when the user's location is fetched
+  useEffect(() => {
     if (long && lat) {
-      // Call the google maps API to get the city name, state etc of the user
-      // and then call the Yelp API to get the nearest yoga studio
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       yelpApi(search, lat, long, dispatch);
     }
-  }, [lat, long, locationFetched]);
-
-  // Redux for retrieving data from the store for state to pass to GPT prompts
-  const description = useSelector((state) => state.userData.description);
-  const temp = useSelector((state) => state.userData.temp);
-  const date = useSelector((state) => state.userData.date);
-  const time = useSelector((state) => state.userData.time);
-  const location = useSelector((state) => state.userData.location);
-  const day = useSelector((state) => state.userData.day);
-  const businessName = useSelector((state) => state.userData.businessName);
-  const businessLocation = useSelector(
-    (state) => state.userData.businessLocation
-  );
-  const userExists = useSelector((state) => state.userData.userExists);
-  const prevDateVisited = useSelector(
-    (state) => state.userData.lastDateVisited
-  );
-  const prevPrediction = useSelector((state) => state.userData.lastPrediction);
-
-  // Grace period of 4 seconds before the modal shows
+  }, [long, lat]);
+  // Grace period of 4 seconds before the modal shows after the location is fetched
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(!locationFetched);
