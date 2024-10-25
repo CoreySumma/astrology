@@ -11,12 +11,11 @@ export default function Prediction({
   date,
   sign,
   setFade,
-  isButtonVisible,
-  setIsButtonVisible,
 }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
   // We use Redux for complex state/data management because it needs to
   // be shared back and fourth between calls/components
   const {

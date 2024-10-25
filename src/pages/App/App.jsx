@@ -19,15 +19,13 @@ export default function App() {
   const [sign, setSign] = useState("aries");
   const [locationFetched, setLocationFetched] = useState(false);
   const [fade, setFade] = useState(false);
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [finalPrediction, setFinalPrediction] = useState("");
   // Search term for whatever business you want to show up in the prediction
   // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
   const search = "yoga";
 
   const dispatch = useDispatch();
-  
+
   const date = dayjs().format("MM/DD/YYYY");
 
   // On mount get the user's latitude, longitude and weather
@@ -72,10 +70,6 @@ export default function App() {
           date={date}
           sign={sign}
           setFade={setFade}
-          isButtonVisible={isButtonVisible}
-          setIsButtonVisible={setIsButtonVisible}
-          finalPrediction={finalPrediction}
-          setFinalPrediction={setFinalPrediction}
         />
       </main>
     </div>
