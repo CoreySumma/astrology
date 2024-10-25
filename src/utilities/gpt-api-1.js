@@ -8,7 +8,6 @@ export default async function callFirstAgent(
   dispatch,
   userData
 ) {
-  console.log("User data", userData);
   // 1st API call to GPT
   try {
     const prediction = await useGptApi(
