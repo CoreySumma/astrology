@@ -45,11 +45,6 @@
   opacity: 0;
 }
 
-.moon {
-  z-index: 1;
-  position: relative;
-}
-
 .prediction-button:hover {
   background: transparent;
   border: black;

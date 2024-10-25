@@ -68,7 +68,7 @@ export default function Prediction({
       setIsLoadingPrediction(false);
     } catch (error) {
       enqueueSnackbar(
-        "The gods grow quiet...Check your API key or make a sacrafice.",
+        "The gods grow quiet...Maybe you should make a sacrafice?",
         { variant: "error" }
       );
     }

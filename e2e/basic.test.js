@@ -108,7 +108,7 @@ test.describe("Injecting location...", () => {
   });
   test.afterAll(async ({ browser }) => {
     // Add a delay to extend video recording time before closing so recording captures final state
-    await page.waitForTimeout(6000); 
+    await page.waitForTimeout(8000); 
     await browser.close();
   });
 });

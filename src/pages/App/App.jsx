@@ -35,7 +35,6 @@ export default function App() {
     prevDateVisited,
     prevPrediction,
   } = useUserData();
-
   // Search term for whatever business you want to show up in the prediction
   // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
   const search = "yoga";
@@ -47,18 +46,19 @@ export default function App() {
   const time = dayjs().format("hh:mm A");
   const day = dayjs().format("dddd");
 
-  // On mount get the user's latitude and longitude and the weather
+  // On mount get the user's latitude, longitude and weather
   // (lat and long is baked into the weather API call)
   useEffect(() => {
     weatherApi(setLat, setLong, dispatch);
   }, []);
   // Fire off the Google Maps and Yelp API calls when the user's location is fetched
+  const isLongAndLatSet = long && lat;
   useEffect(() => {
     if (long && lat) {
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
       yelpApi(search, lat, long, dispatch);
     }
-  }, [long, lat]);
+  }, [isLongAndLatSet]);
   // Grace period of 4 seconds before the modal shows after the location is fetched
   useEffect(() => {
     const timer = setTimeout(() => {
