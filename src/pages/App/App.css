@@ -23,11 +23,6 @@
   background-size: cover;
 }
 
-.astroLogo {
-  height: 67vmin;
-  pointer-events: none;
-}
-
 main {
   display: flex;
   background-color: transparent;
@@ -50,7 +45,6 @@ main {
   justify-content: center;
   margin-bottom: 15px;
   margin-top: 15px;
-  /* transition: all ease-in-out 0.5s; */
 }
 
 .prediction-text {
@@ -58,17 +52,4 @@ main {
   font-size: calc(10px);
   color: white;
   transition: none;
-}
-
-@media screen and (max-width: 600px) {
-  .astroLogo {
-    width: 215px;
-    height: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .no-scroll {
-    height: 100vh;
-    overflow: hidden;
-  }
 }
