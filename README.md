@@ -55,7 +55,7 @@ Resources for getting the API keys: (Note: All of these are free or available fo
 - Yelp: https://docs.developer.yelp.com/docs/fusion-intro
 - Cors: https://cors.sh/ (we need this to avoid making a backend)
 
-4. Run pnpm start to start the development server.
+4. Run pnpm run start to start the development server.
 
 ## CI/CD with GitHub Actions
 
