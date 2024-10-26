@@ -57,7 +57,7 @@ export default function App() {
   }, [locationFetched]);
 
   return (
-    <div className="App">
+    <div className={`App ${fade ? '' : 'no-scroll'}`}>
       <div className="video-background">
         <video autoPlay playsInline muted loop preload="auto">
           <source

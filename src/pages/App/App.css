@@ -67,4 +67,8 @@ main {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .no-scroll {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
