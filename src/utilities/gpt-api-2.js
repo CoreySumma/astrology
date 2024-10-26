@@ -2,7 +2,6 @@ import gptPrompt2 from "./prompts/gpt-prompt-2";
 import { awsAddPrediction } from "./aws-database-api";
 import { useGptApi, cleanUp } from "./helpers";
 
-// eslint-disable-next-line consistent-return
 export default async function callSecondAgent(
   dispatch,
   prediction,

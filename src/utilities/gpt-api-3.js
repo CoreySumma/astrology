@@ -2,7 +2,6 @@ import gptPrompt3 from "./prompts/gpt-prompt-3";
 import { awsAddPrediction } from "./aws-database-api";
 import { useGptApi, cleanUp } from "./helpers";
 
-// eslint-disable-next-line consistent-return
 export default async function callThirdAgent(
   refinedPrediction,
   userData
