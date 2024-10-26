@@ -22,12 +22,6 @@
   border-radius: 2px;
 }
 
-.form-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 .fade-out {
   opacity: 0;
   transition: opacity 1s ease-out;
@@ -78,6 +72,17 @@
 }
 
 @media screen and (max-width: 600px) {
+  .zodiac-title {
+    font-size: 35px;
+  }
+  .zodiac-container {
+    font-size: 25px;
+  }
+  .mySwiper .swiper-slide img {
+    max-width: 90%;
+    height: auto;
+    margin-bottom: 0;
+  }
   .selector {
     font-size: 15px;
     margin: 1vmin;
@@ -86,10 +91,6 @@
   }
   .image-description {
     margin-bottom: 28px;
-  }
-  .form-title {
-    font-size: 35px;
-    margin: 30px;
   }
   .mySwiper {
     width: 250px;

@@ -2,10 +2,10 @@
 
 .prediction-container {
   position: absolute;
-  margin-bottom: 75vh;
+  top: 0;
   background-color: transparent;
   border: transparent;
-  min-height: 100vh;
+  min-height: 50vh;
   width: 60%;
   padding: 10px;
   border-radius: 23px;
@@ -13,6 +13,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .prediction-text {
@@ -25,7 +27,8 @@
 }
 
 .prediction-button {
-  margin-top: 5vh;
+  margin-top: 60px;
+  margin-bottom: 10px;
   width: 280px;
   height: 60px;
   border: 1px, transparent, solid;
@@ -40,7 +43,6 @@
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   opacity: 0;
-  z-index: 1;
 }
 
 .prediction-button:hover {
@@ -61,8 +63,7 @@
 }
 
 .loading-zodiac-sign {
-  width: 100px;
-  margin-bottom: 30vh;
+  width: 80px;
   height: auto;
   font-size: calc(12px + 1vmin);
   color: white;
@@ -147,7 +148,7 @@
 }
 
 .spinner {
-  margin-bottom: 20vh;
+  margin: 200px auto;
   border: 8px solid black;
   border-top: 8px solid rgb(189, 189, 189);
   border-radius: 50%;
@@ -194,25 +195,26 @@
 
 @media screen and (max-width: 600px) {
   .prediction-button {
-    width: 195px;
+    width: 200px;
     height: 50px;
     font-size: 15px;
-    bottom: -42px;
+    top: -25px;
   }
   .prediction-container {
     width: 90%;
-    margin-bottom: 60vh;
     height: auto;
   }
   .spinner {
-    margin-bottom: 15vh;
+    margin: 150px auto;
   }
   .prediction-text {
     text-align: left;
     padding-left: 4px;
     padding-right: 4px;
   }
-
+  .loading-zodiac-sign {
+    margin-top: 20vw;
+  }
   .constellation {
     margin-bottom: 8vmin;
     margin-top: 5vmin;
