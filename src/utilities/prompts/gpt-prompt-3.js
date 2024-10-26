@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
-export default function gptPrompt3(refinedPrediction, date, userData) {
-  const { prevPrediction, prevDateVisited } = userData;
+export default function gptPrompt3(refinedPrediction,userData) {
+  const { prevPrediction, prevDateVisited, date } = userData;
   // Calculate how many days since last prediction
   const timeDiff = dayjs(date, "MM-DD-YYYY").diff(
     dayjs(prevDateVisited, "MM-DD-YYYY"),
