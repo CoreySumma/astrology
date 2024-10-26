@@ -24,6 +24,7 @@ export default function App() {
   
   // Search term for whatever business you want to show up in the prediction
   // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
+  // (If changed, make sure to tweak the prompts)
   const search = "yoga";
   
   // On mount get the user's latitude, longitude, day, time, date and weather
