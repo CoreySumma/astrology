@@ -52,12 +52,8 @@ export default function ZodiacSwiper({ fade }) {
         }}
       >
         {signs.map((sign) => (
-          <SwiperSlide>
-            <img
-              src={`/images/${sign.toLowerCase()}w.png`}
-              alt={sign}
-              key={sign}
-            />
+          <SwiperSlide key={sign}>
+            <img src={`/images/${sign.toLowerCase()}w.png`} alt={sign} />
             <p className="image-description">{sign}</p>
           </SwiperSlide>
         ))}
