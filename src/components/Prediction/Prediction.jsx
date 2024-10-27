@@ -72,7 +72,7 @@ export default function Prediction({ setFade }) {
         {isLoadingPrediction && (
           <img
             className="loading-zodiac-sign"
-            src={`/images/${sign}w.png`}
+            src={`/images/${sign.toLowerCase()}w.png`}
             alt={`${sign} Sign`}
             data-testid="loading-prediction-icon"
           />
@@ -86,7 +86,7 @@ export default function Prediction({ setFade }) {
               <p className="display-sign">{sign}</p>
               <img
                 className="constellation"
-                src={`/images/${sign}-constellation.png`}
+                src={`/images/${sign.toLowerCase()}-constellation.png`}
                 alt={`${sign} Constellation`}
                 data-testid="constellation"
               />

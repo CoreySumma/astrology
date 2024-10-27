@@ -16,6 +16,21 @@ import "swiper/css/bundle";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFlip]);
 
+const signs = [
+  "Aries",
+  "Taurus",
+  "Gemini",
+  "Cancer",
+  "Leo",
+  "Virgo",
+  "Libra",
+  "Scorpio",
+  "Sagittarius",
+  "Capricorn",
+  "Aquarius",
+  "Pisces",
+];
+
 export default function ZodiacSwiper({ fade }) {
   const dispatch = useDispatch();
 
@@ -33,71 +48,15 @@ export default function ZodiacSwiper({ fade }) {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         onSlideChange={(swiper) => {
-          const signs = [
-            "aries",
-            "taurus",
-            "gemini",
-            "cancer",
-            "leo",
-            "virgo",
-            "libra",
-            "scorpio",
-            "sagittarius",
-            "capricorn",
-            "aquarius",
-            "pisces",
-          ];
           handleChange(signs[swiper.activeIndex]);
         }}
       >
+        {signs.map((sign) => (
         <SwiperSlide>
-          <img src="/images/ariesw.png" alt="Aries" />
-          <p className="image-description">Aries.</p>
+          <img src={`/images/${sign.toLowerCase()}w.png`} alt={sign} />
+          <p className="image-description">{sign}</p>
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/taurusw.png" alt="Taurus" />
-          <p className="image-description">Taurus.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/geminiw.png" alt="Gemini" />
-          <p className="image-description">Gemini.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/cancerw.png" alt="Cancer" />
-          <p className="image-description">Cancer.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/leow.png" alt="Leo" />
-          <p className="image-description">Leo.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/virgo1w.png" alt="Virgo" />
-          <p className="image-description">Virgo.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/libraw.png" alt="Libra" />
-          <p className="image-description">Libra.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/scorpiow.png" alt="Scorpio" />
-          <p className="image-description">Scorpio.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/sagittariusw.png" alt="Sagittarius" />
-          <p className="image-description">Sagittarius.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/capricornw.png" alt="Capricorn" />
-          <p className="image-description">Capricorn.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/aquariusw.png" alt="Aquarius" />
-          <p className="image-description">Aquarius.</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/piscesw.png" alt="Pisces" />
-          <p className="image-description">Pisces.</p>
-        </SwiperSlide>
+        ))}
       </Swiper>
       <br />
     </div>

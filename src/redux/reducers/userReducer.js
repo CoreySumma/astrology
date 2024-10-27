@@ -15,7 +15,7 @@ import {
 } from "../actions/actions";
 
 const initialState = {
-  sign: "",
+  sign: "Aries",
   date: "",
   time: "",
   day: "",
