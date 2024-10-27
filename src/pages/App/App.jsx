@@ -11,7 +11,6 @@ import yelpApi from "../../utilities/yelp-api";
 import { awsCheckIfVisited } from "../../utilities/aws-database-api";
 import ZodiacSwiper from "../../components/ZodiacSwiper/ZodiacSwiper";
 import { updateDate, updateTime, updateDay } from "../../redux/actions/actions";
-import userData from "../../redux/reducers/userReducer";
 
 dayjs.extend(localeData);
 
@@ -56,8 +55,6 @@ export default function App() {
     }
     return () => clearTimeout(timer);
   }, [locationFetched]);
-
-  console.log(userData)
 
   return (
     <div className="App">
