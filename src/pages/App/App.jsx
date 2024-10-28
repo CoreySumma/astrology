@@ -59,13 +59,13 @@ export default function App() {
   }, [locationFetched]);
 
   return (
-    <div className="App">
+    <main>
       <Modal showModal={showModal} setShowModal={setShowModal} />
         <SpaceBackground />
         <ZodiacSwiper fade={fade} />
-      <main>
+        <section className="prediction-section">
         <Prediction setFade={setFade} />
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
