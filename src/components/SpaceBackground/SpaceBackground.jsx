@@ -1,4 +1,5 @@
 import React from "react";
+import "./SpaceBackground.css";
 
 export default function SpaceBackground() {
   return (

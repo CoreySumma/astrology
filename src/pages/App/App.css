@@ -7,22 +7,6 @@
   min-height: 100vh;
 }
 
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.video-background video {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  background-size: cover;
-}
-
 main {
   display: flex;
   background-color: transparent;
@@ -30,26 +14,4 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.prediction-container {
-  background-color: black;
-  min-height: 50vh;
-  width: 60%;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  margin-top: 15px;
-}
-
-.prediction-text {
-  background-color: transparent;
-  font-size: calc(10px);
-  color: white;
-  transition: none;
 }
