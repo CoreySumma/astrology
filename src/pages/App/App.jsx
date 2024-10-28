@@ -45,11 +45,11 @@ export default function App() {
     }
   }, [isLongAndLatSet]);
 
-  // Grace period of 4 seconds before the modal shows after the location is fetched
+  // Grace period of 7 seconds before the modal shows after the location fails to fetch
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(!locationFetched);
-    }, 8000);
+    }, 7000);
     if (locationFetched) {
       awsCheckIfVisited(dayjs().format("MM/DD/YYYY"), dispatch); // pass current date
     }
