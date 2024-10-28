@@ -91,16 +91,6 @@
   margin-top: -1vmin;
 }
 
-/* Not using but could be useful */
-@keyframes circle {
-  0% {
-    clip-path: circle(0);
-  }
-  100% {
-    clip-path: circle(105%);
-  }
-}
-
 @keyframes leftToRight {
   0% {
     clip-path: inset(0 100% 0 0);
@@ -134,24 +124,12 @@
   }
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.spinner {
+.MUI-spinner {
   margin: 200px auto;
-  border: 8px solid black;
-  border-top: 8px solid rgb(189, 189, 189);
-  border-radius: 50%;
   width: 37px;
   height: 37px;
-  animation: spin 1s linear infinite;
   z-index: 1;
+  color: rgb(0, 0, 0);
 }
 
 .prediction-text-fade-in {
@@ -176,7 +154,6 @@
     margin-top: 10vw;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .prediction-button {
     width: 220px;
@@ -188,7 +165,6 @@
     margin-top: 30vw;
   }
 }
-
 @media screen and (max-width: 600px) {
   .prediction-button {
     width: 200px;
@@ -200,7 +176,7 @@
     width: 90%;
     height: auto;
   }
-  .spinner {
+  .MUI-spinner {
     margin: 150px auto;
   }
   .prediction-text {

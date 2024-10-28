@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import "./Prediction.css";
 import { useDispatch } from "react-redux";
 import parse from "html-react-parser";
@@ -78,7 +79,12 @@ export default function Prediction({ setFade }) {
           />
         )}
         {!isLoadingPrediction && isDataLoading && (
-          <div data-testid="spinner" className="spinner" />
+          <CircularProgress
+            size="3rem"
+            thickness={4}
+            className="MUI-spinner"
+            data-testid="spinner"
+          />
         )}
         {!isLoadingPrediction && !isDataLoading && prediction && (
           <div className="prediction-text-fade-in">
