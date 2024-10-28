@@ -9,12 +9,10 @@ import {
   A11y,
   EffectFlip,
 } from "swiper/modules";
-import SwiperCore from "swiper/core";
 import { updateSign } from "../../redux/actions/actions";
 import "./ZodiacSwiper.css";
 import "swiper/css/bundle";
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFlip]);
 
 const signs = [
   "Aries",
@@ -43,6 +41,7 @@ export default function ZodiacSwiper({ fade }) {
       <p className="zodiac-title">My zodiac sign is</p>
       <Swiper
         className="mySwiper"
+        modules={[Navigation, Pagination, Scrollbar, A11y, EffectFlip]} 
         effect="flip"
         slidesPerView={1}
         pagination={{ clickable: true }}

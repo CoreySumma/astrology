@@ -39,7 +39,7 @@ export default function App() {
   }, []);
 
   // Fire off the Google Maps and Yelp API calls when the user's location is fetched
-  const isLongAndLatSet = long && lat;
+  const isLongAndLatSet = long && lat; // Single source to avoid re-renders
   useEffect(() => {
     if (isLongAndLatSet) {
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);

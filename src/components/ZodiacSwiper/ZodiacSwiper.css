@@ -79,6 +79,7 @@
   bottom: -10px !important; 
 }
 
+/* I don't think this is working for loading state to be black */
 .swiper:not(.swiper-initialized) {
   background-color: rgba(0, 0, 0, 0.1); 
 }
