@@ -63,6 +63,14 @@
   color: white!important;
 }
 
+.swiper-button-next {
+  right: -30px !important; 
+}
+
+.swiper-button-prev {
+  left: -30px !important; 
+}
+
 .swiper-slide-shadow-left, .swiper-slide-shadow-right {
   background: rgb(119, 119, 119) !important;
 }

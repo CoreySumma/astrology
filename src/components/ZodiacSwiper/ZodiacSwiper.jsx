@@ -47,6 +47,7 @@ export default function ZodiacSwiper({ fade }) {
         slidesPerView={1}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
+        navigation
         onSlideChange={(swiper) => {
           handleChange(signs[swiper.activeIndex]);
         }}

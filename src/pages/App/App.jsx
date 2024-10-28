@@ -21,12 +21,12 @@ export default function App() {
   const [fade, setFade] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-  
+
   // Search term for whatever business you want to show up in the prediction
   // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
   // (If changed, make sure to tweak the prompts)
   const search = "yoga";
-  
+
   // On mount get the user's latitude, longitude, day, time, date and weather
   // (lat and long is baked into the weather API call)
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(!locationFetched);
-    }, 4000);
+    }, 8000);
     if (locationFetched) {
       awsCheckIfVisited(dayjs().format("MM/DD/YYYY"), dispatch); // pass current date
     }
