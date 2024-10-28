@@ -40,7 +40,7 @@ export default function ZodiacSwiper({ fade }) {
     <div className={`zodiac-container ${fade ? "fade-out" : ""}`}>
       <p className="zodiac-title">My zodiac sign is</p>
       <Swiper
-        className="mySwiper"
+        className="zodiacSwiper"
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFlip]} 
         effect="flip"
         slidesPerView={1}
