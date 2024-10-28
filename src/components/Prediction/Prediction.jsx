@@ -80,6 +80,7 @@ export default function Prediction({ setFade }) {
         )}
         {!isLoadingPrediction && isDataLoading && (
           <CircularProgress
+            sx={{ color: "black" }}
             size="3rem"
             thickness={4}
             className="MUI-spinner"
