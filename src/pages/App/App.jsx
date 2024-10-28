@@ -1,10 +1,12 @@
-import React, { useEffect, useState, Suspense, lazy } from "react";
+import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import "./App.css";
 import { useDispatch } from "react-redux";
 import Modal from "../../components/Modal/Modal";
-import LoadingState from "../../components/LoadingState/LoadingState";
+import Prediction from "../../components/Prediction/Prediction";
+import ZodiacSwiper from "../../components/ZodiacSwiper/ZodiacSwiper";
+import SpaceBackground from "../../components/SpaceBackground/SpaceBackground";
 import getLocationFromGoogs from "../../utilities/google-api";
 import weatherApi from "../../utilities/weather-api";
 import yelpApi from "../../utilities/yelp-api";
@@ -12,10 +14,6 @@ import { awsCheckIfVisited } from "../../utilities/aws-database-api";
 import { updateDate, updateTime, updateDay } from "../../redux/actions/actions";
 
 dayjs.extend(localeData);
-
-const Prediction = lazy(() => import("../../components/Prediction/Prediction"));
-const SpaceBackground = lazy(() => import("../../components/SpaceBackground/SpaceBackground"));
-const ZodiacSwiper = lazy(() => import("../../components/ZodiacSwiper/ZodiacSwiper"));
 
 
 export default function App() {
@@ -63,13 +61,11 @@ export default function App() {
   return (
     <div className="App">
       <Modal showModal={showModal} setShowModal={setShowModal} />
-      <Suspense fallback={<LoadingState />}>
         <SpaceBackground />
         <ZodiacSwiper fade={fade} />
       <main>
         <Prediction setFade={setFade} />
       </main>
-      </Suspense>
     </div>
   );
 }
