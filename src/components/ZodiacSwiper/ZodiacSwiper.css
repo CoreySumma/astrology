@@ -1,5 +1,4 @@
 .zodiac-container {
-  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,6 +89,7 @@
   }
   .zodiac-container {
     font-size: 25px;
+    margin-bottom: 85px;
   }
   .zodiacSwiper .swiper-slide img {
     max-width: 90%;
