@@ -25,11 +25,10 @@ export default function App() {
   const dispatch = useDispatch();
 
   // Search term for whatever business you want to show up in the prediction
-  // Currently set to yoga but could be set to "coffee", "restaurant", or "museum" etc
   // (If changed, make sure to tweak the prompts)
   const search = "yoga";
 
-  // OnlassName="main" mount get the user's latitude, longitude, day, time, date and weather
+  // On mount get the user's latitude, longitude, day, time, date and weather
   // (lat and long is baked into the weather API call)
   useEffect(() => {
     dispatch(updateDate(dayjs().format("MM/DD/YYYY"))); // current date
@@ -38,8 +37,8 @@ export default function App() {
     weatherApi(setLat, setLong, dispatch);
   }, []);
 
-  // Fire off the Google Maps and Yelp API calls when the user's location is fetched
-  const isLongAndLatSet = long && lat; // Single source to avoid re-renders
+  // Get exact location with googs & nearest yoga studio
+  const isLongAndLatSet = long && lat; 
   useEffect(() => {
     if (isLongAndLatSet) {
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
