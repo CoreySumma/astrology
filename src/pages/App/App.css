@@ -4,7 +4,6 @@ main {
   text-align: center;
   font-family: "Poppins", sans-serif;
   position: relative;
-  min-height: 100vh;
   display: flex;
   background-color: transparent;
   flex-direction: column;

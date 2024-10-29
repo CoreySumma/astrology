@@ -122,11 +122,6 @@
   }
 }
 
-.MUI-spinner {
-  margin: 265px auto;
-  z-index: 1;
-}
-
 .prediction-text-fade-in {
   animation: fadeIn 2s;
 }
@@ -165,16 +160,11 @@
     width: 200px;
     height: 50px;
     font-size: 15px;
-    margin-top: -150px;
+    margin-top: -65px;
   }
   .prediction-container {
     width: 90%;
     height: auto;
-  }
-  .MUI-spinner {
-    top: 50%;                
-    left: 50%;              
-    transform: translate(-50%, -50%);
   }
   .prediction-text {
     text-align: left;

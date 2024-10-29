@@ -5,6 +5,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-top: 25px;
 }
 
 .zodiac-title {
@@ -89,7 +90,6 @@
   }
   .zodiac-container {
     font-size: 25px;
-    margin-bottom: 85px;
   }
   .zodiacSwiper .swiper-slide img {
     max-width: 90%;

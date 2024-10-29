@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useMediaQuery, useTheme } from "@mui/material";
 import "./Prediction.css";
 import { useDispatch } from "react-redux";
 import parse from "html-react-parser";
@@ -27,6 +28,9 @@ export default function Prediction({ setFade }) {
     day,
     sign,
   } = userData;
+
+  const theme = useTheme();
+  const isSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   const isDataLoading =
     temp === null ||
@@ -80,10 +84,13 @@ export default function Prediction({ setFade }) {
         )}
         {!isLoadingPrediction && isDataLoading && (
           <CircularProgress
-            sx={{ color: "grey" }}
+            sx={{
+              color: "grey",
+              mt: isSM ? "40px" : "85px",
+              zIndex: 1,
+            }}
             size="3rem"
             thickness={4}
-            className="MUI-spinner"
             data-testid="spinner"
           />
         )}

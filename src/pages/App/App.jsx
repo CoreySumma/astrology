@@ -29,7 +29,7 @@ export default function App() {
   // (If changed, make sure to tweak the prompts)
   const search = "yoga";
 
-  // On mount get the user's latitude, longitude, day, time, date and weather
+  // OnlassName="main" mount get the user's latitude, longitude, day, time, date and weather
   // (lat and long is baked into the weather API call)
   useEffect(() => {
     dispatch(updateDate(dayjs().format("MM/DD/YYYY"))); // current date
