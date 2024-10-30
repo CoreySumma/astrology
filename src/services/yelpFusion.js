@@ -7,10 +7,7 @@ import {
 export default async function yelpAPI(search, lat, long, dispatch) {
   try {
     const url = `https://api.yelp.com/v3/businesses/search?term=${search}&latitude=${lat}&longitude=${long}`;
-    // const url = 'https://corsproxy.io/?' + encodeURIComponent(`https://api.yelp.com/v3/businesses/search?term=${search}&latitude=${lat}&longitude=${long}`);
-    // Make the request using cors.sh proxy
     const response = await axios.get(`https://proxy.cors.sh/${url}`, {
-      // const response = await axios.get(`${url}`, {
       headers: {
         "x-cors-api-key": process.env.REACT_APP_CORS_API_KEY,
         Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`,

@@ -14,9 +14,7 @@ export default async function getLocationFromGoogs(
 
     dispatch(
       updateLocation(
-        `
-    ${res.data.results[0].address_components[3].long_name}, 
-    ${res.data.results[0].address_components[5].long_name}`.trim()
+        `${res.data.results[0].address_components[3].long_name}, ${res.data.results[0].address_components[5].long_name}`.trim() // City and State
       )
     );
     setLocationFetched(true);

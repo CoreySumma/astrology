@@ -3,7 +3,7 @@ import {
   updateLastDateVisited,
   updateLastPrediction,
 } from "../redux/actions/actions";
-import { useAwsApi } from "./helpers";
+import { useAwsApi } from "../utils/helpers";
 
 // Check if user has visited before and get their last prediction -
 // and if they have, update redux with that information

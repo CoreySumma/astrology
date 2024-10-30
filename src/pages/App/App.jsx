@@ -7,14 +7,13 @@ import Modal from "../../components/Modal/Modal";
 import Prediction from "../../components/Prediction/Prediction";
 import ZodiacSwiper from "../../components/ZodiacSwiper/ZodiacSwiper";
 import SpaceBackground from "../../components/SpaceBackground/SpaceBackground";
-import getLocationFromGoogs from "../../utilities/google-api";
-import weatherApi from "../../utilities/weather-api";
-import yelpApi from "../../utilities/yelp-api";
-import { awsCheckIfVisited } from "../../utilities/aws-database-api";
+import getLocationFromGoogs from "../../services/google";
+import weatherApi from "../../services/openWeather";
+import yelpApi from "../../services/yelpFusion";
+import { awsCheckIfVisited } from "../../services/aws";
 import { updateDate, updateTime, updateDay } from "../../redux/actions/actions";
 
 dayjs.extend(localeData);
-
 
 export default function App() {
   const [lat, setLat] = useState(null);
@@ -38,7 +37,7 @@ export default function App() {
   }, []);
 
   // Get exact location with googs & nearest yoga studio
-  const isLongAndLatSet = long && lat; 
+  const isLongAndLatSet = long && lat;
   useEffect(() => {
     if (isLongAndLatSet) {
       getLocationFromGoogs(lat, long, dispatch, setLocationFetched);
@@ -60,9 +59,9 @@ export default function App() {
   return (
     <main>
       <Modal showModal={showModal} setShowModal={setShowModal} />
-        <SpaceBackground />
-        <ZodiacSwiper fade={fade} />
-        <section className="prediction-section">
+      <SpaceBackground />
+      <ZodiacSwiper fade={fade} />
+      <section className="prediction-section">
         <Prediction setFade={setFade} />
       </section>
     </main>

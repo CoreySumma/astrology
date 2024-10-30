@@ -5,7 +5,7 @@ import "./Prediction.css";
 import { useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import { useSnackbar } from "notistack";
-import gptApi from "../../utilities/gpt-api-1";
+import callAllAgents from "../../services/callAllAgents";
 import useUserData from "../../redux/selectors/userDataSelector";
 
 export default function Prediction({ setFade }) {
@@ -43,10 +43,10 @@ export default function Prediction({ setFade }) {
     businessName === "" ||
     userExists === "";
 
-  async function callAgents() {
+  async function getPrediction() {
     try {
       setIsLoadingPrediction(true);
-      await gptApi(dispatch, userData);
+      await callAllAgents(dispatch, userData);
       setIsLoadingPrediction(false);
     } catch (error) {
       enqueueSnackbar(
@@ -57,7 +57,7 @@ export default function Prediction({ setFade }) {
   }
 
   async function handleClick() {
-    callAgents();
+    getPrediction();
     setIsButtonVisible(false);
     setFade(true);
   }

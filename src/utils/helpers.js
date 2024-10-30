@@ -38,6 +38,8 @@ export function cleanUp(text) {
     "Final Prediction:",
     "Updated Prediction:",
     "Your Refined Prediction:",
+    "Refined Prediction:",
+    "Refine Prediction:",
     "Your Final Prediction:",
     "Your Updated Prediction:",
     "Your Refinement:",

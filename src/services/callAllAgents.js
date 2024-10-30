@@ -1,21 +1,11 @@
 import { updatePrediction } from "../redux/actions/actions";
-import callSecondAgent from "./gpt-api-2";
-import callThirdAgent from "./gpt-api-3";
-import gptPrompt from "./prompts/gpt-prompt-1";
-import { useGptApi } from "./helpers";
+import { callFirstAgent, callSecondAgent, callThirdAgent } from "./open-ai";
+
 // All chained calls are made in this file
-export default async function callFirstAgent(
-  dispatch,
-  userData
-) {
-  // 1st API call to GPT
+export default async function callAllAgents(dispatch, userData) {
   try {
-    const prediction = await useGptApi(
-      "gpt-3.5-turbo-instruct",
-      gptPrompt(userData),
-      0.7,
-      280
-    );
+    // 1st API call to GPT
+    const prediction = await callFirstAgent(userData);
     // 2nd API call to GPT
     const refinedPrediction = await callSecondAgent(
       dispatch,
@@ -30,10 +20,7 @@ export default async function callFirstAgent(
     ) {
       // The third agent is only needed to incorporare past predictions into the current one
       console.log("Nice to see you again");
-      const finalPrediction = await callThirdAgent(
-        refinedPrediction,
-        userData
-      );
+      const finalPrediction = await callThirdAgent(refinedPrediction, userData);
       dispatch(updatePrediction(finalPrediction));
     }
   } catch (error) {
