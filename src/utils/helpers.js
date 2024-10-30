@@ -40,9 +40,9 @@ export function cleanUp(text) {
     "Your Refined Prediction:",
     "Refined Prediction:",
     "Refine Prediction:",
+    "Your Refinement:",
     "Your Final Prediction:",
     "Your Updated Prediction:",
-    "Your Refinement:",
   ];
   return text
     .replace(prefixes.find((prefix) => text.startsWith(prefix)) || "", "")

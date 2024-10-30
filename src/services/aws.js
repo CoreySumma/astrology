@@ -20,7 +20,6 @@ export async function awsCheckIfVisited(date, dispatch) {
 }
 
 // Add prediction to our DynamoDB table using the same endpoint
-// eslint-disable-next-line consistent-return
 export async function awsAddPrediction(prediction, date) {
   try {
     await useAwsApi(date, prediction);
