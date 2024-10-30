@@ -4,6 +4,7 @@ import {
   updateLastPrediction,
 } from "../redux/actions/actions";
 import { useAwsApi } from "../utils/helpers";
+// User tracking and prediction storage is done through AWS Lambda and DynamoDB
 
 // Check if user has visited before and get their last prediction -
 // and if they have, update redux with that information
