@@ -114,3 +114,20 @@ Delete this block in the YAML file:
 </code>
 
 </div>
+
+## Development Commands
+
+### Linting
+To run ESLint checks across all JavaScript and JSX files:
+```bash
+pnpm eslint .
+```
+
+### Testing
+To run Playwright tests in headed mode (visible browser):
+```bash
+npx playwright test --headed      
+```
+
+### Recording Tests
+Playwright tests automatically record videos in the `./<MM-DD-YYYY>_screen-recordings` directory and take screenshots in the `./<MM-DD-YYYY>_screenshots` directory 
