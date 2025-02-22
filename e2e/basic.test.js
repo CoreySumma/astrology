@@ -43,6 +43,10 @@ test.describe("Injecting location...", () => {
   });
 
   test("Change zodiac signs", async () => {
+    await page.goto("http://localhost:3000", {
+      waitUntil: "networkidle",
+      timeout: 30000,
+    });
     // Basic nav with selector
     await page.getByLabel("Go to slide 2").click();
     await expect(page.getByRole("img", { name: "Taurus" })).toBeVisible();
@@ -79,10 +83,14 @@ test.describe("Injecting location...", () => {
   });
 
   test("Display and hide prediction loading icon when asking the universe", async () => {
+    await page.goto("http://localhost:3000", {
+      waitUntil: "networkidle",
+      timeout: 30000,
+    });
     // Select Taurus
     await page.getByLabel("Go to slide 2").click();
     await expect(page.getByRole("img", { name: "Taurus" })).toBeVisible();
-    await page.waitForSelector('[data-testid="spinner"]', { state: 'hidden' });
+    await page.waitForSelector('[data-testid="spinner"]', { state: "hidden" });
     // Click the "Ask The Universe" button
     const askButton = page.getByRole("button", { name: "Ask The Universe" });
     await expect(askButton).toBeVisible();
@@ -108,7 +116,7 @@ test.describe("Injecting location...", () => {
   });
   test.afterAll(async ({ browser }) => {
     // Add a delay to extend video recording time before closing so recording captures final state
-    await page.waitForTimeout(8000); 
+    await page.waitForTimeout(8000);
     await browser.close();
   });
 });
